@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmxoenn74bpov"]
+
+[ext_resource type="Script" path="res://CameraSystem.gd" id="1_252j1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hypfc"]
+size = Vector2(1281, 727)
+
+[node name="CameraSystem" type="Area2D"]
+script = ExtResource("1_252j1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hypfc")
+
+[node name="Camera2D" type="Camera2D" parent="."]

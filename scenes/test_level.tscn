@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhw2ssgwbidr5"]
+
+[ext_resource type="PackedScene" uid="uid://dgsm7vqcxipqs" path="res://scenes/player.tscn" id="1_2ij6f"]
+[ext_resource type="PackedScene" uid="uid://b4oifo4iiadx3" path="res://scenes/NPCs/example_2.tscn" id="2_vot6g"]
+[ext_resource type="PackedScene" uid="uid://b48veawonafex" path="res://scenes/NPCs/example_1.tscn" id="3_x6wol"]
+[ext_resource type="PackedScene" uid="uid://cmxoenn74bpov" path="res://scenes/camera_system.tscn" id="4_ud00h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvj66"]
+size = Vector2(4062, 66)
+
+[node name="TestLevel" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(119, 226)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(579, 23)
+shape = SubResource("RectangleShape2D_tvj66")
+
+[node name="Player" parent="." instance=ExtResource("1_2ij6f")]
+position = Vector2(278, 139)
+
+[node name="CameraSystem" parent="." instance=ExtResource("4_ud00h")]
+position = Vector2(129, 12)
+
+[node name="Example1" parent="." instance=ExtResource("3_x6wol")]
+position = Vector2(1542, 173)
+
+[node name="Example2" parent="." instance=ExtResource("2_vot6g")]
+position = Vector2(-214, 202)
+
+[connection signal="body_exited" from="CameraSystem" to="CameraSystem" method="_on_body_exited"]

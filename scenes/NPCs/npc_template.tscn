@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxfqd7vjr7gi0"]
+
+[ext_resource type="Texture2D" uid="uid://dfi7lsm64yyw3" path="res://icon.svg" id="1_aaj3q"]
+[ext_resource type="PackedScene" uid="uid://h6x56xlbc8oy" path="res://scenes/actionable.tscn" id="2_6d8um"]
+[ext_resource type="Resource" uid="uid://7vfeqbp70sco" path="res://dialog/example_npc1.dialogue" id="3_fv3oe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_teev4"]
+size = Vector2(127.5, 126)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3g7g"]
+size = Vector2(274, 94)
+
+[node name="NPCTemplate" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_aaj3q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.25, -1)
+shape = SubResource("RectangleShape2D_teev4")
+
+[node name="Actionable" parent="." instance=ExtResource("2_6d8um")]
+dialog_resource = ExtResource("3_fv3oe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable"]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_t3g7g")
