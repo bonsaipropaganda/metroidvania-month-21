@@ -1,0 +1,37 @@
+~ intro
+
+Nathan: [[Hi|Hello|Howdy]], I'm Nathan the skull.
+Nathan: You go down there, and you'll end up like me.
+- I don't care.
+	Nathan: Well, I'll see you in the afterlife then. 
+	=> END
+- What do you suggest instead?
+	Nathan: I suggest just sitting here for a moment.
+	Nathan: The creator of this world clearely picked a good soundtrack.
+	Nathan: Just enjoy it.
+- Why should I listen to you? => who_am_i
+- End the conversation => END
+
+=> END
+
+~ who_am_i
+Nathan: Why you should listen to anyone is a good question.
+Nathan: Let me ask you this why do you really want to go down there?
+- I don't believe in freewill. I'm inside a simulation. It's just what was predetermined for me.
+	Nathan: Wow it sounds like you believe in predeterminism. Would you like me to explain it?
+	- Yes.
+		Nathan: Predeterminism is the idea that all events are determined in advance. Predeterminism is the philosophy that all events of history, past, present and future, have been decided or are known (by God, fate, or some other force), including human actions. Predeterminism is frequently taken to mean that human actions cannot interfere with (or have no bearing on) the outcomes of a pre-determined course of events, and that one's destiny was established externally (for example, exclusively by a creator deity).
+		- Wow that helped me a lot. Thank you.
+			Nathan: No worries. Have a nice life.
+		- I was a little bored and skimmed past that.
+			Nathan: Well, don't say I didn't try to educate you!
+		- Hmm. On second thought, I don't think that fits me.
+			Nathan: More power to you. Being able to change your mind is important. See ya.
+	- No.
+		Nathan: Well, have a good life.
+		=> END
+- Treasure?
+	Nathan: The treasure you'll find here is strange to say the least.
+- I'm done here.
+	Nathan: Me too.
+	=> END

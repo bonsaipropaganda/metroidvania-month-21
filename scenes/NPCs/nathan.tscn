@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0ybhq0dtye5s"]
+
+[ext_resource type="PackedScene" uid="uid://cxfqd7vjr7gi0" path="res://scenes/NPCs/npc_template.tscn" id="1_67a8g"]
+[ext_resource type="Resource" uid="uid://eerhlepwdrrv" path="res://dialog/intronpc.dialogue" id="2_1511t"]
+[ext_resource type="Texture2D" uid="uid://bt2x84u4p4yfw" path="res://art/tiles.png" id="2_b0e55"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcwtu"]
+atlas = ExtResource("2_b0e55")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o1g04"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcwtu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="IntroNPC" instance=ExtResource("1_67a8g")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_o1g04")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0.5, 1)
+
+[node name="Actionable" parent="." index="2"]
+dialog_resource = ExtResource("2_1511t")
+
+[node name="CollisionShape2D" parent="Actionable" index="0"]
+position = Vector2(1, 1)
