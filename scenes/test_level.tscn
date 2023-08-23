@@ -1,27 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://bhw2ssgwbidr5"]
 
 [ext_resource type="PackedScene" uid="uid://dgsm7vqcxipqs" path="res://scenes/player.tscn" id="1_2ij6f"]
-[ext_resource type="PackedScene" uid="uid://ds6gnw2rodjno" path="res://scenes/room_template.tscn" id="3_8pqbv"]
+[ext_resource type="PackedScene" uid="uid://ds62n7oqsgske" path="res://scenes/map.tscn" id="3_0fbyw"]
 [ext_resource type="PackedScene" uid="uid://cmxoenn74bpov" path="res://scenes/camera_system.tscn" id="4_ud00h"]
 
 [node name="TestLevel" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_2ij6f")]
-position = Vector2(-48, -272)
-
-[node name="RoomTemplate" parent="." instance=ExtResource("3_8pqbv")]
-position = Vector2(120, -7)
-layer_0/tile_data = PackedInt32Array(-524301, 65537, 3, -458765, 65537, 3, -393229, 65537, 3, 458739, 65537, 3, 524275, 65537, 3, -524300, 65537, 3, 524276, 65537, 3, -524299, 65537, 3, 524277, 65537, 3, -524298, 65537, 3, 524278, 65537, 3, -524297, 65537, 3, 524279, 65537, 3, -524296, 65537, 3, 524280, 65537, 3, -524295, 65537, 3, 524281, 65537, 3, -524294, 65537, 3, 524282, 65537, 3, 524283, 65537, 3, -589820, 65537, 3, 458756, 65537, 3, -589819, 65537, 3, 458757, 65537, 3, -589818, 65537, 3, 458758, 65537, 3, -589817, 65537, 3, 458759, 65537, 3, -589816, 65537, 3, 458760, 65537, 3, -589815, 65537, 3, 458761, 65537, 3, -589814, 65537, 3, 458762, 65537, 3, -589813, 65537, 3, 458763, 65537, 3, -589812, 65537, 3, -524276, 65537, 3, -458740, 65537, 3, 393228, 65537, 3, 458764, 65537, 3, -524293, 65537, 3, -6, 65537, 3, -5, 65537, 3, -4, 65537, 3, -3, 65537, 3, -2, 65537, 3, -1, 65537, 3, -65536, 65537, 3, -65535, 65537, 3, -65534, 65537, 3, -65533, 65537, 3, -65532, 65537, 3, -65531, 65537, 3, -327677, 65537, 3, -327678, 65537, 3, -327679, 65537, 3, -327680, 65537, 3, -262145, 65537, 3)
-
-[node name="RoomTemplate2" parent="." instance=ExtResource("3_8pqbv")]
-position = Vector2(-295, -7)
-
-[node name="Camera2D" parent="RoomTemplate2" instance=ExtResource("4_ud00h")]
-position = Vector2(415, -1)
+[node name="Camera2D" parent="." instance=ExtResource("4_ud00h")]
+position = Vector2(-266, -554)
 zoom = Vector2(2.5, 2.5)
 
-[node name="RoomTemplate3" parent="." instance=ExtResource("3_8pqbv")]
-position = Vector2(-295, -280)
+[node name="Player" parent="." instance=ExtResource("1_2ij6f")]
+position = Vector2(-131, -498)
 
-[node name="RoomTemplate4" parent="." instance=ExtResource("3_8pqbv")]
-position = Vector2(120, -280)
+[node name="Map" parent="." instance=ExtResource("3_0fbyw")]

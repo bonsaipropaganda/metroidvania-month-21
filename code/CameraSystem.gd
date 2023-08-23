@@ -14,6 +14,7 @@ func on_room_changed(room):
 #	self.global_position = room.global_position
 
 func _process(delta):
-	if t < 1:
-		t += delta * 0.4
-		self.global_position = start_pos.lerp(end_pos, t)
+	if start_pos:
+		if t < 1:
+			t += delta * 0.4
+			self.global_position = start_pos.lerp(end_pos, t)
