@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -600
+const JUMP_VELOCITY = -500
 
 # node refs
 @onready var actionable_finder = $ActionableFinder
