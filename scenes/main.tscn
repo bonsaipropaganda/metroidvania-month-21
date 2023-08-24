@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://celgp6ih70a7r"]
+
+[ext_resource type="PackedScene" uid="uid://dgsm7vqcxipqs" path="res://scenes/player.tscn" id="1_p60gx"]
+[ext_resource type="PackedScene" uid="uid://cowv5ggujrlvr" path="res://scenes/rooms/map.tscn" id="3_q7xmx"]
+[ext_resource type="PackedScene" uid="uid://cmxoenn74bpov" path="res://scenes/camera_system.tscn" id="3_uo7c5"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_p60gx")]
+position = Vector2(-128, 60)
+
+[node name="Camera2D" parent="." instance=ExtResource("3_uo7c5")]
+position = Vector2(-128, 60)
+zoom = Vector2(2, 2)
+
+[node name="map" parent="." instance=ExtResource("3_q7xmx")]
+position = Vector2(-16, 240)
