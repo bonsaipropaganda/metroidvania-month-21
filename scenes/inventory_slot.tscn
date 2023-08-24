@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmxwbc5lh3qm6"]
+[gd_scene load_steps=2 format=3 uid="uid://wbllgju0utf8"]
 
-[ext_resource type="Texture2D" uid="uid://dsvt7tgkko627" path="res://art/inventory_slot_by_makertech.png" id="1_7pqrr"]
+[ext_resource type="Texture2D" path="res://art/inventory_slot_by_makertech.png" id="1_7pqrr"]
 
 [node name="InventorySlot" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
