@@ -1,4 +1,4 @@
-extends TileMap
+extends Node2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,7 +11,8 @@ func _process(delta):
 	pass
 
 
-func _on_body_entered(body):
-	if body.name == "Player":
-		Global.current_room = self
-		Global.room_changed.emit(self)
+func _on_inventory_opened():
+	get_tree().paused = true
+
+func _on_inventory_closed():
+	get_tree().paused = false

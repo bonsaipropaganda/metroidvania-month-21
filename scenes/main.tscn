@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://celgp6ih70a7r"]
+[gd_scene load_steps=7 format=3 uid="uid://celgp6ih70a7r"]
 
 [ext_resource type="PackedScene" uid="uid://dgsm7vqcxipqs" path="res://scenes/player.tscn" id="1_p60gx"]
+[ext_resource type="Script" path="res://code/main.gd" id="1_rtdxs"]
 [ext_resource type="PackedScene" uid="uid://cowv5ggujrlvr" path="res://scenes/rooms/map.tscn" id="3_q7xmx"]
 [ext_resource type="PackedScene" uid="uid://cmxoenn74bpov" path="res://scenes/camera_system.tscn" id="3_uo7c5"]
+[ext_resource type="PackedScene" uid="uid://badhumyuf7bq7" path="res://scenes/Inventory.tscn" id="4_206fa"]
+[ext_resource type="Script" path="res://code/CanvasLayer.gd" id="4_rntel"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_rtdxs")
 
 [node name="Player" parent="." instance=ExtResource("1_p60gx")]
 position = Vector2(-128, 60)
@@ -15,3 +19,22 @@ zoom = Vector2(2, 2)
 
 [node name="map" parent="." instance=ExtResource("3_q7xmx")]
 position = Vector2(-16, 240)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("4_rntel")
+
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource("4_206fa")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -223.0
+offset_right = -350.0
+offset_bottom = -223.0
+scale = Vector2(5, 5)
+
+[connection signal="closed" from="CanvasLayer/Inventory" to="." method="_on_inventory_closed"]
+[connection signal="opened" from="CanvasLayer/Inventory" to="." method="_on_inventory_opened"]
