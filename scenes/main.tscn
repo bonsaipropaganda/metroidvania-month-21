@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://code/main.gd" id="1_rtdxs"]
 [ext_resource type="PackedScene" uid="uid://cowv5ggujrlvr" path="res://scenes/rooms/map.tscn" id="3_q7xmx"]
 [ext_resource type="PackedScene" uid="uid://cmxoenn74bpov" path="res://scenes/camera_system.tscn" id="3_uo7c5"]
-[ext_resource type="PackedScene" uid="uid://badhumyuf7bq7" path="res://scenes/Inventory.tscn" id="4_206fa"]
+[ext_resource type="PackedScene" uid="uid://d1rcyecv82w1s" path="res://scenes/Inventory.tscn" id="4_206fa"]
 [ext_resource type="Script" path="res://code/CanvasLayer.gd" id="4_rntel"]
 
 [node name="Main" type="Node2D"]

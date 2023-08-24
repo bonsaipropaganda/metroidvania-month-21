@@ -53,8 +53,9 @@ func move(delta:float)->void:
 	#for adding gravity!!!
 	if not is_on_floor():
 		velocity.y += gravity * delta
-
-	move_and_slide()
+	# can't move and talk, silly human
+	if !is_talking:
+		move_and_slide()
 
 func action_manager()->void:
 	var actionables = actionable_finder.get_overlapping_areas()
@@ -67,7 +68,7 @@ func action_manager()->void:
 			is_talking = false
 	
 	
-	if actionables and Input.is_action_just_pressed("ui_accept") and is_talking==false:
+	if actionables and Input.is_action_just_pressed("action") and is_talking==false:
 		actionables[0].action()
 		is_talking = true
 		return
