@@ -26,7 +26,6 @@ var will_hide_balloon: bool = false
 var dialogue_line: DialogueLine:
 	set(next_dialogue_line):
 		is_waiting_for_input = false
-
 		if not next_dialogue_line:
 			#chat_over.emit()
 			queue_free()
