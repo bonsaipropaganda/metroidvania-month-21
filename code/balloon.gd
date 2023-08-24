@@ -1,6 +1,8 @@
 extends CanvasLayer
 
 
+#signal chat_over()
+
 @onready var balloon: ColorRect = $Balloon
 @onready var margin: MarginContainer = $Balloon/Margin
 @onready var character_label: RichTextLabel = $Balloon/Margin/VBox/CharacterLabel
@@ -26,6 +28,7 @@ var dialogue_line: DialogueLine:
 		is_waiting_for_input = false
 
 		if not next_dialogue_line:
+			#chat_over.emit()
 			queue_free()
 			return
 
@@ -107,6 +110,7 @@ func start(dialogue_resource: DialogueResource, title: String, extra_game_states
 ## Go to the next line
 func next(next_id: String) -> void:
 	self.dialogue_line = await resource.get_next_dialogue_line(next_id, temporary_game_states)
+	print(next_id)
 
 
 ### Helpers
