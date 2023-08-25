@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4pqytsqnsfp5"]
 
 [ext_resource type="Texture2D" uid="uid://dsvt7tgkko627" path="res://art/inventory_slot_by_makertech.png" id="1_7pqrr"]
-[ext_resource type="Script" path="res://scenes/inventory_slot.gd" id="1_2365c"]
+[ext_resource type="Script" path="res://code/inventory/inventory_slot.gd" id="1_onivd"]
 
 [node name="InventorySlot" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(20, 20)
 offset_right = 20.0
 offset_bottom = 20.0
-script = ExtResource("1_2365c")
+script = ExtResource("1_onivd")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("1_7pqrr")
@@ -26,3 +26,11 @@ offset_bottom = 10.0
 layout_mode = 2
 
 [node name="Item" type="Sprite2D" parent="CenterContainer"]
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 20.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

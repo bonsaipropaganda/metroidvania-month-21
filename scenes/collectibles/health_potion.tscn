@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cemuf3w188sj0"]
+[gd_scene load_steps=5 format=3 uid="uid://cemuf3w188sj0"]
 
 [ext_resource type="PackedScene" uid="uid://gigqfggy5k6e" path="res://scenes/collectibles/collectible.tscn" id="1_twlgh"]
 [ext_resource type="Texture2D" uid="uid://rdk4vvb8alji" path="res://art/hp_potion_by_Tartarian.png" id="2_1jibk"]
+[ext_resource type="Script" path="res://code/collectibles/health_potion.gd" id="2_po2uw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6yr14"]
 resource_local_to_scene = true
 size = Vector2(14, 14)
 
 [node name="HealthPotion" instance=ExtResource("1_twlgh")]
+script = ExtResource("2_po2uw")
 
 [node name="CollisionShape" parent="." index="0"]
 shape = SubResource("RectangleShape2D_6yr14")

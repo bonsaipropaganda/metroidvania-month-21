@@ -4,6 +4,4 @@ extends Node
 var current_room
 signal room_changed(room)
 
-
-
-
+var player_health = 3

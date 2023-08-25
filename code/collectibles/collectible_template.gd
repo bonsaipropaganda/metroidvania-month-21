@@ -1,9 +1,10 @@
 extends Area2D
+class_name CollectibleTemplate
 
-var player_inventory = preload("res://inventory/player_inventory.tres")
+var player_inventory = preload("res://code/inventory/player_inventory.tres")
 
 # item resources
-var health_potion = preload("res://inventory/items/health_potion.tres")
+var health_potion = preload("res://code/inventory/items/health_potion.tres")
 var item_resources = [health_potion]
 
 
