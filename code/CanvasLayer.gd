@@ -10,3 +10,4 @@ func _input(event):
 		else: 
 			inventory.update()
 			inventory.open()
+

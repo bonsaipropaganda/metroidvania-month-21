@@ -36,5 +36,6 @@ offset_right = -350.0
 offset_bottom = -223.0
 scale = Vector2(5, 5)
 
+[connection signal="child_entered_tree" from="CanvasLayer" to="CanvasLayer" method="_on_child_entered_tree"]
 [connection signal="closed" from="CanvasLayer/Inventory" to="." method="_on_inventory_closed"]
 [connection signal="opened" from="CanvasLayer/Inventory" to="." method="_on_inventory_opened"]

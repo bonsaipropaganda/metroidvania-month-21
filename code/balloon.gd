@@ -29,6 +29,8 @@ var dialogue_line: DialogueLine:
 		if not next_dialogue_line:
 			#chat_over.emit()
 			queue_free()
+			# pause the tree so to not keep moving the player and opening stuff
+			get_tree().paused = false
 			return
 
 		# Remove any previous responses
@@ -85,6 +87,7 @@ var dialogue_line: DialogueLine:
 
 
 func _ready() -> void:
+	get_tree().paused = true
 	response_template.hide()
 	balloon.hide()
 	balloon.custom_minimum_size.x = balloon.get_viewport_rect().size.x
