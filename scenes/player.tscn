@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dgsm7vqcxipqs"]
+[gd_scene load_steps=12 format=3 uid="uid://dgsm7vqcxipqs"]
 
 [ext_resource type="Script" path="res://code/player.gd" id="1_xlwll"]
 [ext_resource type="Texture2D" uid="uid://ng37o0ee1v16" path="res://art/aaronsprite(2).png" id="2_d0isr"]
+[ext_resource type="Resource" uid="uid://bh4f2h53dvsy6" path="res://inventory/player_inventory.tres" id="2_l6yo5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qx6p"]
 size = Vector2(17.25, 46.25)
@@ -54,6 +55,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_xlwll")
+inventory = ExtResource("2_l6yo5")
 speed = 140.0
 jump_velocity = 400.0
 

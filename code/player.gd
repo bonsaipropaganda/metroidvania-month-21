@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var inventory: Inventory
+
 var is_talking:bool = false
 @export var speed:float = 100
 

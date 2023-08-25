@@ -1,11 +1,17 @@
 extends Area2D
 
+var player_inventory = preload("res://inventory/player_inventory.tres")
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+# item resources
+var health_potion = preload("res://inventory/items/health_potion.tres")
+var item_resources = [health_potion]
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_body_entered(body):
+	if body.name == "Player":
+		# appends the resource of the same name as the collectible scene
+		# to the player's inventory resource
+		for resource in item_resources:
+			if self.name == resource.name:
+				player_inventory.items.append(resource)
+				queue_free()
