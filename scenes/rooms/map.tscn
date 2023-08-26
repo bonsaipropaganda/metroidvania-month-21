@@ -25,7 +25,7 @@ size = Vector2(992, 360)
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_n3fk4")]
 position = Vector2(-160, -16)
 inventory = null
-speed = 150.0
+speed = 200.0
 
 [node name="Camera2D" parent="." instance=ExtResource("2_pp737")]
 position = Vector2(-160, -16)
