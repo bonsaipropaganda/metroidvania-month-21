@@ -70,3 +70,7 @@ func action_manager()->void:
 func _on_damage_hurtbox_damage_received(amount, damage_source):
 	if damage_source.is_in_group("enemy_attack"):
 		print("ouch")
+
+
+func _on_damage_hitbox_damage_anything(amount, damage_source):
+	pass
