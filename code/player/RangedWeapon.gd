@@ -10,7 +10,7 @@ func use():
 	p.direction.x = get_node("../..").facing
 	p.add_to_group("player_attack")
 	get_tree().root.add_child(p)
-	p.global_position = Vector2(global_position.x + OFFSET_X, global_position.y)
+	p.global_position = Vector2(global_position.x + OFFSET_X * p.direction.x, global_position.y)
 	
 	timer.start(0.2)
 	await timer.timeout

@@ -7,6 +7,7 @@ extends DamageHitbox
 var life_timer
 
 func _ready():
+	add_to_group("projectile")
 	life_timer = Timer.new()
 	life_timer.connect("timeout", queue_free)
 

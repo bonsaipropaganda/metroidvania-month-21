@@ -37,8 +37,6 @@ func move(delta:float)->void:
 		velocity.x = move_toward(velocity.x, direction * speed, ACCEL_X)
 		if facing != direction: scale.x *= -1
 		facing = direction
-			
-		#$AnimatedSprite2D.flip_h = true if (facing == -1) else false
 	else:
 		if is_on_floor(): velocity.x *= FLOOR_DRAG
 		else: velocity.x *= AIR_DRAG
