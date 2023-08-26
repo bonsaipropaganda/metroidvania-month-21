@@ -9,16 +9,20 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_rtdxs")
+metadata/_edit_horizontal_guides_ = [-28.0]
+metadata/_edit_vertical_guides_ = [193.0, -447.0]
 
-[node name="Player" parent="." instance=ExtResource("1_p60gx")]
-position = Vector2(-128, 60)
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_p60gx")]
+position = Vector2(-196, 227)
+inventory = null
+speed = 150.0
+
+[node name="map" parent="." instance=ExtResource("3_q7xmx")]
+position = Vector2(-16, 240)
 
 [node name="Camera2D" parent="." instance=ExtResource("3_uo7c5")]
 position = Vector2(-128, 60)
 zoom = Vector2(2, 2)
-
-[node name="map" parent="." instance=ExtResource("3_q7xmx")]
-position = Vector2(-16, 240)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -36,6 +40,5 @@ offset_right = -350.0
 offset_bottom = -223.0
 scale = Vector2(5, 5)
 
-[connection signal="child_entered_tree" from="CanvasLayer" to="CanvasLayer" method="_on_child_entered_tree"]
 [connection signal="closed" from="CanvasLayer/Inventory" to="." method="_on_inventory_closed"]
 [connection signal="opened" from="CanvasLayer/Inventory" to="." method="_on_inventory_opened"]

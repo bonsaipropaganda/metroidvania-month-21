@@ -2,15 +2,14 @@ extends State
 
 func enter():
 	target.get_node("AnimatedSprite2D").play("default")
-	target.get_node("Timers/CoyoteTimer").start(target.coyote_time)
 
 func update(delta):
+	target.get_node("Timers/CoyoteTimer").start(target.coyote_time)
 	target.move(delta)
-	target.action_manager()
 
 func exit():
 	pass
 
 func try_transition():
-	if Input.is_action_just_pressed("jump"):
+	if transitions.to_jump():
 		return get_node("../Jump")

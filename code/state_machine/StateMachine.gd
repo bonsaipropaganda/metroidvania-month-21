@@ -5,9 +5,12 @@ var current_state : Node
 var target : Node # We are managing the state of an arbitrary target
 
 func init_machine(target, init_state):
-	for state in get_children():
+	$Transitions.target = target
+	
+	for state in $States.get_children():
 		assert(state is State)
 		state.target = target
+		state.transitions = $Transitions
 	
 	current_state = init_state
 	current_state.enter()
@@ -20,6 +23,7 @@ func update(delta):
 		transition_state(new_state)
 
 func transition_state(new_state):
+	#print(current_state.name + " -> " + new_state.name)
 	current_state.exit()
 	new_state.enter()
 	

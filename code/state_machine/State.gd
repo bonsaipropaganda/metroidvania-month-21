@@ -2,6 +2,7 @@ extends Node
 class_name State
 
 var target : Node # We are a state of an arbitrary target
+var transitions : Node # Has true/false functions that decide if you can transition to a state
 
 # Called once when entering the state
 func enter():

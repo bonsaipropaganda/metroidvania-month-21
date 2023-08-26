@@ -2,5 +2,9 @@
 
 [ext_resource type="Script" path="res://code/CameraSystem.gd" id="1_00rar"]
 
-[node name="Camera2D" type="Camera2D"]
+[node name="Camera2D" type="Camera2D" groups=["camera"]]
+process_mode = 3
+process_callback = 0
+limit_smoothed = true
+position_smoothing_enabled = true
 script = ExtResource("1_00rar")

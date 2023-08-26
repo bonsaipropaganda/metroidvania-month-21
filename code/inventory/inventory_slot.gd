@@ -9,7 +9,7 @@ func update(item: InventoryItem):
 		$CenterContainer/Item.visible = false
 	else:
 		$Background.frame = 1
-		$CenterContainer/Item.visible
+		$CenterContainer/Item.visible # TODO fix this (does nothing)
 		$CenterContainer/Item.texture = item.texture
 		reference_to_item = item
 

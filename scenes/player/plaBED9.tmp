@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dgsm7vqcxipqs"]
+[gd_scene load_steps=16 format=3 uid="uid://dgsm7vqcxipqs"]
 
 [ext_resource type="Script" path="res://code/player.gd" id="1_el2b0"]
 [ext_resource type="Resource" uid="uid://bh4f2h53dvsy6" path="res://code/inventory/player_inventory.tres" id="2_2ntxu"]
@@ -7,8 +7,6 @@
 [ext_resource type="Script" path="res://scenes/player/Grounded.gd" id="5_ehd6c"]
 [ext_resource type="Script" path="res://scenes/player/Jump.gd" id="6_80nvj"]
 [ext_resource type="Script" path="res://scenes/player/Transitions.gd" id="7_alqh6"]
-[ext_resource type="Script" path="res://scenes/player/Fall.gd" id="7_l4ygo"]
-[ext_resource type="Script" path="res://scenes/player/Frozen.gd" id="8_1xgtn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qx6p"]
 size = Vector2(17.25, 46.25)
@@ -63,6 +61,7 @@ animations = [{
 script = ExtResource("1_el2b0")
 inventory = ExtResource("2_2ntxu")
 speed = 140.0
+jump_velocity = 400.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.625, 8.125)
@@ -91,19 +90,9 @@ script = ExtResource("5_ehd6c")
 [node name="Jump" type="Node" parent="StateMachine/States"]
 script = ExtResource("6_80nvj")
 
-[node name="Fall" type="Node" parent="StateMachine/States"]
-script = ExtResource("7_l4ygo")
-
-[node name="Frozen" type="Node" parent="StateMachine/States"]
-script = ExtResource("8_1xgtn")
-
 [node name="Transitions" type="Node" parent="StateMachine"]
 script = ExtResource("7_alqh6")
 
 [node name="Timers" type="Node" parent="."]
 
 [node name="CoyoteTimer" type="Timer" parent="Timers"]
-one_shot = true
-
-[node name="BufferJumpTimer" type="Timer" parent="Timers"]
-one_shot = true

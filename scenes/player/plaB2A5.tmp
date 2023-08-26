@@ -1,11 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://dgsm7vqcxipqs"]
+[gd_scene load_steps=16 format=3 uid="uid://dgsm7vqcxipqs"]
 
 [ext_resource type="Script" path="res://code/player.gd" id="1_el2b0"]
 [ext_resource type="Resource" uid="uid://bh4f2h53dvsy6" path="res://code/inventory/player_inventory.tres" id="2_2ntxu"]
 [ext_resource type="Texture2D" uid="uid://ng37o0ee1v16" path="res://art/aaronsprite(2).png" id="3_jgtf7"]
 [ext_resource type="PackedScene" uid="uid://cqlmw13hexw1a" path="res://scenes/state_machine/state_machine.tscn" id="4_n842b"]
-[ext_resource type="Script" path="res://scenes/player/Idle.gd" id="5_ehd6c"]
+[ext_resource type="Script" path="res://scenes/player/Grounded.gd" id="5_ehd6c"]
 [ext_resource type="Script" path="res://scenes/player/Jump.gd" id="6_80nvj"]
+[ext_resource type="Script" path="res://scenes/player/Transitions.gd" id="7_alqh6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qx6p"]
 size = Vector2(17.25, 46.25)
@@ -81,8 +82,17 @@ frame_progress = 0.700927
 
 [node name="StateMachine" parent="." instance=ExtResource("4_n842b")]
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="States" type="Node" parent="StateMachine"]
+
+[node name="Grounded" type="Node" parent="StateMachine/States"]
 script = ExtResource("5_ehd6c")
 
-[node name="Jump" type="Node" parent="StateMachine"]
+[node name="Jump" type="Node" parent="StateMachine/States"]
 script = ExtResource("6_80nvj")
+
+[node name="Transitions" type="Node" parent="StateMachine"]
+script = ExtResource("7_alqh6")
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="CoyoteTimer" type="Timer" parent="Timers"]
