@@ -20,8 +20,8 @@ func _on_body_entered(body):
 		snap_player_to_room()
 
 const snap_fatness = 20
-const snap_up_height = 50
-const snap_down_height = 50
+const snap_up_height = 46.25
+const snap_down_height = 46.25
 func snap_player_to_room():
 	if Global.get_player().global_position.x - snap_fatness < Global.get_cam().limit_left:
 		Global.get_player().global_position.x = Global.get_cam().limit_left + snap_fatness
