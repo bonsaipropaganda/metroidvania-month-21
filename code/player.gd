@@ -7,8 +7,7 @@ var is_talking:bool = false
 
 
 @export var jump_velocity:float = 300
-@export var jump_delay:float = 1
-var jump_delay_value:float = jump_delay
+@export var coyote_time:float = 0.4
 
 # node refs
 @onready var actionable_finder = $ActionableFinder
@@ -16,35 +15,16 @@ var jump_delay_value:float = jump_delay
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+var actionables = []
+
 func _ready():
-	$AnimatedSprite2D.play("default")
+	$StateMachine.init_machine(self, $StateMachine/Grounded)
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	move(delta)
-	action_manager()
-
+	actionables = actionable_finder.get_overlapping_areas()
+	$StateMachine.update(delta)
 
 func move(delta:float)->void:
-	var actionables = actionable_finder.get_overlapping_areas()
-	
-	var coyete_jump:Callable = func() -> bool:
-		if not is_on_floor():
-			jump_delay_value -= delta
-		else:
-			jump_delay_value = jump_delay
-
-
-		if jump_delay_value > 0 and not actionables:
-			return true
-		return false
-
-	#this part is for jumping
-	var is_on_floor:bool = coyete_jump.call()
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor:
-		velocity.y = -jump_velocity
-		jump_delay_value = 0
-	
 	#this part is for forizontal movement
 	var direction:float = Input.get_axis("left", "right")
 	if direction:
@@ -60,8 +40,6 @@ func move(delta:float)->void:
 		move_and_slide()
 
 func action_manager()->void:
-	var actionables = actionable_finder.get_overlapping_areas()
-	
 	#if the player's taking, check the number of "balloons" in the world. if there's none
 	#it means the player's not talking. mhm
 	if is_talking:
