@@ -8,7 +8,7 @@ func enter():
 	target.velocity.y = -target.jump_velocity
 
 func update(delta):
-	if Input.is_action_just_released("jump") and not target.has_ended_jump:
+	if !Input.is_action_pressed("jump") and not target.has_ended_jump:
 		target.velocity.y /= 2
 		target.has_ended_jump = true
 	
