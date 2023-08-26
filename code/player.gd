@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var inventory: Inventory
 
-@export var speed:float = 150
+@export var speed:float = 200
 @export var jump_velocity:float = 400
 @export var coyote_time:float = 0.1
 
