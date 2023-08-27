@@ -26,3 +26,6 @@ func get_my_room(me:Node):
 			return p
 		p = p.get_parent()
 	return null # Not in a room
+
+func get_grapple_point():
+	return get_tree().get_nodes_in_group("grapple_point").pop_back()

@@ -1,7 +1,7 @@
 extends DamageHitbox
 
 func use():
-	var timer = get_node("../../Timers/AttackDurationTimer")
+	var timer = get_node("../../../Timers/AttackDurationTimer")
 	
 	visible = true
 	enable()

@@ -26,6 +26,9 @@ const snap_fatness = 9
 const snap_up_height = 46.25 / 2
 const snap_down_height = 46.25 / 2
 func snap_player_to_room():
+	if Global.get_cam().current_room == self:
+		return
+	
 	if Global.get_player().global_position.x - snap_fatness < Global.get_cam().limit_left:
 		Global.get_player().global_position.x = Global.get_cam().limit_left + snap_fatness
 	elif Global.get_player().global_position.x + snap_fatness > Global.get_cam().limit_right:

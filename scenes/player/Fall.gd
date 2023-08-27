@@ -1,7 +1,7 @@
 extends State
 
 func enter():
-	target.get_node("AnimatedSprite2D").play("default")
+	target.get_node("Sprite").play("default")
 
 # TODO make this common
 func try_buffer_inputs():
@@ -16,6 +16,8 @@ func exit():
 	pass
 
 func try_transition():
+	if transitions.to_grapple():
+		return get_node("../Grapple")
 	if transitions.to_jump():
 		return get_node("../Jump")
 	if target.is_on_floor():

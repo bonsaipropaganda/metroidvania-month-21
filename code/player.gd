@@ -1,8 +1,9 @@
 extends CharacterBody2D
+signal grapple(state:bool)
 
 @export var inventory: Inventory
 
-@export var speed:float = 200
+@export var max_speed:float = 200
 @export var jump_velocity:float = 400
 @export var coyote_time:float = 0.1
 
@@ -10,11 +11,13 @@ const MAX_FALL_SPEED = 400
 const ACCEL_X = 40
 const AIR_DRAG = 0.95
 const FLOOR_DRAG = 0.80
+const GRAPPLE_LOOK_DISTANCE = -110
 
 # node refs
 @onready var actionable_finder = $ActionableFinder
 
 var is_talking:bool = false
+var accel = Vector2.ZERO
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var has_ended_jump = false
 var actionables = []
@@ -29,30 +32,49 @@ func _physics_process(delta: float) -> void:
 	if !is_talking:
 		$StateMachine.update(delta)
 		try_use_weapon()
+	
+	$GrappleVector.target_position = Vector2(sign(accel.x) * 100, GRAPPLE_LOOK_DISTANCE)
 
-func move(delta:float)->void:
-	# Horizontal
-	var direction = int(Input.get_axis("left", "right"))
+func apply_move_input(direction):
+	var new_accel_x = 0
 	if direction != 0:
-		velocity.x = move_toward(velocity.x, direction * speed, ACCEL_X)
-		if facing != direction: scale.x *= -1
+		new_accel_x = move_toward(0, direction * max_speed, ACCEL_X)
+		if facing != direction: $Sprite.scale.x *= -1
 		facing = direction
 	else:
-		if is_on_floor(): velocity.x *= FLOOR_DRAG
-		else: velocity.x *= AIR_DRAG
-	
-	# Gravity
-	velocity.y += gravity * delta
+		new_accel_x = 0
+	return new_accel_x
+
+func clamp_velocity():
+	if (abs(velocity.x) > max_speed): # Weak clamp
+		velocity.x = move_toward(velocity.x, facing*max_speed, ACCEL_X)
 	velocity.y = clampf(velocity.y, -INF, MAX_FALL_SPEED)
+
+func move(delta:float)->void:
+	# Gravity
+	accel.y = gravity * delta
+	
+	var direction = int(Input.get_axis("left", "right"))
+	accel.x = apply_move_input(direction)
+	
+	velocity += accel
+	clamp_velocity()
+	
+	# Drag
+	if direction == 0:
+		if is_on_floor():
+			velocity.x *= FLOOR_DRAG
+		else:
+			velocity.x *= AIR_DRAG
 	
 	move_and_slide()
 
 func try_use_weapon():
 	if $Timers/AttackDurationTimer.time_left == 0:
 		if Input.is_action_just_pressed("melee_weapon"):
-			$Equipment/MeleeWeapon.use()
+			$Sprite/Equipment/MeleeWeapon.use()
 		elif Input.is_action_just_pressed("ranged_weapon"):
-			$Equipment/RangedWeapon.use()
+			$Sprite/Equipment/RangedWeapon.use()
 
 func action_manager()->void:
 	#if the player's taking, check the number of "balloons" in the world. if there's none
