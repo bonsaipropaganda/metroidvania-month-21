@@ -6,7 +6,7 @@ func use():
 	visible = true
 	enable()
 	
-	timer.start(1)
+	timer.start(0.7)
 	await timer.timeout
 	
 	visible = false

@@ -6,6 +6,7 @@ extends DamageHitbox
 @export var damage := 1
 var life_timer
 
+
 func _ready():
 	add_to_group("projectile")
 	life_timer = Timer.new()
@@ -16,3 +17,8 @@ func move(delta):
 
 func _physics_process(delta):
 	move(delta)
+
+func _on_area_exited(area):
+	# Do not carry over between rooms
+	if area.is_in_group("room"):
+		queue_free()

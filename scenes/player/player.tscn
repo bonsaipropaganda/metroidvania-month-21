@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dgsm7vqcxipqs"]
+[gd_scene load_steps=24 format=3 uid="uid://dgsm7vqcxipqs"]
 
 [ext_resource type="Script" path="res://code/player.gd" id="1_el2b0"]
 [ext_resource type="Resource" uid="uid://bh4f2h53dvsy6" path="res://code/inventory/player_inventory.tres" id="2_2ntxu"]
@@ -16,6 +16,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qx6p"]
 size = Vector2(17.25, 46.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ta3s"]
+size = Vector2(1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0r617"]
 size = Vector2(28, 55)
@@ -74,6 +77,11 @@ speed = 140.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.625, 8.125)
 shape = SubResource("RectangleShape2D_7qx6p")
+
+[node name="RoomFinder" type="Area2D" parent="CollisionShape2D" groups=["player_room_finder"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/RoomFinder"]
+shape = SubResource("RectangleShape2D_0ta3s")
 
 [node name="DamageHitbox" parent="." instance=ExtResource("3_6wdtm")]
 
@@ -135,5 +143,3 @@ one_shot = true
 
 [node name="AttackDurationTimer" type="Timer" parent="Timers"]
 one_shot = true
-
-[connection signal="damage_anything" from="DamageHitbox" to="." method="_on_damage_hitbox_damage_anything"]

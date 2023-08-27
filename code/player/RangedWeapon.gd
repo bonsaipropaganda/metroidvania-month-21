@@ -7,6 +7,7 @@ func use():
 	visible = true
 	
 	var p = projectile.instantiate()
+	p.speed = 300
 	p.direction.x = get_node("../..").facing
 	p.add_to_group("player_attack")
 	get_tree().root.add_child(p)

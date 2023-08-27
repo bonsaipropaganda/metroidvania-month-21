@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 
 func move(delta:float)->void:
 	# Horizontal
-	var direction = Input.get_axis("left", "right")
+	var direction = int(Input.get_axis("left", "right"))
 	if direction != 0:
 		velocity.x = move_toward(velocity.x, direction * speed, ACCEL_X)
 		if facing != direction: scale.x *= -1
@@ -69,8 +69,4 @@ func action_manager()->void:
 
 func _on_damage_hurtbox_damage_received(amount, damage_source):
 	if damage_source.is_in_group("enemy_attack"):
-		print("ouch")
-
-
-func _on_damage_hitbox_damage_anything(amount, damage_source):
-	pass
+		print("ouch ", amount)

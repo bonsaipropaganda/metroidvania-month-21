@@ -9,7 +9,7 @@ func enter():
 	pass
 
 # Called every frame when the state is active (most likely physics frames)
-func update(delta):
+func update(_delta):
 	pass
 
 # Called once when exiting the state

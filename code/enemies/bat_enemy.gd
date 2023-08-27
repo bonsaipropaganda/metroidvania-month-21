@@ -33,7 +33,3 @@ func _on_direction_timer_timeout():
 	if direction == -1:
 		direction = 1
 	else: direction = -1
-
-
-func _on_damage_hitbox_damage_anything(amount, damage_source):
-	pass

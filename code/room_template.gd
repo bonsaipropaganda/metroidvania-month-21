@@ -6,6 +6,9 @@ const MIN_ROOM_HEIGHT = 360
 const UP_TRANSITION_BOOST = -400
 
 func _ready():
+	if int(position.x) != position.x or int(position.y) != position.y\
+			or int(position.x) % 16 != 0 or int(position.y) % 16 != 0:
+		push_error("Room [" + name + "] is not snapped to the 16x16 grid")
 	if ($CollisionShape2D.position != Vector2.ZERO):
 		push_error("Room [" + name + "]'s collision shape has an offset. Please move it to position (0,0)")
 	if ($CollisionShape2D.shape.size.x < MIN_ROOM_WIDTH):
@@ -13,15 +16,19 @@ func _ready():
 	if ($CollisionShape2D.shape.size.y < MIN_ROOM_HEIGHT):
 		push_error("Room [" + name + "]'s height is smaller than the minimum")
 
-func _on_body_entered(body):
-	if body.is_in_group("player"):
+func _on_area_entered(area):
+	if area.is_in_group("player_room_finder"):
 		Global.current_room = self
 		Global.room_changed.emit(self)
 		snap_player_to_room()
+		
+		for p in get_tree().get_nodes_in_group("projectile"):
+			await get_tree().create_timer(0.4).timeout
+			p.queue_free()
 
-const snap_fatness = 20
-const snap_up_height = 46.25
-const snap_down_height = 46.25
+const snap_fatness = 9
+const snap_up_height = 46.25 / 2
+const snap_down_height = 46.25 / 2
 func snap_player_to_room():
 	if Global.get_player().global_position.x - snap_fatness < Global.get_cam().limit_left:
 		Global.get_player().global_position.x = Global.get_cam().limit_left + snap_fatness

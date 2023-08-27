@@ -1,3 +1,4 @@
+@tool
 extends Node
 
 # used to keep track of which room the player is in
@@ -5,6 +6,12 @@ var current_room
 signal room_changed(room)
 
 var player_health = 3
+
+func _input(event):
+	if Engine.is_editor_hint():
+		if event is InputEventMouseButton && event.button_index == 1 && !event.pressed:
+			for room in get_tree().get_nodes_in_group("room"):
+				room.get_node("CollisionShape2D").position = Vector2.ZERO
 
 func get_player():
 	return get_tree().get_nodes_in_group("player").pop_back()

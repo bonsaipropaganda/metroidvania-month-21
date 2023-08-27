@@ -2,7 +2,6 @@ extends Node
 class_name StateMachine
 
 var current_state : Node
-var target : Node # We are managing the state of an arbitrary target
 
 func init_machine(target, init_state):
 	$Transitions.target = target
