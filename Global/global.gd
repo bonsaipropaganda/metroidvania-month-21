@@ -18,3 +18,11 @@ func get_player():
 
 func get_cam():
 	return get_tree().get_nodes_in_group("camera").pop_back()
+
+func get_my_room(me:Node):
+	var p = me.get_parent()
+	while (p != null):
+		if p.is_in_group("room"):
+			return p
+		p = p.get_parent()
+	return null # Not in a room

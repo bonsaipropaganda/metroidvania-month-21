@@ -21,10 +21,6 @@ func _on_area_entered(area):
 		Global.current_room = self
 		Global.room_changed.emit(self)
 		snap_player_to_room()
-		
-		for p in get_tree().get_nodes_in_group("projectile"):
-			await get_tree().create_timer(0.4).timeout
-			p.queue_free()
 
 const snap_fatness = 9
 const snap_up_height = 46.25 / 2
