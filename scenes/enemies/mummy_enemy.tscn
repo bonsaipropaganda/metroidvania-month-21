@@ -1,0 +1,77 @@
+[gd_scene load_steps=14 format=3 uid="uid://tctc2mpexra5"]
+
+[ext_resource type="Script" path="res://code/enemies/mummy_enemy.gd" id="1_arejj"]
+[ext_resource type="Texture2D" uid="uid://dmu23qga5iuo" path="res://art/mummy.png" id="1_os5ku"]
+[ext_resource type="PackedScene" uid="uid://cqlmw13hexw1a" path="res://scenes/state_machine/state_machine.tscn" id="2_5frjb"]
+[ext_resource type="Script" path="res://code/state_machine/states/enemy_wandering_state.gd" id="3_skpdu"]
+[ext_resource type="Script" path="res://code/state_machine/enemy_state_machine.gd" id="4_v3suh"]
+[ext_resource type="Script" path="res://scenes/enemies/enemy_chase_state.gd" id="4_vkh1v"]
+[ext_resource type="Script" path="res://scenes/enemies/enemy_attack_state.gd" id="5_42atn"]
+[ext_resource type="Script" path="res://code/enemies/mummy_transitions.gd" id="7_xkkva"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnkrg"]
+atlas = ExtResource("1_os5ku")
+region = Rect2(0, 0, 25, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43htg"]
+atlas = ExtResource("1_os5ku")
+region = Rect2(25, 0, 25, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wolx4"]
+atlas = ExtResource("1_os5ku")
+region = Rect2(50, 0, 25, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8m767"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnkrg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43htg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wolx4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ffpp"]
+size = Vector2(19, 44)
+
+[node name="MummyEnemy" type="CharacterBody2D"]
+script = ExtResource("1_arejj")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8m767")
+frame_progress = 0.919654
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_8ffpp")
+
+[node name="StateMachine" parent="." instance=ExtResource("2_5frjb")]
+script = ExtResource("4_v3suh")
+
+[node name="States" type="Node" parent="StateMachine"]
+
+[node name="Wander" type="Node" parent="StateMachine/States"]
+script = ExtResource("3_skpdu")
+
+[node name="Chase" type="Node" parent="StateMachine/States"]
+script = ExtResource("4_vkh1v")
+
+[node name="Attack" type="Node" parent="StateMachine/States"]
+script = ExtResource("5_42atn")
+
+[node name="Transitions" type="Node" parent="StateMachine"]
+script = ExtResource("7_xkkva")
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="WanderTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[connection signal="timeout" from="Timers/WanderTimer" to="StateMachine/States/Wander" method="_on_wander_timer_timeout"]

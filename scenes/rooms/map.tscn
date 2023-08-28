@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cowv5ggujrlvr"]
+[gd_scene load_steps=17 format=3 uid="uid://cowv5ggujrlvr"]
 
 [ext_resource type="PackedScene" uid="uid://dgsm7vqcxipqs" path="res://scenes/player/player.tscn" id="1_n3fk4"]
 [ext_resource type="PackedScene" uid="uid://ds6gnw2rodjno" path="res://scenes/rooms/room_template.tscn" id="1_rue84"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bt2x84u4p4yfw" path="res://art/tiles.png" id="6_3jf1k"]
 [ext_resource type="Texture2D" uid="uid://ckx8xfjlkgdej" path="res://art/bg_1_front.png" id="7_iur12"]
 [ext_resource type="Texture2D" uid="uid://c1oaxi13wb65" path="res://art/bg_1_back.png" id="7_lkooo"]
+[ext_resource type="PackedScene" uid="uid://tctc2mpexra5" path="res://scenes/enemies/mummy_enemy.tscn" id="9_qocy4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ecgbi"]
 size = Vector2(640, 360)
@@ -338,7 +339,7 @@ sources/0 = SubResource("TileSetAtlasSource_c00mt")
 [node name="map" type="Node2D" groups=["map"]]
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_n3fk4")]
-position = Vector2(-160, -64)
+position = Vector2(-400, 761)
 inventory = null
 
 [node name="Camera2D" parent="." instance=ExtResource("2_pp737")]
@@ -425,6 +426,9 @@ texture = ExtResource("7_iur12")
 centered = false
 region_rect = Rect2(0, 0, 640, 180)
 metadata/_edit_lock_ = true
+
+[node name="MummyEnemy" parent="." instance=ExtResource("9_qocy4")]
+position = Vector2(-696, 787)
 
 [editable path="IntroRoom"]
 [editable path="RoomTemplate2"]
