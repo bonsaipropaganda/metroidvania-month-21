@@ -339,7 +339,7 @@ sources/0 = SubResource("TileSetAtlasSource_c00mt")
 [node name="map" type="Node2D" groups=["map"]]
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_n3fk4")]
-position = Vector2(-400, 761)
+position = Vector2(-188, -26)
 inventory = null
 
 [node name="Camera2D" parent="." instance=ExtResource("2_pp737")]
