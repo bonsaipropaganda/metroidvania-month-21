@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://tctc2mpexra5"]
+[gd_scene load_steps=18 format=3 uid="uid://tctc2mpexra5"]
 
 [ext_resource type="Script" path="res://code/enemies/mummy_enemy.gd" id="1_arejj"]
 [ext_resource type="Texture2D" uid="uid://dmu23qga5iuo" path="res://art/mummy.png" id="1_os5ku"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scenes/enemies/enemy_chase_state.gd" id="4_vkh1v"]
 [ext_resource type="Script" path="res://scenes/enemies/enemy_attack_state.gd" id="5_42atn"]
 [ext_resource type="Script" path="res://code/enemies/mummy_transitions.gd" id="7_xkkva"]
+[ext_resource type="Texture2D" uid="uid://bfgq5tb5ye6an" path="res://art/exclamation_spritesheet_01.png" id="9_pfoyf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dnkrg"]
 atlas = ExtResource("1_os5ku")
@@ -40,6 +41,28 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ffpp"]
 size = Vector2(19, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fbrp"]
+atlas = ExtResource("9_pfoyf")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olfnt"]
+atlas = ExtResource("9_pfoyf")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qjxnv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fbrp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olfnt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="MummyEnemy" type="CharacterBody2D"]
 script = ExtResource("1_arejj")
@@ -74,4 +97,19 @@ script = ExtResource("7_xkkva")
 [node name="WanderTimer" type="Timer" parent="Timers"]
 one_shot = true
 
+[node name="ExclamationTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="PlayerDetector" type="RayCast2D" parent="."]
+target_position = Vector2(150, -1.31134e-05)
+
+[node name="ExclamationSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -45)
+sprite_frames = SubResource("SpriteFrames_qjxnv")
+frame_progress = 0.745975
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
 [connection signal="timeout" from="Timers/WanderTimer" to="StateMachine/States/Wander" method="_on_wander_timer_timeout"]
+[connection signal="timeout" from="Timers/ExclamationTimer" to="StateMachine/States/Chase" method="_on_exclamation_timer_timeout"]
