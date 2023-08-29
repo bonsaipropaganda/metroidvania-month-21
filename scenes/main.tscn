@@ -11,7 +11,6 @@ metadata/_edit_horizontal_guides_ = [-28.0]
 metadata/_edit_vertical_guides_ = [193.0, -447.0]
 
 [node name="map" parent="." instance=ExtResource("3_q7xmx")]
-position = Vector2(-16, 240)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3

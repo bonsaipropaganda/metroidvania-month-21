@@ -67,6 +67,10 @@ func move(delta:float)->void:
 		else:
 			velocity.x *= AIR_DRAG
 	
+	var col = move_and_collide(velocity * delta, true)
+	if col and col.get_collider() is TileMover and col.get_normal() == Vector2.UP:
+		col.get_collider().touching = true
+	
 	move_and_slide()
 
 func try_use_weapon():

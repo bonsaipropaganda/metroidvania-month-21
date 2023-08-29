@@ -10,3 +10,5 @@ func _process(delta):
 	var p = Global.get_player()
 	if p:
 		set_point_position(1, p.global_position - global_position)
+		if get_parent() is TileMover:
+			get_parent().touching = true

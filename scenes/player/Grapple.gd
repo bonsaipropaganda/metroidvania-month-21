@@ -20,27 +20,34 @@ func enter():
 		get_tree().root.add_child(point_instance)
 		point_instance.global_position.y = target.global_position.y - DEFAULT_ROPE_LENGTH
 		point_instance.global_position.x = target.global_position.x + target.accel.x * 1.7
+		print("weird")
 
 func update(delta):
 	var g = Global.get_grapple_point()
 	var diff : Vector2 = target.global_position - g.global_position
 	var direction = int(Input.get_axis("left", "right"))
-	target.accel = Vector2(target.apply_move_input(direction) * 2, target.gravity)
+	target.accel = Vector2(target.apply_move_input(direction), target.gravity)
+	
+	if Input.is_action_pressed("up"):
+		rope_length = clamp(rope_length - 80 * delta, 0, DEFAULT_ROPE_LENGTH + 16)
+		print("here")
+	if Input.is_action_pressed("down"):
+		rope_length = clamp(rope_length + 80 * delta, 0, DEFAULT_ROPE_LENGTH + 16)
 	
 	var distance_ratio = (rope_length - diff.length()) / diff.length()
 	
 	if distance_ratio < 0:
 		target.accel += diff * distance_ratio * 50
 	
+	target.velocity += target.accel * delta
+	
+	target.velocity.y *= 0.95 # debounce
 	# Drag - TODO commonize this
 	if direction == 0:
 		if target.is_on_floor():
 			target.velocity.x *= target.FLOOR_DRAG
 		else:
 			target.velocity.x *= target.AIR_DRAG
-	
-	target.velocity += target.accel * delta
-	
 	target.move_and_slide()
 
 func exit():
