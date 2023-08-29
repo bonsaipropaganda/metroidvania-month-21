@@ -47,7 +47,7 @@ func apply_move_input(direction):
 
 func clamp_velocity():
 	if (abs(velocity.x) > max_speed): # Weak clamp
-		velocity.x = move_toward(velocity.x, facing*max_speed, ACCEL_X)
+		velocity.x = move_toward(velocity.x, facing*max_speed, ACCEL_X * 1.2)
 	velocity.y = clampf(velocity.y, -INF, MAX_FALL_SPEED)
 
 func move(delta:float)->void:

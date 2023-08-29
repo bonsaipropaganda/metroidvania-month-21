@@ -9,6 +9,7 @@ size = Vector2(640, 360)
 script = ExtResource("2_0s3po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_inymx")
 metadata/_edit_lock_ = true
 
