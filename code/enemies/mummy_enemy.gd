@@ -24,4 +24,4 @@ func move(delta):
 		velocity.y += gravity * delta
 	
 	move_and_slide()
-	
+

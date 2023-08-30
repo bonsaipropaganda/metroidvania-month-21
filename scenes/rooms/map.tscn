@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cowv5ggujrlvr"]
+[gd_scene load_steps=32 format=3 uid="uid://cowv5ggujrlvr"]
 
 [ext_resource type="PackedScene" uid="uid://dgsm7vqcxipqs" path="res://scenes/player/player.tscn" id="1_n3fk4"]
 [ext_resource type="PackedScene" uid="uid://ds6gnw2rodjno" path="res://scenes/rooms/room_template.tscn" id="1_rue84"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c1vr1xgd37s7x" path="res://scenes/rooms/intro_room.tscn" id="2_y8btg"]
 [ext_resource type="PackedScene" uid="uid://mbdcw7ilgyaf" path="res://scenes/SpecialTiles/square_tile_mover.tscn" id="4_s8ktl"]
 [ext_resource type="PackedScene" uid="uid://1qs2kjqibo08" path="res://scenes/SpecialTiles/touch_tile_mover.tscn" id="5_4te1q"]
+[ext_resource type="PackedScene" uid="uid://qfkkvl5he35u" path="res://scenes/enemies/bat_enemy.tscn" id="5_jnpyu"]
 [ext_resource type="Texture2D" uid="uid://bt2x84u4p4yfw" path="res://art/tiles.png" id="6_3jf1k"]
 [ext_resource type="Texture2D" uid="uid://r67ofge3queg" path="res://art/bgtile.png" id="7_3lf36"]
 [ext_resource type="Texture2D" uid="uid://ckx8xfjlkgdej" path="res://art/bg_1_front.png" id="7_iur12"]
@@ -617,7 +618,7 @@ sources/4 = SubResource("TileSetAtlasSource_gj83y")
 [node name="map" type="Node2D" groups=["map"]]
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_n3fk4")]
-position = Vector2(-46, 665)
+position = Vector2(-1990, -627)
 inventory = null
 
 [node name="Camera2D" parent="." instance=ExtResource("2_pp737")]
@@ -631,6 +632,8 @@ position = Vector2(-2016, -720)
 
 [node name="Tutorial 2" parent="TutorialArea" instance=ExtResource("1_rue84")]
 position = Vector2(-1376, -720)
+
+[node name="BatEnemy" parent="TutorialArea/Tutorial 2" instance=ExtResource("5_jnpyu")]
 
 [node name="Tutorial 3" parent="TutorialArea" instance=ExtResource("1_rue84")]
 position = Vector2(-736, -720)

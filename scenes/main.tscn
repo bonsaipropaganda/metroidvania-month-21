@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://celgp6ih70a7r"]
+[gd_scene load_steps=6 format=3 uid="uid://celgp6ih70a7r"]
 
 [ext_resource type="Script" path="res://code/main.gd" id="1_rtdxs"]
 [ext_resource type="PackedScene" uid="uid://cowv5ggujrlvr" path="res://scenes/rooms/map.tscn" id="3_q7xmx"]
 [ext_resource type="PackedScene" uid="uid://d1rcyecv82w1s" path="res://scenes/Inventory.tscn" id="4_206fa"]
 [ext_resource type="Script" path="res://code/CanvasLayer.gd" id="4_rntel"]
+[ext_resource type="PackedScene" uid="uid://cwlu22rwshggc" path="res://scenes/UI/hearts.tscn" id="5_73sw2"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_rtdxs")
@@ -27,6 +28,9 @@ offset_top = -223.0
 offset_right = -350.0
 offset_bottom = -223.0
 scale = Vector2(5, 5)
+
+[node name="Hearts" parent="CanvasLayer" instance=ExtResource("5_73sw2")]
+position = Vector2(80, 68)
 
 [connection signal="closed" from="CanvasLayer/Inventory" to="." method="_on_inventory_closed"]
 [connection signal="opened" from="CanvasLayer/Inventory" to="." method="_on_inventory_opened"]

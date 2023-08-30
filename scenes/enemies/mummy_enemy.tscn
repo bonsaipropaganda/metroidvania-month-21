@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://tctc2mpexra5"]
+[gd_scene load_steps=19 format=3 uid="uid://tctc2mpexra5"]
 
 [ext_resource type="Script" path="res://code/enemies/mummy_enemy.gd" id="1_arejj"]
 [ext_resource type="Texture2D" uid="uid://dmu23qga5iuo" path="res://art/mummy.png" id="1_os5ku"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scenes/enemies/enemy_attack_state.gd" id="5_42atn"]
 [ext_resource type="Script" path="res://code/enemies/mummy_transitions.gd" id="7_xkkva"]
 [ext_resource type="Texture2D" uid="uid://bfgq5tb5ye6an" path="res://art/exclamation_spritesheet_01.png" id="9_pfoyf"]
+[ext_resource type="PackedScene" uid="uid://vr6ikbrw81ea" path="res://damage_hitbox.tscn" id="10_xnmxf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dnkrg"]
 atlas = ExtResource("1_os5ku")
@@ -110,6 +111,8 @@ sprite_frames = SubResource("SpriteFrames_qjxnv")
 frame_progress = 0.745975
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="DamageHitbox" parent="." instance=ExtResource("10_xnmxf")]
 
 [connection signal="timeout" from="Timers/WanderTimer" to="StateMachine/States/Wander" method="_on_wander_timer_timeout"]
 [connection signal="timeout" from="Timers/ExclamationTimer" to="StateMachine/States/Chase" method="_on_exclamation_timer_timeout"]
