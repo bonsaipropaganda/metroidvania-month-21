@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://voq744q2tks5"]
+
+[ext_resource type="Texture2D" uid="uid://dqiwsvlyq7xh2" path="res://art/fake_wall.png" id="1_6yv3p"]
+
+[node name="fake_wall" type="Node2D"]
+
+[node name="FakeWall" type="Sprite2D" parent="."]
+texture = ExtResource("1_6yv3p")
