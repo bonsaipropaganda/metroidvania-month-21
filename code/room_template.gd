@@ -4,6 +4,7 @@ const MIN_ROOM_WIDTH = 640
 const MIN_ROOM_HEIGHT = 360
 
 const UP_TRANSITION_BOOST = -400
+var resetables
 
 func _ready():
 	if int(position.x) != position.x or int(position.y) != position.y\
@@ -15,12 +16,23 @@ func _ready():
 		push_error("Room [" + name + "]'s width is smaller than the minimum")
 	if ($CollisionShape2D.shape.size.y < MIN_ROOM_HEIGHT):
 		push_error("Room [" + name + "]'s height is smaller than the minimum")
+	
+	if $Resetables.get_child_count():
+		resetables = $Resetables.create_scene()
+		$Resetables.queue_free()
 
 func _on_area_entered(area):
 	if area.is_in_group("player_room_finder"):
 		Global.current_room = self
 		Global.room_changed.emit(self)
 		snap_player_to_room()
+		
+		if resetables:
+			call_deferred("add_child", resetables.instantiate())
+
+func _on_area_exited(area):
+	if resetables and area.is_in_group("player_room_finder"):
+		$Resetables.queue_free()
 
 const snap_fatness = 9
 const snap_up_height = 46.25 / 2

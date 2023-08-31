@@ -26,8 +26,10 @@ func _on_flying_timeout():
 	jump()
 
 func _ready():
-	$AnimatedSprite2D.play("default")
-
+	if Global.is_map_ready:
+		$AnimatedSprite2D.play("default")
+		$Flying.start()
+		$DirectionTimer.start()
 
 func _on_direction_timer_timeout():
 	if direction == -1:

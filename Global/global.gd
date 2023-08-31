@@ -6,6 +6,7 @@ var current_room
 signal room_changed(room)
 
 var player_health = 3
+var is_map_ready = false
 
 func _input(event):
 	if Engine.is_editor_hint():

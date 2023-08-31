@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ds6gnw2rodjno"]
+[gd_scene load_steps=4 format=3 uid="uid://ds6gnw2rodjno"]
 
 [ext_resource type="Script" path="res://code/room_template.gd" id="2_0s3po"]
+[ext_resource type="Script" path="res://scenes/rooms/Resetables.gd" id="2_cw4iy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_inymx"]
 size = Vector2(640, 360)
@@ -13,4 +14,8 @@ visible = false
 shape = SubResource("RectangleShape2D_inymx")
 metadata/_edit_lock_ = true
 
+[node name="Resetables" type="Node2D" parent="."]
+script = ExtResource("2_cw4iy")
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

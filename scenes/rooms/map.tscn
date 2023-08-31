@@ -1,5 +1,6 @@
-[gd_scene load_steps=32 format=3 uid="uid://cowv5ggujrlvr"]
+[gd_scene load_steps=33 format=3 uid="uid://cowv5ggujrlvr"]
 
+[ext_resource type="Script" path="res://code/map/map.gd" id="1_lwtri"]
 [ext_resource type="PackedScene" uid="uid://dgsm7vqcxipqs" path="res://scenes/player/player.tscn" id="1_n3fk4"]
 [ext_resource type="PackedScene" uid="uid://ds6gnw2rodjno" path="res://scenes/rooms/room_template.tscn" id="1_rue84"]
 [ext_resource type="PackedScene" uid="uid://cmxoenn74bpov" path="res://scenes/camera_system.tscn" id="2_pp737"]
@@ -616,9 +617,10 @@ sources/3 = SubResource("TileSetAtlasSource_sixg3")
 sources/4 = SubResource("TileSetAtlasSource_gj83y")
 
 [node name="map" type="Node2D" groups=["map"]]
+script = ExtResource("1_lwtri")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_n3fk4")]
-position = Vector2(-1990, -627)
+position = Vector2(-1584, -624)
 inventory = null
 
 [node name="Camera2D" parent="." instance=ExtResource("2_pp737")]
@@ -633,12 +635,12 @@ position = Vector2(-2016, -720)
 [node name="Tutorial 2" parent="TutorialArea" instance=ExtResource("1_rue84")]
 position = Vector2(-1376, -720)
 
-[node name="BatEnemy" parent="TutorialArea/Tutorial 2" instance=ExtResource("5_jnpyu")]
+[node name="BatEnemy" parent="TutorialArea/Tutorial 2/Resetables" index="0" instance=ExtResource("5_jnpyu")]
 
 [node name="Tutorial 3" parent="TutorialArea" instance=ExtResource("1_rue84")]
 position = Vector2(-736, -720)
 
-[node name="MummyEnemy2" parent="TutorialArea/Tutorial 3" instance=ExtResource("9_qocy4")]
+[node name="MummyEnemy2" parent="TutorialArea/Tutorial 3/Resetables" index="0" instance=ExtResource("9_qocy4")]
 position = Vector2(-88, 88)
 
 [node name="Tutorial 4" parent="TutorialArea" instance=ExtResource("1_rue84")]
@@ -688,13 +690,13 @@ position = Vector2(-640, 720)
 [node name="CollisionShape2D" parent="Area1/ExperimentalTestRoom" index="0"]
 shape = SubResource("RectangleShape2D_gywix")
 
-[node name="MummyEnemy" parent="Area1/ExperimentalTestRoom" instance=ExtResource("9_qocy4")]
+[node name="MummyEnemy" parent="Area1/ExperimentalTestRoom/Resetables" index="0" instance=ExtResource("9_qocy4")]
 position = Vector2(-56, 67)
 
-[node name="SquareTileMover" parent="Area1/ExperimentalTestRoom" instance=ExtResource("4_s8ktl")]
+[node name="SquareTileMover" parent="Area1/ExperimentalTestRoom/Resetables" index="1" instance=ExtResource("4_s8ktl")]
 position = Vector2(-160, -48)
 
-[node name="touch_tile_mover" parent="Area1/ExperimentalTestRoom" instance=ExtResource("5_4te1q")]
+[node name="touch_tile_mover" parent="Area1/ExperimentalTestRoom/Resetables" index="2" instance=ExtResource("5_4te1q")]
 position = Vector2(128, 16)
 to_offset = Vector2(-100, 0)
 
