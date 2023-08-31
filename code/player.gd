@@ -23,6 +23,8 @@ var has_ended_jump = false
 var actionables = []
 var facing := 1
 
+var current_health = 4
+
 func _ready():
 	$StateMachine.init_machine(self, $StateMachine/States/Grounded)
 
@@ -95,4 +97,7 @@ func action_manager()->void:
 
 func _on_damage_hurtbox_damage_received(amount, damage_source):
 	if damage_source.is_in_group("enemy_attack"):
-		print("ouch ", amount)
+		current_health -= amount
+		Global.update_health_ui.emit(current_health)
+		print("player's current health" + str(current_health))
+		

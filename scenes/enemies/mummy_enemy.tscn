@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://tctc2mpexra5"]
+[gd_scene load_steps=20 format=3 uid="uid://tctc2mpexra5"]
 
 [ext_resource type="Script" path="res://code/enemies/mummy_enemy.gd" id="1_arejj"]
 [ext_resource type="Texture2D" uid="uid://dmu23qga5iuo" path="res://art/mummy.png" id="1_os5ku"]
@@ -41,7 +41,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ffpp"]
-size = Vector2(19, 44)
+size = Vector2(17, 45)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7fbrp"]
 atlas = ExtResource("9_pfoyf")
@@ -65,6 +65,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_311ky"]
+size = Vector2(11.625, 11.5)
+
 [node name="MummyEnemy" type="CharacterBody2D"]
 script = ExtResource("1_arejj")
 
@@ -73,7 +76,7 @@ sprite_frames = SubResource("SpriteFrames_8m767")
 frame_progress = 0.919654
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 1)
+position = Vector2(-0.5, 1.5)
 shape = SubResource("RectangleShape2D_8ffpp")
 
 [node name="StateMachine" parent="." instance=ExtResource("2_5frjb")]
@@ -112,7 +115,14 @@ frame_progress = 0.745975
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
-[node name="DamageHitbox" parent="." instance=ExtResource("10_xnmxf")]
+[node name="DamageHitbox" parent="." groups=["enemy_attack"] instance=ExtResource("10_xnmxf")]
+position = Vector2(-13, 0)
+
+[node name="CollisionShape2D" parent="DamageHitbox" index="0"]
+position = Vector2(6, -8)
+shape = SubResource("RectangleShape2D_311ky")
 
 [connection signal="timeout" from="Timers/WanderTimer" to="StateMachine/States/Wander" method="_on_wander_timer_timeout"]
 [connection signal="timeout" from="Timers/ExclamationTimer" to="StateMachine/States/Chase" method="_on_exclamation_timer_timeout"]
+
+[editable path="DamageHitbox"]

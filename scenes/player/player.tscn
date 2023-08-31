@@ -1,8 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://dgsm7vqcxipqs"]
+[gd_scene load_steps=26 format=3 uid="uid://dgsm7vqcxipqs"]
 
 [ext_resource type="Script" path="res://code/player.gd" id="1_el2b0"]
 [ext_resource type="Resource" uid="uid://bh4f2h53dvsy6" path="res://code/inventory/player_inventory.tres" id="2_2ntxu"]
-[ext_resource type="PackedScene" uid="uid://vr6ikbrw81ea" path="res://damage_hitbox.tscn" id="3_6wdtm"]
 [ext_resource type="Texture2D" uid="uid://ng37o0ee1v16" path="res://art/aaronsprite(2).png" id="3_jgtf7"]
 [ext_resource type="PackedScene" uid="uid://cqlmw13hexw1a" path="res://scenes/state_machine/state_machine.tscn" id="4_n842b"]
 [ext_resource type="Script" path="res://scenes/player/Grounded.gd" id="5_ehd6c"]
@@ -14,12 +13,16 @@
 [ext_resource type="Texture2D" uid="uid://codof3p1gelos" path="res://art/melee.png" id="11_7qifv"]
 [ext_resource type="Texture2D" uid="uid://b54l47k6kwebj" path="res://art/ranged_weapon.png" id="12_umo7f"]
 [ext_resource type="Script" path="res://code/player/RangedWeapon.gd" id="12_vcfcg"]
+[ext_resource type="Script" path="res://code/util/DamageHurtbox.gd" id="15_eidm2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qx6p"]
-size = Vector2(17.25, 46.25)
+size = Vector2(16, 46)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ta3s"]
 size = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62fjr"]
+size = Vector2(20, 46)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0r617"]
 size = Vector2(28, 55)
@@ -75,7 +78,7 @@ script = ExtResource("1_el2b0")
 inventory = ExtResource("2_2ntxu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.625, 8.125)
+position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_7qx6p")
 
 [node name="RoomFinder" type="Area2D" parent="CollisionShape2D" groups=["player_room_finder"]]
@@ -83,7 +86,12 @@ shape = SubResource("RectangleShape2D_7qx6p")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/RoomFinder"]
 shape = SubResource("RectangleShape2D_0ta3s")
 
-[node name="DamageHitbox" parent="." instance=ExtResource("3_6wdtm")]
+[node name="DamageHurtbox" type="Area2D" parent="."]
+script = ExtResource("15_eidm2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHurtbox"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_62fjr")
 
 [node name="ActionableFinder" type="Area2D" parent="."]
 collision_layer = 0
@@ -149,3 +157,5 @@ one_shot = true
 
 [node name="AttackDurationTimer" type="Timer" parent="Timers"]
 one_shot = true
+
+[connection signal="damage_received" from="DamageHurtbox" to="." method="_on_damage_hurtbox_damage_received"]

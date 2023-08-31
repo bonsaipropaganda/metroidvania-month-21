@@ -2,8 +2,8 @@ extends Area2D
 class_name DamageHurtbox
 signal damage_received(amount, damage_source)
 
-@export var i_seconds = 0.2
-# invincibility timer (after getting hit there is brief invincibility)
+# invincibility timer
+@export var i_seconds = .2
 var i_timer = Timer.new()
 
 @export var hit_disable_time = 0.25

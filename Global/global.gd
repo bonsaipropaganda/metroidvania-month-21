@@ -4,8 +4,8 @@ extends Node
 # used to keep track of which room the player is in
 var current_room
 signal room_changed(room)
+signal update_health_ui(player_health)
 
-var player_health = 3
 var is_map_ready = false
 
 func _input(event):
