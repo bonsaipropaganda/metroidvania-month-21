@@ -663,7 +663,6 @@ position = Vector2(-640, 0)
 [node name="IntroRoom" parent="Area1" instance=ExtResource("2_y8btg")]
 
 [node name="CollisionShape2D" parent="Area1/IntroRoom" index="0"]
-visible = true
 shape = SubResource("RectangleShape2D_ecgbi")
 
 [node name="IntroNPC" parent="Area1/IntroRoom" index="1"]

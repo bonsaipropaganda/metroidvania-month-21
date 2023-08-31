@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://celgp6ih70a7r"]
+[gd_scene load_steps=7 format=3 uid="uid://celgp6ih70a7r"]
 
 [ext_resource type="Script" path="res://code/main.gd" id="1_rtdxs"]
 [ext_resource type="PackedScene" uid="uid://cowv5ggujrlvr" path="res://scenes/rooms/map.tscn" id="3_q7xmx"]
 [ext_resource type="PackedScene" uid="uid://d1rcyecv82w1s" path="res://scenes/Inventory.tscn" id="4_206fa"]
 [ext_resource type="Script" path="res://code/CanvasLayer.gd" id="4_rntel"]
 [ext_resource type="PackedScene" uid="uid://cwlu22rwshggc" path="res://scenes/UI/hearts.tscn" id="5_73sw2"]
+[ext_resource type="Texture2D" uid="uid://d3wlkfymg0dl7" path="res://art/vignette.png" id="6_igjk2"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_rtdxs")
@@ -31,6 +32,12 @@ scale = Vector2(5, 5)
 
 [node name="Hearts" parent="CanvasLayer" instance=ExtResource("5_73sw2")]
 position = Vector2(80, 68)
+
+[node name="vignette" type="Sprite2D" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.141176)
+scale = Vector2(1.86087, 1.56957)
+texture = ExtResource("6_igjk2")
+centered = false
 
 [connection signal="closed" from="CanvasLayer/Inventory" to="." method="_on_inventory_closed"]
 [connection signal="opened" from="CanvasLayer/Inventory" to="." method="_on_inventory_opened"]
