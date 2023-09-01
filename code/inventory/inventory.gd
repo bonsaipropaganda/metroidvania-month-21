@@ -8,10 +8,20 @@ signal closed
 
 var is_open: bool = false
 
+#func update():
+#	# get the smaller of the two just in case we made one too big
+#	for i in range(min(slots.size(), inventory.items.size())):
+#		slots[i].update(inventory.items[i])
+##		else:
+##			slots[i].remove_item()
+
 func update():
-	# get the smaller of the two just in case we made one too big
-	for i in range(min(slots.size(), inventory.items.size())):
-		slots[i].update(inventory.items[i])
+	for i in range(slots.size()):
+		if i < inventory.items.size():
+			slots[i].update(inventory.items[i])
+		else:
+			slots[i].remove_item()
+
 
 func open():
 	is_open = true
@@ -26,3 +36,4 @@ func close():
 func _ready():
 	update()
 	close()
+	Global.inventory_updated.connect(update)

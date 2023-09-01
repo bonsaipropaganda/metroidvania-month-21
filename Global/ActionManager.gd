@@ -1,13 +1,17 @@
 extends Node
 
+@onready var player_inventory = preload("res://code/inventory/player_inventory.tres")
 
 func use_hp_potion():
-	print("hp potion was successfuly used")
+	Global.update_player_health.emit(4)
 
-func action(item_name):
-	print("player clicked on " + str(item_name))
-	if item_name in item_actions:
-		item_actions[item_name].call()
+func action(item,consumable):
+	if item.name in item_actions:
+		item_actions[item.name].call()
+	if consumable:
+		player_inventory.items.erase(item)
+		Global.inventory_updated.emit()
+
 
 # these are functions related to items from the inventory
 # the key has to be the name of the item as signaled by the inventory slot

@@ -4,16 +4,23 @@ extends Panel
 var reference_to_item
 
 func update(item: InventoryItem):
-	if !item:
-		$Background.frame = 0
-		$CenterContainer/Item.visible = false
-	else:
+	if item:
 		$Background.frame = 1
-		$CenterContainer/Item.visible # TODO fix this (does nothing)
+		$CenterContainer/Item.visible = true
 		$CenterContainer/Item.texture = item.texture
 		reference_to_item = item
+	else:
+		print("no item here")
+		$Background.frame = 0
+		$CenterContainer/Item.visible = false
+
+func remove_item():
+	$Background.frame = 0
+	$CenterContainer/Item.visible = false
+	reference_to_item = null
 
 
 func _on_button_pressed():
 	if reference_to_item:
-		ActionManager.action(reference_to_item.name)
+		# the true here indicates it is a consumable
+		ActionManager.action(reference_to_item,true)
