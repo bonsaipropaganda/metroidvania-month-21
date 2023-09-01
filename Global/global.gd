@@ -4,7 +4,10 @@ extends Node
 # used to keep track of which room the player is in
 var current_room
 signal room_changed(room)
+# one is used for the ui and other is for player's actual health
 signal update_health_ui(player_health)
+signal update_player_health(new_amount)
+signal inventory_updated
 
 var is_map_ready = false
 

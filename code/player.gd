@@ -26,6 +26,7 @@ var facing := 1
 var current_health = 4
 
 func _ready():
+	Global.update_player_health.connect(_on_player_health_updated)
 	$StateMachine.init_machine(self, $StateMachine/States/Grounded)
 
 func _physics_process(delta: float) -> void:
@@ -101,3 +102,8 @@ func _on_damage_hurtbox_damage_received(amount, damage_source):
 		Global.update_health_ui.emit(current_health)
 		print("player's current health" + str(current_health))
 		
+
+func _on_player_health_updated(new_amount):
+	# sets health to new amount and updates the ui
+	current_health = new_amount
+	Global.update_health_ui.emit(current_health)
