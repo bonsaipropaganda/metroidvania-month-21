@@ -28,12 +28,12 @@ var has_ranged_weapon = true
 var has_melee_weapon = true
 var has_grapple = true
 
-var current_health = 4
+var current_health = 4 : set = set_health
 
 func _ready():
 	# have to disable this to start otherwise the weapon is attack despite not being there
 	melee_weapon.disable()
-	Global.update_player_health.connect(_on_player_health_updated)
+	Global.update_player_health.connect(set_health)
 	$StateMachine.init_machine(self, $StateMachine/States/Grounded)
 
 func _physics_process(delta: float) -> void:
@@ -107,9 +107,16 @@ func _on_damage_hurtbox_damage_received(amount, damage_source):
 	if damage_source.is_in_group("enemy_attack"):
 		current_health -= amount
 		Global.update_health_ui.emit(current_health)
+		
+		modulate.a = 0.5
+		await $DamageHurtbox.i_timer.timeout
+		modulate.a = 1
 
 
-func _on_player_health_updated(new_amount):
-	# sets health to new amount and updates the ui
-	current_health = new_amount
+func set_health(new_amount):
+	if new_amount < current_health:
+		velocity = Vector2(-facing * 300, -100)
+		Global.do_freeze_frames(0.1)
+	
 	Global.update_health_ui.emit(current_health)
+	current_health = new_amount

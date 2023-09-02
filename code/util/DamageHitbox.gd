@@ -11,14 +11,11 @@ func _ready():
 	connect("area_entered", _on_DamageHitbox_area_entered)
 	connect("area_exited", _on_DamageHitbox_area_exited)
 
-
 func disable():
-	collision_shape.disabled = true
 	set_deferred("monitoring", false)
 	set_deferred("monitorable", false)
 
 func enable():
-	collision_shape.disabled = false
 	set_deferred("monitoring", true)
 	set_deferred("monitorable", true)
 

@@ -18,7 +18,7 @@ func enter():
 
 func update(delta):
 	if wander_timer_node.time_left > 0:
-		target.velocity.x = wander_direction * wander_speed
+		target.velocity.x = move_toward(target.velocity.x, wander_direction * wander_speed, target.ACCEL * delta * 60)
 		target.move(delta)
 	# sprite and player detector faces direction of movement
 	if wander_direction == 1:

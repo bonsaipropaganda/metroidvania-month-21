@@ -33,3 +33,8 @@ func get_my_room(me:Node):
 
 func get_grapple_point():
 	return get_tree().get_nodes_in_group("grapple_point").pop_back()
+
+func do_freeze_frames(freeze_time : float = 0.075):
+	get_tree().paused = true
+	await get_tree().create_timer(freeze_time).timeout
+	get_tree().paused = false

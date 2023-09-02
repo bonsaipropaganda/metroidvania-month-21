@@ -18,7 +18,7 @@ func update(delta):
 	if player_detector.target_position.x > 0:
 		chase_direction = 1
 	else: chase_direction = -1
-	target.velocity.x = chase_direction * chase_speed
+	target.velocity.x = move_toward(target.velocity.y, chase_direction * chase_speed, target.ACCEL)
 	target.move(delta)
 
 func exit():
