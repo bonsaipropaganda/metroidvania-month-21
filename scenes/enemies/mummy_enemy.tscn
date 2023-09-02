@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://tctc2mpexra5"]
+[gd_scene load_steps=22 format=3 uid="uid://tctc2mpexra5"]
 
 [ext_resource type="Script" path="res://code/enemies/mummy_enemy.gd" id="1_arejj"]
 [ext_resource type="Texture2D" uid="uid://dmu23qga5iuo" path="res://art/mummy.png" id="1_os5ku"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://code/enemies/mummy_transitions.gd" id="7_xkkva"]
 [ext_resource type="Texture2D" uid="uid://bfgq5tb5ye6an" path="res://art/exclamation_spritesheet_01.png" id="9_pfoyf"]
 [ext_resource type="PackedScene" uid="uid://vr6ikbrw81ea" path="res://damage_hitbox.tscn" id="10_xnmxf"]
+[ext_resource type="Script" path="res://code/util/DamageHurtbox.gd" id="11_ddi6t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dnkrg"]
 atlas = ExtResource("1_os5ku")
@@ -68,6 +69,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_311ky"]
 size = Vector2(11.625, 11.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vifwp"]
+size = Vector2(18, 45)
+
 [node name="MummyEnemy" type="CharacterBody2D"]
 script = ExtResource("1_arejj")
 
@@ -122,7 +126,16 @@ position = Vector2(-13, 0)
 position = Vector2(6, -8)
 shape = SubResource("RectangleShape2D_311ky")
 
+[node name="DamageHurtbox" type="Area2D" parent="."]
+script = ExtResource("11_ddi6t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHurtbox"]
+position = Vector2(-1, 1.5)
+shape = SubResource("RectangleShape2D_vifwp")
+
 [connection signal="timeout" from="Timers/WanderTimer" to="StateMachine/States/Wander" method="_on_wander_timer_timeout"]
 [connection signal="timeout" from="Timers/ExclamationTimer" to="StateMachine/States/Chase" method="_on_exclamation_timer_timeout"]
+[connection signal="damage_anything" from="DamageHitbox" to="." method="_on_damage_hitbox_damage_anything"]
+[connection signal="damage_received" from="DamageHurtbox" to="." method="_on_damage_hurtbox_damage_received"]
 
 [editable path="DamageHitbox"]

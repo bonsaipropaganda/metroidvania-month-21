@@ -6,6 +6,12 @@ const JUMP_VELOCITY = -400.0
 
 var wander = false
 
+@export var current_health = 2:
+	set(value):
+		current_health = value
+		if current_health <= 0:
+			die()
+
 # node refs
 @onready var hit_box = $DamageHitbox
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -25,9 +31,17 @@ func _physics_process(delta):
 	
 	$StateMachine.update(delta)
 
+func die():
+	queue_free()
+
 func move(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	
 	move_and_slide()
 
+
+
+func _on_damage_hurtbox_damage_received(amount, damage_source):
+	if damage_source.is_in_group("player_attack"):
+		current_health -= 1

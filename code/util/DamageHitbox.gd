@@ -3,6 +3,7 @@ class_name DamageHitbox
 
 signal damage_anything(amount, damage_source)
 
+@onready var collision_shape = $CollisionShape2D
 @export var damage_amount = 1
 var damage_source = self
 
@@ -10,11 +11,14 @@ func _ready():
 	connect("area_entered", _on_DamageHitbox_area_entered)
 	connect("area_exited", _on_DamageHitbox_area_exited)
 
+
 func disable():
+	collision_shape.disabled = true
 	set_deferred("monitoring", false)
 	set_deferred("monitorable", false)
 
 func enable():
+	collision_shape.disabled = false
 	set_deferred("monitoring", true)
 	set_deferred("monitorable", true)
 

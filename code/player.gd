@@ -15,6 +15,7 @@ const GRAPPLE_LOOK_DISTANCE = -110
 
 # node refs
 @onready var actionable_finder = $ActionableFinder
+@onready var melee_weapon = $Sprite/Equipment/MeleeWeapon
 
 var is_talking:bool = false
 var accel = Vector2.ZERO
@@ -22,10 +23,16 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var has_ended_jump = false
 var actionables = []
 var facing := 1
+# weapons
+var has_ranged_weapon = true
+var has_melee_weapon = true
+var has_grapple = true
 
 var current_health = 4
 
 func _ready():
+	# have to disable this to start otherwise the weapon is attack despite not being there
+	melee_weapon.disable()
 	Global.update_player_health.connect(_on_player_health_updated)
 	$StateMachine.init_machine(self, $StateMachine/States/Grounded)
 
@@ -78,9 +85,9 @@ func move(delta:float)->void:
 
 func try_use_weapon():
 	if $Timers/AttackDurationTimer.time_left == 0:
-		if Input.is_action_just_pressed("melee_weapon"):
+		if Input.is_action_just_pressed("melee_weapon") and has_melee_weapon:
 			$Sprite/Equipment/MeleeWeapon.use()
-		elif Input.is_action_just_pressed("ranged_weapon"):
+		elif Input.is_action_just_pressed("ranged_weapon") and has_ranged_weapon:
 			$Sprite/Equipment/RangedWeapon.use()
 
 func action_manager()->void:
@@ -100,8 +107,7 @@ func _on_damage_hurtbox_damage_received(amount, damage_source):
 	if damage_source.is_in_group("enemy_attack"):
 		current_health -= amount
 		Global.update_health_ui.emit(current_health)
-		print("player's current health" + str(current_health))
-		
+
 
 func _on_player_health_updated(new_amount):
 	# sets health to new amount and updates the ui

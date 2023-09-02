@@ -637,7 +637,7 @@ sources/4 = SubResource("TileSetAtlasSource_gj83y")
 script = ExtResource("1_lwtri")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_n3fk4")]
-position = Vector2(-928, 752)
+position = Vector2(-2784, 2176)
 inventory = null
 
 [node name="Camera2D" parent="." instance=ExtResource("2_pp737")]

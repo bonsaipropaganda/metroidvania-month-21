@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://qfkkvl5he35u"]
+[gd_scene load_steps=11 format=3 uid="uid://qfkkvl5he35u"]
 
 [ext_resource type="Script" path="res://code/enemies/bat_enemy.gd" id="1_7clfl"]
 [ext_resource type="Texture2D" uid="uid://b8jjbmb458k6o" path="res://art/batsprite.png" id="1_qsbx5"]
 [ext_resource type="PackedScene" uid="uid://vr6ikbrw81ea" path="res://damage_hitbox.tscn" id="3_en6x0"]
+[ext_resource type="Script" path="res://code/util/DamageHurtbox.gd" id="4_gbhmx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wung3"]
 radius = 6.7082
@@ -39,6 +40,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kv3mk"]
+size = Vector2(20, 11)
+
 [node name="BatEnemy" type="CharacterBody2D"]
 script = ExtResource("1_7clfl")
 
@@ -62,5 +66,13 @@ position = Vector2(0, -4)
 scale = Vector2(0.747814, 0.246393)
 collision_layer = 0
 
+[node name="DamageHurtbox" type="Area2D" parent="."]
+script = ExtResource("4_gbhmx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHurtbox"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_kv3mk")
+
 [connection signal="timeout" from="Flying" to="." method="_on_flying_timeout"]
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
+[connection signal="damage_received" from="DamageHurtbox" to="." method="_on_damage_hurtbox_damage_received"]

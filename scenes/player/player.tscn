@@ -111,7 +111,7 @@ frame_progress = 0.700927
 
 [node name="Equipment" type="Node2D" parent="Sprite"]
 
-[node name="MeleeWeapon" type="Area2D" parent="Sprite/Equipment"]
+[node name="MeleeWeapon" type="Area2D" parent="Sprite/Equipment" groups=["player_attack"]]
 visible = false
 position = Vector2(20, 0)
 script = ExtResource("10_r4qiq")
