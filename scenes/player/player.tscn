@@ -74,7 +74,6 @@ animations = [{
 size = Vector2(20, 4)
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 2
 script = ExtResource("1_el2b0")
 inventory = ExtResource("2_2ntxu")
 
@@ -89,7 +88,6 @@ shape = SubResource("RectangleShape2D_0ta3s")
 
 [node name="DamageHurtbox" type="Area2D" parent="."]
 script = ExtResource("15_eidm2")
-i_seconds = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHurtbox"]
 position = Vector2(0, 8)
@@ -116,10 +114,6 @@ frame_progress = 0.700927
 [node name="MeleeWeapon" type="Area2D" parent="Sprite/Equipment" groups=["player_attack"]]
 visible = false
 position = Vector2(20, 0)
-collision_layer = 8
-collision_mask = 8
-monitoring = false
-monitorable = false
 script = ExtResource("10_r4qiq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Equipment/MeleeWeapon"]

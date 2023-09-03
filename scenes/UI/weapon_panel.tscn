@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd3ljuhp5qlxg"]
+
+[ext_resource type="Texture2D" uid="uid://codof3p1gelos" path="res://art/melee.png" id="1_w8xrv"]
+
+[node name="WeaponPanel" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(29, 16)
+offset_right = 29.0
+offset_bottom = 16.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_w8xrv")
+centered = false
