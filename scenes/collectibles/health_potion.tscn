@@ -9,6 +9,8 @@ resource_local_to_scene = true
 size = Vector2(14, 14)
 
 [node name="HealthPotion" instance=ExtResource("1_twlgh")]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("2_po2uw")
 
 [node name="CollisionShape" parent="." index="0"]

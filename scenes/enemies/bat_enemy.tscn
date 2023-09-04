@@ -43,7 +43,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kv3mk"]
 size = Vector2(20, 11)
 
-[node name="BatEnemy" type="CharacterBody2D"]
+[node name="BatEnemy" type="CharacterBody2D" groups=["enemy"]]
+collision_mask = 4
 script = ExtResource("1_7clfl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -65,8 +66,11 @@ autostart = true
 position = Vector2(0, -4)
 scale = Vector2(0.747814, 0.246393)
 collision_layer = 0
+collision_mask = 8
 
 [node name="DamageHurtbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("4_gbhmx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHurtbox"]

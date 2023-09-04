@@ -11,10 +11,8 @@ func create_scene():
 
 func recursive_set_signal(node):
 	if node != self:
-		if node is CharacterBody2D: print(node.name)
 		if node.has_method("ready_resetable"):
 			connect("ready_resetable", node.ready_resetable)
-			print("werwer")
 	for child in node.get_children():
 		recursive_set_owner(child)
 

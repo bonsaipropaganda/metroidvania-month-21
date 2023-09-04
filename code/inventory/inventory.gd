@@ -24,9 +24,10 @@ func update():
 
 
 func open():
-	is_open = true
-	visible = true
-	opened.emit()
+	if not get_tree().paused:
+		is_open = true
+		visible = true
+		opened.emit()
 
 func close():
 	is_open = false

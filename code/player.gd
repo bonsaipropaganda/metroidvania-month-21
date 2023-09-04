@@ -24,19 +24,19 @@ var has_ended_jump = false
 var actionables = []
 var facing := 1
 # weapons
-var has_melee = false:
+@export var has_melee = false:
 	set(value):
 		has_melee = value
 		Global.weapons_updated.emit(has_melee,has_ranged,has_grapple,has_tnt)
-var has_ranged = false:
+@export var has_ranged = false:
 	set(value):
 		has_ranged = value
 		Global.weapons_updated.emit(has_melee,has_ranged,has_grapple,has_tnt)
-var has_grapple = false:
+@export var has_grapple = false:
 	set(value):
 		has_grapple = value
 		Global.weapons_updated.emit(has_melee,has_ranged,has_grapple,has_tnt)
-var has_tnt = false:
+@export var has_tnt = false:
 	set(value):
 		has_tnt = value
 		Global.weapons_updated.emit(has_melee,has_ranged,has_grapple,has_tnt)
@@ -120,22 +120,30 @@ func _on_damage_hurtbox_damage_received(amount, damage_source):
 	if damage_source.is_in_group("enemy_attack"):
 		current_health -= amount
 		Global.update_health_ui.emit(current_health)
-		
-		modulate.a = 0.5
-		await $DamageHurtbox.i_timer.timeout
-		modulate.a = 1
 
 
 func set_health(new_amount):
 	if new_amount < current_health:
+		$DamageHurtbox.do_iframes()
+		modulate.a = 0.5
+		
 		velocity = Vector2(-facing * 300, -100)
 		Global.do_freeze_frames(0.1)
 	
-	Global.update_health_ui.emit(current_health)
 	current_health = new_amount
+	Global.update_health_ui.emit(current_health)
+	
+	await $DamageHurtbox.i_timer.timeout
+	modulate.a = 1
 
 
 func _on_test_button_pressed():
 	if has_melee:
 		has_melee = false
 	else: has_melee = true
+
+
+func _on_damage_hurtbox_body_entered(body):
+	if body is TileMap:
+		current_health -= 1
+		print("owie spiky")

@@ -13,6 +13,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dyyv4")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(360, 360)
+layout_mode = 0
+offset_left = -112.0
+offset_top = -128.0
+offset_right = 248.0
+offset_bottom = 232.0
+color = Color(0, 0, 0, 0.32549)
+
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
 offset_right = 137.0

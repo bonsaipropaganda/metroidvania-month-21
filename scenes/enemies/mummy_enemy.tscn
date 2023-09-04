@@ -67,12 +67,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_311ky"]
-size = Vector2(11.625, 11.5)
+size = Vector2(11.625, 43)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vifwp"]
 size = Vector2(18, 45)
 
-[node name="MummyEnemy" type="CharacterBody2D"]
+[node name="MummyEnemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 8
 script = ExtResource("1_arejj")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -120,13 +121,16 @@ frame_progress = 0.745975
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="DamageHitbox" parent="." groups=["enemy_attack"] instance=ExtResource("10_xnmxf")]
-position = Vector2(-13, 0)
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape2D" parent="DamageHitbox" index="0"]
-position = Vector2(6, -8)
+position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_311ky")
 
 [node name="DamageHurtbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("11_ddi6t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHurtbox"]
@@ -135,7 +139,6 @@ shape = SubResource("RectangleShape2D_vifwp")
 
 [connection signal="timeout" from="Timers/WanderTimer" to="StateMachine/States/Wander" method="_on_wander_timer_timeout"]
 [connection signal="timeout" from="Timers/ExclamationTimer" to="StateMachine/States/Chase" method="_on_exclamation_timer_timeout"]
-[connection signal="damage_anything" from="DamageHitbox" to="." method="_on_damage_hitbox_damage_anything"]
 [connection signal="damage_received" from="DamageHurtbox" to="." method="_on_damage_hurtbox_damage_received"]
 
 [editable path="DamageHitbox"]

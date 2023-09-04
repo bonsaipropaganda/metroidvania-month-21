@@ -73,7 +73,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6epb5"]
 size = Vector2(20, 4)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
 script = ExtResource("1_el2b0")
 inventory = ExtResource("2_2ntxu")
 
@@ -87,7 +88,10 @@ shape = SubResource("RectangleShape2D_7qx6p")
 shape = SubResource("RectangleShape2D_0ta3s")
 
 [node name="DamageHurtbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("15_eidm2")
+i_seconds = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHurtbox"]
 position = Vector2(0, 8)
@@ -114,6 +118,8 @@ frame_progress = 0.700927
 [node name="MeleeWeapon" type="Area2D" parent="Sprite/Equipment" groups=["player_attack"]]
 visible = false
 position = Vector2(20, 0)
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("10_r4qiq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Equipment/MeleeWeapon"]
@@ -158,4 +164,5 @@ one_shot = true
 [node name="AttackDurationTimer" type="Timer" parent="Timers"]
 one_shot = true
 
+[connection signal="body_entered" from="DamageHurtbox" to="." method="_on_damage_hurtbox_body_entered"]
 [connection signal="damage_received" from="DamageHurtbox" to="." method="_on_damage_hurtbox_damage_received"]

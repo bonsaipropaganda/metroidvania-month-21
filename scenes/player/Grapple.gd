@@ -20,7 +20,6 @@ func enter():
 		get_tree().root.add_child(point_instance)
 		point_instance.global_position.y = target.global_position.y - DEFAULT_ROPE_LENGTH
 		point_instance.global_position.x = target.global_position.x + target.accel.x * 1.7
-		print("weird")
 
 func update(delta):
 	var g = Global.get_grapple_point()
@@ -30,7 +29,6 @@ func update(delta):
 	
 	if Input.is_action_pressed("up"):
 		rope_length = clamp(rope_length - 80 * delta, 0, DEFAULT_ROPE_LENGTH + 16)
-		print("here")
 	if Input.is_action_pressed("down"):
 		rope_length = clamp(rope_length + 80 * delta, 0, DEFAULT_ROPE_LENGTH + 16)
 	

@@ -23,8 +23,6 @@ func do_iframes():
 	set_deferred("monitoring", true)
 
 func _on_DamageHitbox_entered(amount, damage_source):
-	prints(i_timer.time_left == 0, i_timer.is_stopped())
 	if i_timer.time_left == 0 and i_timer.is_stopped():
 		# Pass the signal on (to the parent/logic system)
 		emit_signal("damage_received", amount, damage_source)
-		do_iframes()

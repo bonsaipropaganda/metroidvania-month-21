@@ -51,3 +51,8 @@ func die():
 func _on_damage_hurtbox_damage_received(amount, damage_source):
 	if damage_source.is_in_group("player_attack"):
 		current_health -= 1
+		
+		$DamageHurtbox.do_iframes()
+		modulate.a = 0.5
+		await $DamageHurtbox.i_timer.timeout
+		modulate.a = 1

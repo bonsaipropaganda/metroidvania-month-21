@@ -45,6 +45,7 @@ func _on_damage_hurtbox_damage_received(amount, damage_source):
 		var kb_dir = sign(global_position.x - damage_source.global_position.x)
 		velocity = Vector2(kb_dir * 300, -100)
 		
+		$DamageHurtbox.do_iframes()
 		modulate.a = 0.5
 		await $DamageHurtbox.i_timer.timeout
 		modulate.a = 1
