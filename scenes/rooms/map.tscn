@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cowv5ggujrlvr"]
+[gd_scene load_steps=41 format=3 uid="uid://cowv5ggujrlvr"]
 
 [ext_resource type="Script" path="res://code/map/map.gd" id="1_lwtri"]
 [ext_resource type="PackedScene" uid="uid://dgsm7vqcxipqs" path="res://scenes/player/player.tscn" id="1_n3fk4"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://1qs2kjqibo08" path="res://scenes/SpecialTiles/touch_tile_mover.tscn" id="5_4te1q"]
 [ext_resource type="PackedScene" uid="uid://qfkkvl5he35u" path="res://scenes/enemies/bat_enemy.tscn" id="5_jnpyu"]
 [ext_resource type="Texture2D" uid="uid://bt2x84u4p4yfw" path="res://art/tiles.png" id="6_3jf1k"]
+[ext_resource type="PackedScene" uid="uid://gfbs0r3hpxmg" path="res://scenes/collectibles/weapon_collectible.tscn" id="6_b7s16"]
 [ext_resource type="Texture2D" uid="uid://r67ofge3queg" path="res://art/bgtile.png" id="7_3lf36"]
 [ext_resource type="Texture2D" uid="uid://ckx8xfjlkgdej" path="res://art/bg_1_front.png" id="7_iur12"]
 [ext_resource type="Texture2D" uid="uid://c1oaxi13wb65" path="res://art/bg_1_back.png" id="7_lkooo"]
@@ -637,7 +638,7 @@ sources/4 = SubResource("TileSetAtlasSource_gj83y")
 script = ExtResource("1_lwtri")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_n3fk4")]
-position = Vector2(-912, -624)
+position = Vector2(-2228, -617)
 inventory = null
 
 [node name="Camera2D" parent="." instance=ExtResource("2_pp737")]
@@ -648,6 +649,21 @@ zoom = Vector2(2, 2)
 
 [node name="Tutorial 1" parent="TutorialArea" instance=ExtResource("1_rue84")]
 position = Vector2(-2016, -720)
+
+[node name="weapon_collectible" parent="TutorialArea/Tutorial 1" instance=ExtResource("6_b7s16")]
+position = Vector2(-123, 143)
+
+[node name="weapon_collectible2" parent="TutorialArea/Tutorial 1" instance=ExtResource("6_b7s16")]
+position = Vector2(-57, 143)
+selected_weapon_type = 1
+
+[node name="weapon_collectible3" parent="TutorialArea/Tutorial 1" instance=ExtResource("6_b7s16")]
+position = Vector2(-5, 143)
+selected_weapon_type = 2
+
+[node name="weapon_collectible4" parent="TutorialArea/Tutorial 1" instance=ExtResource("6_b7s16")]
+position = Vector2(36, 143)
+selected_weapon_type = 3
 
 [node name="Tutorial 2" parent="TutorialArea" instance=ExtResource("1_rue84")]
 position = Vector2(-1376, -720)

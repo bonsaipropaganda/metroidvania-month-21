@@ -24,9 +24,22 @@ var has_ended_jump = false
 var actionables = []
 var facing := 1
 # weapons
-var has_ranged_weapon = true
-var has_melee_weapon = true
-var has_grapple = true
+var has_melee = false:
+	set(value):
+		has_melee = value
+		Global.weapons_updated.emit(has_melee,has_ranged,has_grapple,has_tnt)
+var has_ranged = false:
+	set(value):
+		has_ranged = value
+		Global.weapons_updated.emit(has_melee,has_ranged,has_grapple,has_tnt)
+var has_grapple = false:
+	set(value):
+		has_grapple = value
+		Global.weapons_updated.emit(has_melee,has_ranged,has_grapple,has_tnt)
+var has_tnt = false:
+	set(value):
+		has_tnt = value
+		Global.weapons_updated.emit(has_melee,has_ranged,has_grapple,has_tnt)
 
 var current_health = 4 : set = set_health
 
@@ -85,9 +98,9 @@ func move(delta:float)->void:
 
 func try_use_weapon():
 	if $Timers/AttackDurationTimer.time_left == 0:
-		if Input.is_action_just_pressed("melee_weapon") and has_melee_weapon:
+		if Input.is_action_just_pressed("melee_weapon") and has_melee:
 			$Sprite/Equipment/MeleeWeapon.use()
-		elif Input.is_action_just_pressed("ranged_weapon") and has_ranged_weapon:
+		elif Input.is_action_just_pressed("ranged_weapon") and has_ranged:
 			$Sprite/Equipment/RangedWeapon.use()
 
 func action_manager()->void:
@@ -120,3 +133,9 @@ func set_health(new_amount):
 	
 	Global.update_health_ui.emit(current_health)
 	current_health = new_amount
+
+
+func _on_test_button_pressed():
+	if has_melee:
+		has_melee = false
+	else: has_melee = true
