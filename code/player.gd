@@ -150,4 +150,5 @@ func _on_damage_hurtbox_body_entered(body):
 		var sr = Global.get_spike_respawner()
 		if sr:
 			global_position = sr.global_position
+			$StateMachine.transition_state($StateMachine/States/Grounded)
 			velocity = Vector2.ZERO
