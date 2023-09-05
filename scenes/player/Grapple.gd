@@ -25,7 +25,7 @@ func update(delta):
 	var g = Global.get_grapple_point()
 	var diff : Vector2 = target.global_position - g.global_position
 	var direction = int(Input.get_axis("left", "right"))
-	target.accel = Vector2(target.apply_move_input(direction), target.gravity)
+	target.accel = Vector2(target.apply_move_input(direction)*2, target.gravity)
 	
 	if Input.is_action_pressed("up"):
 		rope_length = clamp(rope_length - 80 * delta, 0, DEFAULT_ROPE_LENGTH + 16)

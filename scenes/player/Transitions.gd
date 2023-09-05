@@ -9,4 +9,7 @@ func to_jump() -> bool:
 
 func to_grapple() -> bool:
 	var col = target.get_node("GrappleVector").is_colliding()
-	return Input.is_action_just_pressed("grapple") and col and player.has_grapple
+	var normal = target.get_node("GrappleVector").get_collision_normal()
+	var is_normal_ok = abs(normal.x) == 1 or abs(normal.y) == 1
+	return Input.is_action_just_pressed("grapple") and col and is_normal_ok\
+	 and player.has_grapple

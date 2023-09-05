@@ -18,8 +18,8 @@ func exit():
 func try_transition():
 	if transitions.to_grapple():
 		return get_node("../Grapple")
-	if transitions.to_jump():
-		return get_node("../Jump")
+#	if transitions.to_jump():
+#		return get_node("../Jump")
 	if target.is_on_floor():
 		return get_node("../Grounded")
 	if target.velocity.y > 0:

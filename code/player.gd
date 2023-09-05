@@ -73,7 +73,7 @@ func clamp_velocity():
 		velocity.x = move_toward(velocity.x, facing*max_speed, ACCEL_X * 1.2)
 	velocity.y = clampf(velocity.y, -INF, MAX_FALL_SPEED)
 
-func move(delta:float)->void:
+func move(delta:float):
 	# Gravity
 	accel.y = gravity * delta
 	
@@ -95,6 +95,7 @@ func move(delta:float)->void:
 		col.get_collider().touching = true
 	
 	move_and_slide()
+	return col
 
 func try_use_weapon():
 	if $Timers/AttackDurationTimer.time_left == 0:
@@ -146,3 +147,7 @@ func _on_test_button_pressed():
 func _on_damage_hurtbox_body_entered(body):
 	if body is TileMap:
 		current_health -= 1
+		var sr = Global.get_spike_respawner()
+		if sr:
+			global_position = sr.global_position
+			velocity = Vector2.ZERO

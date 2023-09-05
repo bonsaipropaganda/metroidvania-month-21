@@ -24,6 +24,9 @@ func get_player():
 func get_cam():
 	return get_tree().get_nodes_in_group("camera").pop_back()
 
+func get_spike_respawner():
+	return get_tree().get_nodes_in_group("spike_respawner").pop_back()
+
 func get_my_room(me:Node):
 	var p = me.get_parent()
 	while (p != null):

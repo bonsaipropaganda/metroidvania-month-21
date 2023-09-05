@@ -33,7 +33,6 @@ func _ready():
 		]
 		corner = ((corner + dir) + 4) % 4
 		to_point = points[corner]
-		prints(start_pos, to_point)
 
 func _draw():
 	if Engine.is_editor_hint():
