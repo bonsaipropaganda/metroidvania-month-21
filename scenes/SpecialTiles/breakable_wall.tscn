@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bijfpusp6jqpe"]
+
+[ext_resource type="Script" path="res://code/SpecialTiles/breakable_wall.gd" id="1_xqfwp"]
+[ext_resource type="Texture2D" uid="uid://dqiwsvlyq7xh2" path="res://art/fake_wall.png" id="1_ynxxq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6rhb0"]
+size = Vector2(48, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fk0bn"]
+size = Vector2(48, 16)
+
+[node name="breakable_wall" type="StaticBody2D"]
+position = Vector2(8, 24)
+rotation = 1.5708
+script = ExtResource("1_xqfwp")
+
+[node name="FakeWall" type="Sprite2D" parent="."]
+texture = ExtResource("1_ynxxq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6rhb0")
+
+[node name="ProjectileDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileDetector"]
+shape = SubResource("RectangleShape2D_fk0bn")
+
+[connection signal="area_entered" from="ProjectileDetector" to="." method="_on_projectile_detector_area_entered"]
