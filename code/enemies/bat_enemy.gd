@@ -43,7 +43,10 @@ func _ready():
 func _on_direction_timer_timeout():
 	if direction == -1:
 		direction = 1
-	else: direction = -1
+		$AnimatedSprite2D.flip_h = false
+	else: 
+		direction = -1
+		$AnimatedSprite2D.flip_h = true
 
 func die():
 	queue_free()

@@ -146,4 +146,3 @@ func _on_test_button_pressed():
 func _on_damage_hurtbox_body_entered(body):
 	if body is TileMap:
 		current_health -= 1
-		print("owie spiky")

@@ -780,7 +780,7 @@ sources/4 = SubResource("TileSetAtlasSource_gj83y")
 script = ExtResource("1_lwtri")
 
 [node name="Player" parent="." instance=ExtResource("1_n3fk4")]
-position = Vector2(-2696, 1984)
+position = Vector2(-2306, 1928)
 inventory = null
 has_melee = true
 has_ranged = true
@@ -970,7 +970,7 @@ position = Vector2(-2528, 2048)
 shape = SubResource("RectangleShape2D_nomng")
 
 [node name="BatEnemy" parent="Area1/1_Room 4/Resetables" index="0" instance=ExtResource("5_jnpyu")]
-position = Vector2(-48, 128)
+position = Vector2(-50, -62)
 
 [node name="MummyEnemy" parent="Area1/1_Room 4/Resetables" index="1" instance=ExtResource("9_qocy4")]
 position = Vector2(32, -208)
