@@ -1,8 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://ditnub3fdhylu"]
+[gd_scene load_steps=5 format=3 uid="uid://ditnub3fdhylu"]
+
+[ext_resource type="Script" path="res://code/checkpoint.gd" id="1_r011y"]
+[ext_resource type="Texture2D" uid="uid://dfi7lsm64yyw3" path="res://icon.svg" id="2_33143"]
+[ext_resource type="FontFile" uid="uid://cah8o3vdo081j" path="res://font/Kenney Mini Square.ttf" id="3_oxcc6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2l6ey"]
 
 [node name="Checkpoint" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_r011y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2l6ey")
+
+[node name="UnsetCheckpoint" type="Sprite2D" parent="."]
+self_modulate = Color(0.52549, 0.172549, 0.14902, 1)
+position = Vector2(0, -1)
+scale = Vector2(0.171875, 0.179688)
+texture = ExtResource("2_33143")
+
+[node name="SetCheckpoint" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(0, 0.501961, 0.223529, 1)
+position = Vector2(0, -1)
+scale = Vector2(0.171875, 0.179688)
+texture = ExtResource("2_33143")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -111.0
+offset_top = -42.0
+offset_right = 111.0
+offset_bottom = -16.0
+theme_override_fonts/font = ExtResource("3_oxcc6")
+text = "press 'e' to set checkpoint"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

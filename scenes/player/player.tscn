@@ -77,6 +77,13 @@ size = Vector2(20, 4)
 collision_layer = 2
 script = ExtResource("1_el2b0")
 inventory = ExtResource("2_2ntxu")
+max_speed = null
+jump_velocity = null
+coyote_time = null
+has_melee = null
+has_ranged = null
+has_grapple = null
+has_tnt = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
