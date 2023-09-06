@@ -44,6 +44,7 @@ var facing := 1
 var current_health = 4 : set = set_health
 
 func _ready():
+	Global.player_checkpoint = self.position
 	# have to disable this to start otherwise the weapon is attack despite not being there
 	melee_weapon.disable()
 	Global.update_player_health.connect(set_health)
