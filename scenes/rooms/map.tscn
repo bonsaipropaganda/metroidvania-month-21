@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cowv5ggujrlvr"]
+[gd_scene load_steps=42 format=3 uid="uid://cowv5ggujrlvr"]
 
 [ext_resource type="Script" path="res://code/map/map.gd" id="1_lwtri"]
 [ext_resource type="PackedScene" uid="uid://dgsm7vqcxipqs" path="res://scenes/player/player.tscn" id="1_n3fk4"]
@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://b0nnie4ttoi7y" path="res://art/hole.png" id="8_1optg"]
 [ext_resource type="Texture2D" uid="uid://c838t16kpdryc" path="res://art/sarco.png" id="9_c6n0s"]
 [ext_resource type="PackedScene" uid="uid://tctc2mpexra5" path="res://scenes/enemies/mummy_enemy.tscn" id="9_qocy4"]
-[ext_resource type="PackedScene" uid="uid://ditnub3fdhylu" path="res://scenes/checkpoint.tscn" id="14_medcb"]
 [ext_resource type="PackedScene" uid="uid://cemuf3w188sj0" path="res://scenes/collectibles/health_potion.tscn" id="15_ac5pb"]
 [ext_resource type="PackedScene" uid="uid://voq744q2tks5" path="res://scenes/SpecialTiles/fake_wall.tscn" id="16_5keyf"]
 [ext_resource type="Script" path="res://code/room_template.gd" id="18_xldw1"]
@@ -781,9 +780,6 @@ script = ExtResource("1_lwtri")
 [node name="Player" parent="." instance=ExtResource("1_n3fk4")]
 position = Vector2(-2528, 2272)
 inventory = null
-max_speed = 200.0
-jump_velocity = 400.0
-coyote_time = 0.1
 has_melee = true
 has_ranged = true
 has_grapple = true
@@ -999,9 +995,6 @@ metadata/_edit_use_anchors_ = true
 [node name="breakable_wall" parent="Area1/1_Room 4" instance=ExtResource("8_0ot6j")]
 position = Vector2(-312, 128)
 scale = Vector2(2, 1)
-
-[node name="Checkpoint" parent="Area1/1_Room 4" instance=ExtResource("14_medcb")]
-position = Vector2(64, -68)
 
 [node name="1_Room 5" parent="Area1" instance=ExtResource("1_rue84")]
 position = Vector2(-1584, 1872)
