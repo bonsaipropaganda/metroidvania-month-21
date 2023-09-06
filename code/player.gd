@@ -127,13 +127,13 @@ func _on_damage_hurtbox_damage_received(amount, damage_source):
 func set_health(new_amount):
 	if new_amount <= 0:
 		die()
+		new_amount = 4
 	if new_amount < current_health:
 		$DamageHurtbox.do_iframes()
 		modulate.a = 0.5
 		
 		velocity = Vector2(-facing * 300, -100)
 		Global.do_freeze_frames(0.1)
-	
 	current_health = new_amount
 	Global.update_health_ui.emit(current_health)
 	
@@ -141,22 +141,17 @@ func set_health(new_amount):
 	modulate.a = 1
 
 
-func _on_test_button_pressed():
-	if has_melee:
-		has_melee = false
-	else: has_melee = true
-
-
 func _on_damage_hurtbox_body_entered(body):
 	if body is TileMap:
 		current_health -= 1
-		var sr = Global.get_spike_respawner()
-		if sr:
-			global_position = sr.global_position
-			$StateMachine.transition_state($StateMachine/States/Grounded)
-			velocity = Vector2.ZERO
+		# if health is 4 then the player's health was reset due to dying in which case we want to let the die() function run instead of using the spike respawner :)
+		if current_health < 4:
+			var sr = Global.get_spike_respawner()
+			if sr:
+				global_position = sr.global_position
+				$StateMachine.transition_state($StateMachine/States/Grounded)
+				velocity = Vector2.ZERO
 
 
 func die():
 	self.position = Global.player_checkpoint
-	current_health = 4

@@ -781,9 +781,6 @@ script = ExtResource("1_lwtri")
 [node name="Player" parent="." instance=ExtResource("1_n3fk4")]
 position = Vector2(-2528, 2272)
 inventory = null
-max_speed = 200.0
-jump_velocity = 400.0
-coyote_time = 0.1
 has_melee = true
 has_ranged = true
 has_grapple = true
@@ -1002,6 +999,9 @@ scale = Vector2(2, 1)
 
 [node name="Checkpoint" parent="Area1/1_Room 4" instance=ExtResource("14_medcb")]
 position = Vector2(64, -68)
+
+[node name="Checkpoint2" parent="Area1/1_Room 4" instance=ExtResource("14_medcb")]
+position = Vector2(296, 240)
 
 [node name="1_Room 5" parent="Area1" instance=ExtResource("1_rue84")]
 position = Vector2(-1584, 1872)

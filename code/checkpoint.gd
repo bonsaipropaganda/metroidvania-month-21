@@ -16,4 +16,5 @@ func _process(delta):
 			set_checkpoint()
 
 func set_checkpoint():
-	Global.player_checkpoint = self.position
+	Global.player_checkpoint = self.global_position
+	Global.update_player_health.emit(4)
