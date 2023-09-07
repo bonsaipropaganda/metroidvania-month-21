@@ -5,6 +5,7 @@ var player_present = false
 func _on_body_entered(body):
 	if body.is_in_group("player"):
 		player_present = true
+		Global.update_player_health.emit(4)
 
 func _on_body_exited(body):
 	if body.is_in_group("player"):
