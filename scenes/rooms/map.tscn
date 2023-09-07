@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cowv5ggujrlvr"]
+[gd_scene load_steps=44 format=3 uid="uid://cowv5ggujrlvr"]
 
 [ext_resource type="Script" path="res://code/map/map.gd" id="1_lwtri"]
 [ext_resource type="PackedScene" uid="uid://dgsm7vqcxipqs" path="res://scenes/player/player.tscn" id="1_n3fk4"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://b0nnie4ttoi7y" path="res://art/hole.png" id="8_1optg"]
 [ext_resource type="Texture2D" uid="uid://c838t16kpdryc" path="res://art/sarco.png" id="9_c6n0s"]
 [ext_resource type="PackedScene" uid="uid://tctc2mpexra5" path="res://scenes/enemies/mummy_enemy.tscn" id="9_qocy4"]
+[ext_resource type="PackedScene" uid="uid://b8vt3p3d4rbl7" path="res://scenes/enemies/slime_enemy.tscn" id="13_psw5e"]
 [ext_resource type="PackedScene" uid="uid://ditnub3fdhylu" path="res://scenes/checkpoint.tscn" id="14_medcb"]
 [ext_resource type="PackedScene" uid="uid://cemuf3w188sj0" path="res://scenes/collectibles/health_potion.tscn" id="15_ac5pb"]
 [ext_resource type="PackedScene" uid="uid://voq744q2tks5" path="res://scenes/SpecialTiles/fake_wall.tscn" id="16_5keyf"]
@@ -978,6 +979,12 @@ position = Vector2(32, -208)
 
 [node name="MummyEnemy2" parent="Area1/1_Room 4/Resetables" index="2" instance=ExtResource("9_qocy4")]
 position = Vector2(-160, 0)
+
+[node name="SlimeEnemy" parent="Area1/1_Room 4/Resetables" index="3" instance=ExtResource("13_psw5e")]
+position = Vector2(-108, 199)
+
+[node name="SlimeEnemy2" parent="Area1/1_Room 4/Resetables" index="4" instance=ExtResource("13_psw5e")]
+position = Vector2(-112, 5)
 
 [node name="touch_tile_mover" parent="Area1/1_Room 4" instance=ExtResource("5_4te1q")]
 position = Vector2(288, -64)

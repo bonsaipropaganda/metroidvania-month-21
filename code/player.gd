@@ -120,7 +120,6 @@ func action_manager()->void:
 
 func _on_damage_hurtbox_damage_received(amount, damage_source):
 	if damage_source.is_in_group("enemy_attack"):
-		print(amount)
 		var new_health = current_health - amount
 		Global.update_player_health.emit(new_health)
 		Global.update_health_ui.emit(current_health)
