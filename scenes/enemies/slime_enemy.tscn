@@ -78,6 +78,7 @@ size = Vector2(16, 8)
 size = Vector2(20, 9)
 
 [node name="SlimeEnemy" type="CharacterBody2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_ehs43")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

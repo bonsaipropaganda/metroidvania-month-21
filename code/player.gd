@@ -16,6 +16,7 @@ const GRAPPLE_LOOK_DISTANCE = -110
 # node refs
 @onready var actionable_finder = $ActionableFinder
 @onready var melee_weapon = $Sprite/Equipment/MeleeWeapon
+@onready var animations = $Sprite
 
 var is_talking:bool = false
 var accel = Vector2.ZERO
@@ -40,7 +41,7 @@ var facing := 1
 	set(value):
 		has_tnt = value
 		Global.weapons_updated.emit(has_melee,has_ranged,has_grapple,has_tnt)
-
+var weapon_in_use = false
 var current_health = 4 : set = set_health
 
 func _ready():
@@ -58,7 +59,7 @@ func _physics_process(delta: float) -> void:
 		try_use_weapon()
 	
 	$GrappleVector.target_position = Vector2(sign(accel.x) * 100, GRAPPLE_LOOK_DISTANCE)
-
+	apply_animations()
 func apply_move_input(direction):
 	var new_accel_x = 0
 	if direction != 0:
@@ -102,8 +103,10 @@ func try_use_weapon():
 	if $Timers/AttackDurationTimer.time_left == 0:
 		if Input.is_action_just_pressed("melee_weapon") and has_melee:
 			$Sprite/Equipment/MeleeWeapon.use()
+			weapon_in_use = true
 		elif Input.is_action_just_pressed("ranged_weapon") and has_ranged:
 			$Sprite/Equipment/RangedWeapon.use()
+			weapon_in_use = true
 
 func action_manager()->void:
 	#if the player's taking, check the number of "balloons" in the world. if there's none
@@ -158,3 +161,19 @@ func _on_damage_hurtbox_body_entered(body):
 
 func die():
 	self.position = Global.player_checkpoint
+
+
+func apply_animations():
+	if !weapon_in_use:
+		if velocity.y:
+			animations.play("jump")
+		elif velocity.x:
+			animations.play("run")
+		else: animations.play("default")
+	else:
+		pass
+#		animations.play("sword")
+
+
+func _on_attack_duration_timer_timeout():
+	weapon_in_use = false

@@ -75,6 +75,7 @@ size = Vector2(18, 45)
 [node name="MummyEnemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 8
 script = ExtResource("1_arejj")
+current_health = 3
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8m767")

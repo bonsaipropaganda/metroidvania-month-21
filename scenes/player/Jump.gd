@@ -1,5 +1,8 @@
 extends State
 
+# node refs
+@onready var animation = $"../../../Sprite"
+
 func enter():
 	target.has_ended_jump = false
 	target.get_node("Sprite").play("default")

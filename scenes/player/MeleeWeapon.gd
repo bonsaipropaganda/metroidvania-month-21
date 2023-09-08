@@ -1,8 +1,11 @@
 extends DamageHitbox
 
+# node refs
+@onready var animation_player = $"../../../AnimationPlayer"
+
 func use():
 	var timer = get_node("../../../Timers/AttackDurationTimer")
-	
+	animation_player.play("melee")
 	visible = true
 	enable()
 	

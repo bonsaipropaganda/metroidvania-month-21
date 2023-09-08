@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dgsm7vqcxipqs"]
+[gd_scene load_steps=41 format=3 uid="uid://dgsm7vqcxipqs"]
 
 [ext_resource type="Script" path="res://code/player.gd" id="1_el2b0"]
 [ext_resource type="Resource" uid="uid://bh4f2h53dvsy6" path="res://code/inventory/player_inventory.tres" id="2_2ntxu"]
@@ -47,6 +47,54 @@ region = Rect2(144, 192, 48, 64)
 atlas = ExtResource("3_jgtf7")
 region = Rect2(192, 192, 48, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_glosc"]
+atlas = ExtResource("3_jgtf7")
+region = Rect2(96, 256, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6855a"]
+atlas = ExtResource("3_jgtf7")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mngj"]
+atlas = ExtResource("3_jgtf7")
+region = Rect2(144, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2oieo"]
+atlas = ExtResource("3_jgtf7")
+region = Rect2(240, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_863a0"]
+atlas = ExtResource("3_jgtf7")
+region = Rect2(288, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8j4a3"]
+atlas = ExtResource("3_jgtf7")
+region = Rect2(336, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uoate"]
+atlas = ExtResource("3_jgtf7")
+region = Rect2(0, 128, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0r8aq"]
+atlas = ExtResource("3_jgtf7")
+region = Rect2(144, 128, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsm3k"]
+atlas = ExtResource("3_jgtf7")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qj5xt"]
+atlas = ExtResource("3_jgtf7")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvasg"]
+atlas = ExtResource("3_jgtf7")
+region = Rect2(192, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44xq6"]
+atlas = ExtResource("3_jgtf7")
+region = Rect2(96, 512, 48, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_td38p"]
 animations = [{
 "frames": [{
@@ -68,10 +116,140 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glosc")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6855a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mngj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2oieo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_863a0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8j4a3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uoate")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0r8aq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsm3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qj5xt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvasg")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44xq6")
+}],
+"loop": true,
+"name": &"sword",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6epb5"]
 size = Vector2(20, 4)
+
+[sub_resource type="Animation" id="Animation_lv1v5"]
+resource_name = "melee"
+length = 0.7
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/Equipment/MeleeWeapon:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(13, -0.25, 0, 0.25, 0, 18, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.2, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/Equipment/MeleeWeapon:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-4, -0.25, 0, 0.25, 0, 13, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.2, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite/Equipment/MeleeWeapon:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.798874, -0.25, 0, 0.25, 0, 0.483086, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.2, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_utnh1"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/Equipment/MeleeWeapon:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(13, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/Equipment/MeleeWeapon:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite/Equipment/MeleeWeapon:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.798874, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2ar1v"]
+_data = {
+"RESET": SubResource("Animation_utnh1"),
+"melee": SubResource("Animation_lv1v5")
+}
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
@@ -114,13 +292,15 @@ collision_mask = 9
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_td38p")
-frame_progress = 0.700927
+animation = &"sword"
+frame_progress = 0.838566
 
 [node name="Equipment" type="Node2D" parent="Sprite"]
 
 [node name="MeleeWeapon" type="Area2D" parent="Sprite/Equipment" groups=["player_attack"]]
 visible = false
-position = Vector2(20, 0)
+position = Vector2(13, -4)
+rotation = -0.798874
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("10_r4qiq")
@@ -167,5 +347,11 @@ one_shot = true
 [node name="AttackDurationTimer" type="Timer" parent="Timers"]
 one_shot = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2ar1v")
+}
+
 [connection signal="body_entered" from="DamageHurtbox" to="." method="_on_damage_hurtbox_body_entered"]
 [connection signal="damage_received" from="DamageHurtbox" to="." method="_on_damage_hurtbox_damage_received"]
+[connection signal="timeout" from="Timers/AttackDurationTimer" to="." method="_on_attack_duration_timer_timeout"]
