@@ -1,0 +1,163 @@
+[gd_scene load_steps=25 format=3 uid="uid://cbtmbxl32arhh"]
+
+[ext_resource type="Script" path="res://code/enemies/mummy_enemy.gd" id="1_txplf"]
+[ext_resource type="Texture2D" uid="uid://bd1237hh3k7gp" path="res://art/mummyboss.png" id="2_0cwiv"]
+[ext_resource type="PackedScene" uid="uid://cqlmw13hexw1a" path="res://scenes/state_machine/state_machine.tscn" id="3_uner7"]
+[ext_resource type="Script" path="res://code/state_machine/enemy_state_machine.gd" id="4_8yxik"]
+[ext_resource type="Script" path="res://code/state_machine/states/enemy_wandering_state.gd" id="5_2ddel"]
+[ext_resource type="Script" path="res://scenes/enemies/enemy_chase_state.gd" id="6_qaabu"]
+[ext_resource type="Script" path="res://scenes/enemies/enemy_attack_state.gd" id="7_godn8"]
+[ext_resource type="Script" path="res://code/enemies/mummy_transitions.gd" id="8_1k1sf"]
+[ext_resource type="Texture2D" uid="uid://bfgq5tb5ye6an" path="res://art/exclamation_spritesheet_01.png" id="9_2drlj"]
+[ext_resource type="PackedScene" uid="uid://vr6ikbrw81ea" path="res://damage_hitbox.tscn" id="10_oymc0"]
+[ext_resource type="Script" path="res://code/util/DamageHurtbox.gd" id="11_jggt7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbhuj"]
+atlas = ExtResource("2_0cwiv")
+region = Rect2(672, 0, 112, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrdla"]
+atlas = ExtResource("2_0cwiv")
+region = Rect2(784, 0, 112, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oogyk"]
+atlas = ExtResource("2_0cwiv")
+region = Rect2(896, 0, 112, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_542b6"]
+atlas = ExtResource("2_0cwiv")
+region = Rect2(896, 0, 112, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bd75"]
+atlas = ExtResource("2_0cwiv")
+region = Rect2(784, 0, 112, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdmu0"]
+atlas = ExtResource("2_0cwiv")
+region = Rect2(672, 0, 112, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8m767"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbhuj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrdla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oogyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_542b6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bd75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdmu0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ffpp"]
+size = Vector2(17, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fbrp"]
+atlas = ExtResource("9_2drlj")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olfnt"]
+atlas = ExtResource("9_2drlj")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qjxnv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fbrp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olfnt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_311ky"]
+size = Vector2(11.625, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vifwp"]
+size = Vector2(18, 45)
+
+[node name="MummyEnemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 8
+script = ExtResource("1_txplf")
+current_health = 3
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8m767")
+frame_progress = 0.289861
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_8ffpp")
+
+[node name="StateMachine" parent="." instance=ExtResource("3_uner7")]
+script = ExtResource("4_8yxik")
+
+[node name="States" type="Node" parent="StateMachine"]
+
+[node name="CoolDown" type="Node" parent="StateMachine/States"]
+script = ExtResource("5_2ddel")
+
+[node name="Shoot" type="Node" parent="StateMachine/States"]
+script = ExtResource("6_qaabu")
+
+[node name="Stomp" type="Node" parent="StateMachine/States"]
+script = ExtResource("7_godn8")
+
+[node name="Transitions" type="Node" parent="StateMachine"]
+script = ExtResource("8_1k1sf")
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="WanderTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="ExclamationTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="ExclamationSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -45)
+sprite_frames = SubResource("SpriteFrames_qjxnv")
+frame_progress = 0.745975
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="DamageHitbox" parent="." groups=["enemy_attack"] instance=ExtResource("10_oymc0")]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" parent="DamageHitbox" index="0"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_311ky")
+
+[node name="DamageHurtbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("11_jggt7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHurtbox"]
+position = Vector2(-1, 1.5)
+shape = SubResource("RectangleShape2D_vifwp")
+
+[connection signal="timeout" from="Timers/WanderTimer" to="StateMachine/States/CoolDown" method="_on_wander_timer_timeout"]
+[connection signal="timeout" from="Timers/ExclamationTimer" to="StateMachine/States/Shoot" method="_on_exclamation_timer_timeout"]
+[connection signal="damage_received" from="DamageHurtbox" to="." method="_on_damage_hurtbox_damage_received"]
+
+[editable path="DamageHitbox"]
