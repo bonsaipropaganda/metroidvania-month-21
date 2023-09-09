@@ -46,8 +46,6 @@ var current_health = 4 : set = set_health
 
 func _ready():
 	Global.player_checkpoint = self.position
-	# have to disable this to start otherwise the weapon is attack despite not being there
-	melee_weapon.disable()
 	Global.update_player_health.connect(set_health)
 	$StateMachine.init_machine(self, $StateMachine/States/Grounded)
 
@@ -129,17 +127,17 @@ func _on_damage_hurtbox_damage_received(amount, damage_source):
 
 
 func set_health(new_amount):
-	if new_amount <= 0:
-		die()
 	if new_amount < current_health:
 		$DamageHurtbox.do_iframes()
 		modulate.a = 0.5
 		
 		velocity = Vector2(-facing * 300, -100)
 		Global.do_freeze_frames(0.1)
-	# reset it
 	if new_amount <= 0:
+		die()
 		new_amount = 4
+
+		
 	current_health = new_amount
 	Global.update_health_ui.emit(current_health)
 	
@@ -160,7 +158,10 @@ func _on_damage_hurtbox_body_entered(body):
 
 
 func die():
-	self.position = Global.player_checkpoint
+	global_position = Global.player_checkpoint
+	$StateMachine.transition_state($StateMachine/States/Grounded)
+	velocity = Vector2.ZERO
+	
 
 
 func apply_animations():

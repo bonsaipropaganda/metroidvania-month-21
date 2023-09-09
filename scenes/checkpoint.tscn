@@ -1,39 +1,109 @@
-[gd_scene load_steps=5 format=3 uid="uid://ditnub3fdhylu"]
+[gd_scene load_steps=16 format=3 uid="uid://ditnub3fdhylu"]
 
 [ext_resource type="Script" path="res://code/checkpoint.gd" id="1_r011y"]
-[ext_resource type="Texture2D" uid="uid://dfi7lsm64yyw3" path="res://icon.svg" id="2_33143"]
+[ext_resource type="Texture2D" uid="uid://dv5xt2aghqnci" path="res://art/flag_red.png" id="2_a4qhu"]
+[ext_resource type="Texture2D" uid="uid://vxnbkr8yh6i1" path="res://art/flag_green.png" id="3_o22ei"]
 [ext_resource type="FontFile" uid="uid://cah8o3vdo081j" path="res://font/Kenney Mini Square.ttf" id="3_oxcc6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2l6ey"]
 
-[node name="Checkpoint" type="Area2D"]
-collision_layer = 0
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhoke"]
+atlas = ExtResource("2_a4qhu")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5f3s"]
+atlas = ExtResource("2_a4qhu")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwki8"]
+atlas = ExtResource("2_a4qhu")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24t8d"]
+atlas = ExtResource("2_a4qhu")
+region = Rect2(144, 0, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nsqx4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhoke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5f3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwki8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24t8d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38qga"]
+atlas = ExtResource("3_o22ei")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5gn2"]
+atlas = ExtResource("3_o22ei")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ros21"]
+atlas = ExtResource("3_o22ei")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14w4y"]
+atlas = ExtResource("3_o22ei")
+region = Rect2(144, 0, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6hdg7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38qga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5gn2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ros21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14w4y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="Checkpoint" type="Area2D" groups=["checkpoint"]]
+collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_r011y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2l6ey")
 
-[node name="UnsetCheckpoint" type="Sprite2D" parent="."]
-self_modulate = Color(0.52549, 0.172549, 0.14902, 1)
+[node name="UnsetCheckpoint" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1)
-scale = Vector2(0.171875, 0.179688)
-texture = ExtResource("2_33143")
+sprite_frames = SubResource("SpriteFrames_nsqx4")
+autoplay = "default"
+frame_progress = 0.366896
 
-[node name="SetCheckpoint" type="Sprite2D" parent="."]
-visible = false
-self_modulate = Color(0, 0.501961, 0.223529, 1)
-position = Vector2(0, -1)
-scale = Vector2(0.171875, 0.179688)
-texture = ExtResource("2_33143")
-
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="UnsetCheckpoint"]
 offset_left = -111.0
-offset_top = -42.0
+offset_top = -41.0
 offset_right = 111.0
-offset_bottom = -16.0
+offset_bottom = -15.0
 theme_override_fonts/font = ExtResource("3_oxcc6")
 text = "press 'e' to set checkpoint"
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[node name="SetCheckpoint" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_6hdg7")
+autoplay = "default"
+frame_progress = 0.607761

@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dgsm7vqcxipqs"]
+[gd_scene load_steps=42 format=3 uid="uid://dgsm7vqcxipqs"]
 
 [ext_resource type="Script" path="res://code/player.gd" id="1_el2b0"]
 [ext_resource type="Resource" uid="uid://bh4f2h53dvsy6" path="res://code/inventory/player_inventory.tres" id="2_2ntxu"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scenes/player/Jump.gd" id="6_80nvj"]
 [ext_resource type="Script" path="res://scenes/player/Transitions.gd" id="7_alqh6"]
 [ext_resource type="Script" path="res://scenes/player/Fall.gd" id="7_l4ygo"]
+[ext_resource type="Script" path="res://code/util/DamageHitbox.gd" id="7_ugaea"]
 [ext_resource type="Script" path="res://scenes/player/Grapple.gd" id="9_ijx74"]
 [ext_resource type="Script" path="res://scenes/player/MeleeWeapon.gd" id="10_r4qiq"]
 [ext_resource type="Texture2D" uid="uid://codof3p1gelos" path="res://art/melee.png" id="11_7qifv"]
@@ -158,7 +159,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -170,7 +171,21 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6epb5"]
-size = Vector2(20, 4)
+size = Vector2(37.5209, 4)
+
+[sub_resource type="Animation" id="Animation_utnh1"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/Equipment/MeleeWeapon:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_lv1v5"]
 resource_name = "melee"
@@ -178,71 +193,13 @@ length = 0.7
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/Equipment/MeleeWeapon:position:x")
+tracks/0/path = NodePath("Sprite/Equipment/MeleeWeapon:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(13, -0.25, 0, 0.25, 0, 18, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.2, 0.5)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite/Equipment/MeleeWeapon:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-4, -0.25, 0, 0.25, 0, 13, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.2, 0.5)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite/Equipment/MeleeWeapon:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-0.798874, -0.25, 0, 0.25, 0, 0.483086, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.2, 0.5)
-}
-
-[sub_resource type="Animation" id="Animation_utnh1"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/Equipment/MeleeWeapon:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(13, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite/Equipment/MeleeWeapon:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-4, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite/Equipment/MeleeWeapon:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-0.798874, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"points": PackedFloat32Array(-2.5929, -0.25, 0, 0.25, 0, 0.535134, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2ar1v"]
@@ -292,24 +249,29 @@ collision_mask = 9
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_td38p")
-animation = &"sword"
-frame_progress = 0.838566
+animation = &"run"
 
 [node name="Equipment" type="Node2D" parent="Sprite"]
 
-[node name="MeleeWeapon" type="Area2D" parent="Sprite/Equipment" groups=["player_attack"]]
+[node name="MeleeWeapon" type="Sprite2D" parent="Sprite/Equipment"]
 visible = false
-position = Vector2(13, -4)
-rotation = -0.798874
-collision_layer = 8
-collision_mask = 8
+position = Vector2(3, 3)
+texture = ExtResource("11_7qifv")
+offset = Vector2(18.0721, -0.0463352)
 script = ExtResource("10_r4qiq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Equipment/MeleeWeapon"]
-shape = SubResource("RectangleShape2D_6epb5")
+[node name="Hitbox" type="Area2D" parent="Sprite/Equipment/MeleeWeapon" groups=["player_attack"]]
+position = Vector2(14.9459, 0.430408)
+rotation = -0.0283733
+scale = Vector2(1, 1)
+collision_layer = 8
+collision_mask = 8
+monitoring = false
+monitorable = false
+script = ExtResource("7_ugaea")
 
-[node name="Sprite2D" type="Sprite2D" parent="Sprite/Equipment/MeleeWeapon"]
-texture = ExtResource("11_7qifv")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Equipment/MeleeWeapon/Hitbox"]
+shape = SubResource("RectangleShape2D_6epb5")
 
 [node name="RangedWeapon" type="Sprite2D" parent="Sprite/Equipment" groups=["player_attack"]]
 visible = false
