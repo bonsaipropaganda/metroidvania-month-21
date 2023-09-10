@@ -4,12 +4,15 @@ extends Node # TODO make this a class
 @onready var player_detector = $"../../PlayerDetector"
 
 var target: Node
+var cool_down:= false
+var stomp:= false
+var shoot:= false
 
 func to_cool_down() -> bool:
-	return false
+	return cool_down
 
 func to_stomp() -> bool:
-	return true
+	return stomp
 
 func to_shoot() -> bool:
-	return false
+	return shoot

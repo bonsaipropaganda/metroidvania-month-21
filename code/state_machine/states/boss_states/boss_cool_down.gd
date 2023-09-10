@@ -1,8 +1,13 @@
 extends State
 
 # node refs
+@onready var state_timer = $"../../../Timers/CoolDownTimer"
+@onready var transition_node = $"../../Transitions"
+@onready var rocks = $"../../../rocks"
 
 func enter():
+	rocks.disable()
+	state_timer.start()
 	target.get_node("Sprite").play("default")
 
 
@@ -10,7 +15,7 @@ func update(delta):
 		target.move(delta)
 	
 func exit():
-	pass
+	state_timer.stop()
 
 func try_transition():
 	if transitions.to_cool_down():
@@ -20,6 +25,7 @@ func try_transition():
 	if transitions.to_shoot():
 		return get_node("../Shoot")
 
-
-func _on_wander_timer_timeout():
-	pass
+func _on_cool_down_timer_timeout():
+	transition_node.stomp = true
+	transition_node.cool_down = false
+	transition_node.shoot = false
