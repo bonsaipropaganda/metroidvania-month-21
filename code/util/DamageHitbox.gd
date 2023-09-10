@@ -2,6 +2,7 @@ extends Area2D
 class_name DamageHitbox
 
 signal damage_anything(amount, damage_source)
+signal target_found
 
 @onready var collision_shape = $CollisionShape2D
 @export var damage_amount = 1
@@ -29,6 +30,7 @@ func _on_DamageHitbox_area_entered(area):
 	if area is DamageHurtbox:
 		connect("damage_anything", area._on_DamageHitbox_entered)
 		emit_signal("damage_anything", damage_amount, damage_source)
+		emit_signal("target_found")
 
 func _on_DamageHitbox_area_exited(area):
 	if area is DamageHurtbox:

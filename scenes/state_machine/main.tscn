@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://celgp6ih70a7r"]
+[gd_scene load_steps=9 format=3 uid="uid://celgp6ih70a7r"]
 
 [ext_resource type="Script" path="res://code/main.gd" id="1_6y070"]
 [ext_resource type="PackedScene" uid="uid://cowv5ggujrlvr" path="res://scenes/rooms/map.tscn" id="2_eqm2q"]
 [ext_resource type="Script" path="res://code/CanvasLayer.gd" id="3_v1amp"]
 [ext_resource type="PackedScene" uid="uid://cwlu22rwshggc" path="res://scenes/UI/hearts.tscn" id="4_a2rkw"]
+[ext_resource type="Texture2D" uid="uid://cemd6hd5w3iqw" path="res://art/ammo.png" id="5_gb68n"]
 [ext_resource type="PackedScene" uid="uid://ny4cy4eb27ey" path="res://scenes/UI/weapon_ui.tscn" id="5_kicoa"]
 [ext_resource type="PackedScene" uid="uid://d1rcyecv82w1s" path="res://scenes/Inventory.tscn" id="6_k3h6j"]
 [ext_resource type="Texture2D" uid="uid://d3wlkfymg0dl7" path="res://art/vignette.png" id="7_l2ux4"]
@@ -21,6 +22,12 @@ script = ExtResource("3_v1amp")
 
 [node name="Hearts" parent="CanvasLayer" instance=ExtResource("4_a2rkw")]
 position = Vector2(80, 68)
+
+[node name="Ammo" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(219, 70)
+scale = Vector2(8, 8)
+texture = ExtResource("5_gb68n")
+hframes = 2
 
 [node name="WeaponUI" parent="CanvasLayer" instance=ExtResource("5_kicoa")]
 offset_left = 607.0
