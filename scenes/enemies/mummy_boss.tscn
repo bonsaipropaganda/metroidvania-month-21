@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://cbtmbxl32arhh"]
+[gd_scene load_steps=65 format=3 uid="uid://cbtmbxl32arhh"]
 
 [ext_resource type="Script" path="res://code/enemies/mummy_boss.gd" id="1_vjftj"]
 [ext_resource type="Texture2D" uid="uid://bd1237hh3k7gp" path="res://art/mummyboss.png" id="2_0cwiv"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bfgq5tb5ye6an" path="res://art/exclamation_spritesheet_01.png" id="9_2drlj"]
 [ext_resource type="PackedScene" uid="uid://vr6ikbrw81ea" path="res://damage_hitbox.tscn" id="10_oymc0"]
 [ext_resource type="Script" path="res://code/util/DamageHurtbox.gd" id="11_jggt7"]
+[ext_resource type="Texture2D" uid="uid://dfi7lsm64yyw3" path="res://icon.svg" id="11_kf8je"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hbhuj"]
 atlas = ExtResource("2_0cwiv")
@@ -116,10 +117,6 @@ region = Rect2(560, 0, 112, 96)
 atlas = ExtResource("2_0cwiv")
 region = Rect2(672, 0, 112, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3awtr"]
-atlas = ExtResource("2_0cwiv")
-region = Rect2(896, 0, 112, 96)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_5h6dv"]
 atlas = ExtResource("2_0cwiv")
 region = Rect2(784, 0, 112, 96)
@@ -160,6 +157,10 @@ region = Rect2(0, 0, 112, 96)
 atlas = ExtResource("2_0cwiv")
 region = Rect2(112, 0, 112, 96)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3awtr"]
+atlas = ExtResource("2_0cwiv")
+region = Rect2(896, 0, 112, 96)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_b87br"]
 atlas = ExtResource("2_0cwiv")
 region = Rect2(224, 0, 112, 96)
@@ -179,10 +180,6 @@ region = Rect2(560, 0, 112, 96)
 [sub_resource type="AtlasTexture" id="AtlasTexture_r70v2"]
 atlas = ExtResource("2_0cwiv")
 region = Rect2(672, 0, 112, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dc4e3"]
-atlas = ExtResource("2_0cwiv")
-region = Rect2(784, 0, 112, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wvqn6"]
 atlas = ExtResource("2_0cwiv")
@@ -280,9 +277,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3awtr")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_5h6dv")
 }, {
 "duration": 1.0,
@@ -313,6 +307,9 @@ animations = [{
 "texture": SubResource("AtlasTexture_6vfyj")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_3awtr")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_b87br")
 }, {
 "duration": 1.0,
@@ -326,9 +323,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_r70v2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dc4e3")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wvqn6")
@@ -359,6 +353,114 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_brg2i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6mqy"]
+
+[sub_resource type="Animation" id="Animation_ie3v4"]
+resource_name = "stomp"
+length = 2.5
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rocks:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-2, -0.25, 0, 0.25, 0, -1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rocks:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-50, -0.25, 0, 0.25, 0, 66, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.4)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rocks:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.4)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("rocks:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_kl2ob"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rocks:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rocks:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rocks:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("rocks:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p3iw1"]
+_data = {
+"RESET": SubResource("Animation_kl2ob"),
+"stomp": SubResource("Animation_ie3v4")
+}
 
 [node name="MummyBoss" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 8
@@ -392,10 +494,16 @@ script = ExtResource("5_v162g")
 
 [node name="Timers" type="Node" parent="."]
 
-[node name="WanderTimer" type="Timer" parent="Timers"]
+[node name="StompTimer" type="Timer" parent="Timers"]
+wait_time = 5.0
 one_shot = true
 
-[node name="ExclamationTimer" type="Timer" parent="Timers"]
+[node name="ShootTimer" type="Timer" parent="Timers"]
+wait_time = 5.0
+one_shot = true
+
+[node name="CoolDownTimer" type="Timer" parent="Timers"]
+wait_time = 5.0
 one_shot = true
 
 [node name="ExclamationSprite" type="AnimatedSprite2D" parent="."]
@@ -417,6 +525,29 @@ shape = null
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DamageHitbox"]
 polygon = PackedVector2Array(1, 7, 4, 25, -1, 31, 5, 33, 32, 33, 32, 29, 16, 25, 16, 0, 24, -8, 24, -16, 11, -24, 13, -27, 13, -30, 6, -37, -1, -37, -8, -30, -8, -27, -17, -27, -30, -16, -32, -1, -22, 2, -22, 5, -33, 31, -28, 33, -19, 33, -13, 31, -14, 22, -8, 16, -4, 7)
 
+[node name="rocks" parent="." groups=["enemy_attack"] instance=ExtResource("10_oymc0")]
+position = Vector2(-1, -50)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" parent="rocks" index="0"]
+position = Vector2(-57, -43)
+shape = SubResource("RectangleShape2D_brg2i")
+
+[node name="Sprite2D" type="Sprite2D" parent="rocks"]
+position = Vector2(-57.25, -42.5)
+scale = Vector2(0.160156, 0.164063)
+texture = ExtResource("11_kf8je")
+
+[node name="Sprite2D2" type="Sprite2D" parent="rocks"]
+position = Vector2(62.25, -44.5)
+scale = Vector2(0.160156, 0.164063)
+texture = ExtResource("11_kf8je")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="rocks"]
+position = Vector2(62.25, -43.5)
+shape = SubResource("RectangleShape2D_d6mqy")
+
 [node name="DamageHurtbox" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 8
@@ -425,8 +556,15 @@ script = ExtResource("11_jggt7")
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="DamageHurtbox"]
 polygon = PackedVector2Array(1, 7, 4, 25, -1, 31, 5, 33, 32, 33, 32, 29, 16, 25, 16, 0, 24, -8, 24, -16, 11, -24, 13, -27, 13, -30, 6, -37, -1, -37, -8, -30, -8, -27, -17, -27, -30, -16, -32, -1, -22, 2, -22, 5, -33, 31, -28, 33, -19, 33, -13, 31, -14, 22, -8, 16, -4, 7)
 
-[connection signal="timeout" from="Timers/WanderTimer" to="StateMachine/States/CoolDown" method="_on_wander_timer_timeout"]
-[connection signal="timeout" from="Timers/ExclamationTimer" to="StateMachine/States/Shoot" method="_on_exclamation_timer_timeout"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_p3iw1")
+}
+
+[connection signal="timeout" from="Timers/StompTimer" to="StateMachine/States/Stomp" method="_on_stomp_timer_timeout"]
+[connection signal="timeout" from="Timers/ShootTimer" to="StateMachine/States/Shoot" method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="Timers/CoolDownTimer" to="StateMachine/States/CoolDown" method="_on_cool_down_timer_timeout"]
 [connection signal="damage_received" from="DamageHurtbox" to="." method="_on_damage_hurtbox_damage_received"]
 
 [editable path="DamageHitbox"]
+[editable path="rocks"]
