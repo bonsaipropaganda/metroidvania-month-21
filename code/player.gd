@@ -24,6 +24,8 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var has_ended_jump = false
 var actionables = []
 var facing := 1
+var ammo_count = 2
+
 # weapons
 @export var has_melee = false:
 	set(value):
@@ -102,8 +104,11 @@ func try_use_weapon():
 		if Input.is_action_just_pressed("melee_weapon") and has_melee:
 			$Sprite/Equipment/MeleeWeapon.use()
 			weapon_in_use = true
-		elif Input.is_action_just_pressed("ranged_weapon") and has_ranged:
+		elif Input.is_action_just_pressed("ranged_weapon") and has_ranged and ammo_count:
 			$Sprite/Equipment/RangedWeapon.use()
+			ammo_count = clamp(ammo_count - 1, 0, 2)
+			var ac = get_tree().get_nodes_in_group("ammo_count").pop_back()
+			if ac: ac.frame = ammo_count
 			weapon_in_use = true
 
 func action_manager()->void:
@@ -178,3 +183,9 @@ func apply_animations():
 
 func _on_attack_duration_timer_timeout():
 	weapon_in_use = false
+
+func _on_hitbox_target_found(target):
+	if target != $DamageHurtbox:
+		ammo_count = clamp(ammo_count + 1, 0, 2)
+		var ac = get_tree().get_nodes_in_group("ammo_count").pop_back()
+		if ac: ac.frame = ammo_count

@@ -315,4 +315,5 @@ libraries = {
 
 [connection signal="body_entered" from="DamageHurtbox" to="." method="_on_damage_hurtbox_body_entered"]
 [connection signal="damage_received" from="DamageHurtbox" to="." method="_on_damage_hurtbox_damage_received"]
+[connection signal="target_found" from="Sprite/Equipment/MeleeWeapon/Hitbox" to="." method="_on_hitbox_target_found"]
 [connection signal="timeout" from="Timers/AttackDurationTimer" to="." method="_on_attack_duration_timer_timeout"]

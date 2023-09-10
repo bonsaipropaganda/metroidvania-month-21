@@ -23,11 +23,12 @@ script = ExtResource("3_v1amp")
 [node name="Hearts" parent="CanvasLayer" instance=ExtResource("4_a2rkw")]
 position = Vector2(80, 68)
 
-[node name="Ammo" type="Sprite2D" parent="CanvasLayer"]
+[node name="Ammo" type="Sprite2D" parent="CanvasLayer" groups=["ammo_count"]]
 position = Vector2(219, 70)
 scale = Vector2(8, 8)
 texture = ExtResource("5_gb68n")
-hframes = 2
+hframes = 3
+frame = 2
 
 [node name="WeaponUI" parent="CanvasLayer" instance=ExtResource("5_kicoa")]
 offset_left = 607.0
