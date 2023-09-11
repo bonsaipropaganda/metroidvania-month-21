@@ -4,8 +4,10 @@ extends State
 @onready var state_timer = $"../../../Timers/CoolDownTimer"
 @onready var transition_node = $"../../Transitions"
 @onready var rocks = $"../../../rocks"
+@onready var shoot_webs = $"../../../ShootingWebs"
 
 func enter():
+	shoot_webs.disable()
 	rocks.disable()
 	state_timer.start()
 	target.get_node("Sprite").play("default")

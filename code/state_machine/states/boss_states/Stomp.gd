@@ -5,8 +5,10 @@ extends State
 @onready var transition_node = $"../../Transitions"
 @onready var general_animations = $"../../../AnimationPlayer"
 @onready var rocks = $"../../../rocks"
+@onready var shoot_webs = $"../../../ShootingWebs"
 
 func enter():
+	shoot_webs.disable()
 	rocks.enable()
 	general_animations.play("stomp")
 	tran_timer.start()

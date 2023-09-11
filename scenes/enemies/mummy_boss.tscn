@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://cbtmbxl32arhh"]
+[gd_scene load_steps=68 format=3 uid="uid://cbtmbxl32arhh"]
 
 [ext_resource type="Script" path="res://code/enemies/mummy_boss.gd" id="1_vjftj"]
 [ext_resource type="Texture2D" uid="uid://bd1237hh3k7gp" path="res://art/mummyboss.png" id="2_0cwiv"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://vr6ikbrw81ea" path="res://damage_hitbox.tscn" id="10_oymc0"]
 [ext_resource type="Script" path="res://code/util/DamageHurtbox.gd" id="11_jggt7"]
 [ext_resource type="Texture2D" uid="uid://dfi7lsm64yyw3" path="res://icon.svg" id="11_kf8je"]
+[ext_resource type="Script" path="res://code/util/DamageHitbox.gd" id="13_dtn7s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hbhuj"]
 atlas = ExtResource("2_0cwiv")
@@ -270,6 +271,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xhv3e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhv3e")
 }],
 "loop": true,
 "name": &"shoot",
@@ -358,6 +362,140 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6mqy"]
 
+[sub_resource type="Animation" id="Animation_kl2ob"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rocks:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rocks:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rocks:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("rocks:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ShootingWebs/CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(42, 3)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ShootingWebs/CollisionShape2D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_pg1ru"]
+resource_name = "shoot"
+length = 4.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShootingWebs:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShootingWebs:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShootingWebs:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ShootingWebs/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(3, 3), Vector2(42, 3), Vector2(4, 2)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ShootingWebs/CollisionShape2D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0]
+}
+
 [sub_resource type="Animation" id="Animation_ie3v4"]
 resource_name = "stomp"
 length = 2.5
@@ -408,59 +546,15 @@ tracks/3/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_kl2ob"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("rocks:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("rocks:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("rocks:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("rocks:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p3iw1"]
 _data = {
 "RESET": SubResource("Animation_kl2ob"),
+"shoot": SubResource("Animation_pg1ru"),
 "stomp": SubResource("Animation_ie3v4")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qp0lv"]
+size = Vector2(27, 32)
 
 [node name="MummyBoss" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 8
@@ -469,7 +563,9 @@ current_health = 20
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8m767")
-animation = &"stomp"
+animation = &"shoot"
+frame = 10
+frame_progress = 0.422431
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(-3, 3)
@@ -526,6 +622,7 @@ shape = null
 polygon = PackedVector2Array(1, 7, 4, 25, -1, 31, 5, 33, 32, 33, 32, 29, 16, 25, 16, 0, 24, -8, 24, -16, 11, -24, 13, -27, 13, -30, 6, -37, -1, -37, -8, -30, -8, -27, -17, -27, -30, -16, -32, -1, -22, 2, -22, 5, -33, 31, -28, 33, -19, 33, -13, 31, -14, 22, -8, 16, -4, 7)
 
 [node name="rocks" parent="." groups=["enemy_attack"] instance=ExtResource("10_oymc0")]
+visible = false
 position = Vector2(-1, -50)
 collision_layer = 8
 collision_mask = 8
@@ -560,6 +657,15 @@ polygon = PackedVector2Array(1, 7, 4, 25, -1, 31, 5, 33, 32, 33, 32, 29, 16, 25,
 libraries = {
 "": SubResource("AnimationLibrary_p3iw1")
 }
+
+[node name="ShootingWebs" type="Area2D" parent="." groups=["enemy_attack"]]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("13_dtn7s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShootingWebs"]
+position = Vector2(42, 3)
+shape = SubResource("RectangleShape2D_qp0lv")
 
 [connection signal="timeout" from="Timers/StompTimer" to="StateMachine/States/Stomp" method="_on_stomp_timer_timeout"]
 [connection signal="timeout" from="Timers/ShootTimer" to="StateMachine/States/Shoot" method="_on_shoot_timer_timeout"]

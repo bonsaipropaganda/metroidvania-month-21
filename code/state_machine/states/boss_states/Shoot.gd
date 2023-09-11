@@ -4,11 +4,15 @@ extends State
 @onready var tran_timer = $"../../../Timers/ShootTimer"
 @onready var transition_node = $"../../Transitions"
 @onready var rocks = $"../../../rocks"
+@onready var shoot_webs = $"../../../ShootingWebs"
+@onready var gen_anims = $"../../../AnimationPlayer"
 
 func enter():
+	shoot_webs.enable()
 	rocks.disable()
 	tran_timer.start()
 	target.get_node("Sprite").play("shoot")
+	gen_anims.play("shoot")
 
 
 func update(delta):
@@ -17,6 +21,7 @@ func update(delta):
 func exit():
 	transition_node.shoot = false
 	tran_timer.stop()
+	gen_anims.stop()
 
 func try_transition():
 	if transitions.to_cool_down():
