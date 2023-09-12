@@ -34,6 +34,7 @@ var ammo_count = 2
 @export var has_ranged = false:
 	set(value):
 		has_ranged = value
+		Global.got_ranged.emit()
 		Global.weapons_updated.emit(has_melee,has_ranged,has_grapple,has_tnt)
 @export var has_grapple = false:
 	set(value):

@@ -24,6 +24,7 @@ script = ExtResource("3_v1amp")
 position = Vector2(80, 68)
 
 [node name="Ammo" type="Sprite2D" parent="CanvasLayer" groups=["ammo_count"]]
+visible = false
 position = Vector2(219, 70)
 scale = Vector2(8, 8)
 texture = ExtResource("5_gb68n")
