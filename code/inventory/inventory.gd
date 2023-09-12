@@ -8,12 +8,6 @@ signal closed
 
 var is_open: bool = false
 
-#func update():
-#	# get the smaller of the two just in case we made one too big
-#	for i in range(min(slots.size(), inventory.items.size())):
-#		slots[i].update(inventory.items[i])
-##		else:
-##			slots[i].remove_item()
 
 func update():
 	for i in range(slots.size()):
@@ -38,3 +32,10 @@ func _ready():
 	update()
 	close()
 	Global.inventory_updated.connect(update)
+	Global.player_died.connect(_on_player_died)
+
+func _on_player_died():
+	print("player ded")
+	inventory.items.clear()
+	for i in range(slots.size()):
+		slots[i].remove_item()

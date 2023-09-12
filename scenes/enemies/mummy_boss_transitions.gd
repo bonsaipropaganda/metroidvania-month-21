@@ -1,7 +1,6 @@
 extends Node # TODO make this a class
 
 # node refs
-@onready var player_detector = $"../../PlayerDetector"
 
 var target: Node
 var cool_down:= false

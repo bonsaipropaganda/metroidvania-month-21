@@ -12,6 +12,7 @@ signal update_health_ui(player_health)
 signal update_player_health(new_amount)
 signal inventory_updated
 signal weapons_updated
+signal player_died
 
 
 func _input(event):

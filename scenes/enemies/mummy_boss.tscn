@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://cbtmbxl32arhh"]
+[gd_scene load_steps=66 format=3 uid="uid://cbtmbxl32arhh"]
 
 [ext_resource type="Script" path="res://code/enemies/mummy_boss.gd" id="1_vjftj"]
 [ext_resource type="Texture2D" uid="uid://bd1237hh3k7gp" path="res://art/mummyboss.png" id="2_0cwiv"]
@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://code/state_machine/states/boss_states/Stomp.gd" id="7_6yjqs"]
 [ext_resource type="PackedScene" uid="uid://vr6ikbrw81ea" path="res://damage_hitbox.tscn" id="10_oymc0"]
 [ext_resource type="Script" path="res://code/util/DamageHurtbox.gd" id="11_jggt7"]
-[ext_resource type="Texture2D" uid="uid://dfi7lsm64yyw3" path="res://icon.svg" id="11_kf8je"]
+[ext_resource type="TileSet" uid="uid://brn1jrk8704x0" path="res://code/util/tileset.tres" id="11_ss4i1"]
 [ext_resource type="Script" path="res://code/util/DamageHitbox.gd" id="13_dtn7s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hbhuj"]
@@ -338,9 +338,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qp0lv"]
 size = Vector2(27, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_enmti"]
+size = Vector2(133, 61)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_brg2i"]
+size = Vector2(30, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6mqy"]
+size = Vector2(31, 30)
 
 [sub_resource type="Animation" id="Animation_kl2ob"]
 length = 0.001
@@ -533,6 +538,9 @@ _data = {
 "stomp": SubResource("Animation_ie3v4")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pyqk7"]
+size = Vector2(125, 79)
+
 [node name="MummyBoss" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 8
 script = ExtResource("1_vjftj")
@@ -596,8 +604,8 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" parent="DamageHitbox" index="0"]
-position = Vector2(0, 2.5)
-shape = null
+position = Vector2(-79.5, 1.5)
+shape = SubResource("RectangleShape2D_enmti")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DamageHitbox"]
 polygon = PackedVector2Array(1, 7, 4, 25, -1, 31, 5, 33, 32, 33, 32, 29, 16, 25, 16, 0, 24, -8, 24, -16, 11, -24, 13, -27, 13, -30, 6, -37, -1, -37, -8, -30, -8, -27, -17, -27, -30, -16, -32, -1, -22, 2, -22, 5, -33, 31, -28, 33, -19, 33, -13, 31, -14, 22, -8, 16, -4, 7)
@@ -609,22 +617,18 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" parent="rocks" index="0"]
-position = Vector2(89.5, -43)
+position = Vector2(146, -47.5)
 shape = SubResource("RectangleShape2D_brg2i")
 
-[node name="Sprite2D" type="Sprite2D" parent="rocks"]
-position = Vector2(89.25, -42.5)
-scale = Vector2(0.160156, 0.164063)
-texture = ExtResource("11_kf8je")
-
-[node name="Sprite2D2" type="Sprite2D" parent="rocks"]
-position = Vector2(46.25, -44.5)
-scale = Vector2(0.160156, 0.164063)
-texture = ExtResource("11_kf8je")
-
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="rocks"]
-position = Vector2(46.25, -43.5)
+position = Vector2(50.5, -50)
 shape = SubResource("RectangleShape2D_d6mqy")
+
+[node name="TileMap" type="TileMap" parent="rocks"]
+position = Vector2(19, 0)
+tile_set = ExtResource("11_ss4i1")
+format = 2
+layer_0/tile_data = PackedInt32Array(-262143, 65536, 6, -196607, 65536, 7, -262142, 131072, 6, -196606, 131072, 7, -262137, 65536, 6, -196601, 65536, 7, -262136, 131072, 6, -196600, 131072, 7)
 
 [node name="DamageHurtbox" type="Area2D" parent="."]
 collision_layer = 8
@@ -639,11 +643,19 @@ libraries = {
 "": SubResource("AnimationLibrary_p3iw1")
 }
 
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(52.5, -5.5)
+shape = SubResource("RectangleShape2D_pyqk7")
+
 [connection signal="timeout" from="Timers/StompTimer" to="StateMachine/States/Stomp" method="_on_stomp_timer_timeout"]
 [connection signal="timeout" from="Timers/ShootTimer" to="StateMachine/States/Shoot" method="_on_shoot_timer_timeout"]
 [connection signal="timeout" from="Timers/CoolDownTimer" to="StateMachine/States/CoolDown" method="_on_cool_down_timer_timeout"]
 [connection signal="timeout" from="Timers/MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="damage_received" from="DamageHurtbox" to="." method="_on_damage_hurtbox_damage_received"]
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 
 [editable path="DamageHitbox"]
 [editable path="rocks"]

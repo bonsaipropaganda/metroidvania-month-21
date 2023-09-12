@@ -26,7 +26,6 @@ var player
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	$Timers/MoveTimer.start()
 	$StateMachine.init_machine(self, $StateMachine/States/CoolDown)
 	player = Global.get_player()
 
@@ -37,7 +36,6 @@ func _physics_process(delta):
 	if distance_to_player < 0:
 		# Player is to the left, and the boss is currently facing right
 		sprite.flip_h = true
-		boss_col_shape.rotation = -180
 	if distance_to_player > 0:
 		# Player is to the right, and the boss is currently facing left
 		sprite.flip_h = false
@@ -78,3 +76,8 @@ func _on_damage_hurtbox_damage_received(amount, damage_source):
 
 func _on_move_timer_timeout():
 	velocity.x = MOVE_VELOCITY
+
+
+func _on_player_detector_body_entered(body):
+	if body.is_in_group("player"):
+		$Timers/MoveTimer.start()

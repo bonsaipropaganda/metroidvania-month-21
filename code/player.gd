@@ -166,7 +166,7 @@ func die():
 	global_position = Global.player_checkpoint
 	$StateMachine.transition_state($StateMachine/States/Grounded)
 	velocity = Vector2.ZERO
-	
+	Global.player_died.emit()
 
 
 func apply_animations():
