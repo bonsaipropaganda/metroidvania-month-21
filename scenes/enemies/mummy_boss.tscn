@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://cbtmbxl32arhh"]
+[gd_scene load_steps=64 format=3 uid="uid://cbtmbxl32arhh"]
 
 [ext_resource type="Script" path="res://code/enemies/mummy_boss.gd" id="1_vjftj"]
 [ext_resource type="Texture2D" uid="uid://bd1237hh3k7gp" path="res://art/mummyboss.png" id="2_0cwiv"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://scenes/enemies/mummy_boss_transitions.gd" id="5_v162g"]
 [ext_resource type="Script" path="res://code/state_machine/states/boss_states/Shoot.gd" id="6_e01rw"]
 [ext_resource type="Script" path="res://code/state_machine/states/boss_states/Stomp.gd" id="7_6yjqs"]
-[ext_resource type="Texture2D" uid="uid://bfgq5tb5ye6an" path="res://art/exclamation_spritesheet_01.png" id="9_2drlj"]
 [ext_resource type="PackedScene" uid="uid://vr6ikbrw81ea" path="res://damage_hitbox.tscn" id="10_oymc0"]
 [ext_resource type="Script" path="res://code/util/DamageHurtbox.gd" id="11_jggt7"]
 [ext_resource type="Texture2D" uid="uid://dfi7lsm64yyw3" path="res://icon.svg" id="11_kf8je"]
@@ -336,27 +335,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7fbrp"]
-atlas = ExtResource("9_2drlj")
-region = Rect2(48, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_olfnt"]
-atlas = ExtResource("9_2drlj")
-region = Rect2(32, 0, 16, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qjxnv"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7fbrp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_olfnt")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qp0lv"]
+size = Vector2(27, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_brg2i"]
 
@@ -508,7 +488,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-2, -0.25, 0, 0.25, 0, -1, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 2.4)
 }
 tracks/1/type = "bezier"
@@ -519,7 +499,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-50, -0.25, 0, 0.25, 0, 66, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(-65, -0.25, 0, 0.25, 0, 66, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 2.4)
 }
 tracks/2/type = "bezier"
@@ -552,9 +532,6 @@ _data = {
 "shoot": SubResource("Animation_pg1ru"),
 "stomp": SubResource("Animation_ie3v4")
 }
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qp0lv"]
-size = Vector2(27, 32)
 
 [node name="MummyBoss" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 8
@@ -602,13 +579,17 @@ one_shot = true
 wait_time = 5.0
 one_shot = true
 
-[node name="ExclamationSprite" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(0, -45)
-sprite_frames = SubResource("SpriteFrames_qjxnv")
-frame_progress = 0.745975
+[node name="MoveTimer" type="Timer" parent="Timers"]
+wait_time = 3.0
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="ShootingWebs" type="Area2D" parent="." groups=["enemy_attack"]]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("13_dtn7s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShootingWebs"]
+position = Vector2(42, 3)
+shape = SubResource("RectangleShape2D_qp0lv")
 
 [node name="DamageHitbox" parent="." groups=["enemy_attack"] instance=ExtResource("10_oymc0")]
 collision_layer = 8
@@ -623,26 +604,26 @@ polygon = PackedVector2Array(1, 7, 4, 25, -1, 31, 5, 33, 32, 33, 32, 29, 16, 25,
 
 [node name="rocks" parent="." groups=["enemy_attack"] instance=ExtResource("10_oymc0")]
 visible = false
-position = Vector2(-1, -50)
+position = Vector2(-1, -65)
 collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" parent="rocks" index="0"]
-position = Vector2(-57, -43)
+position = Vector2(89.5, -43)
 shape = SubResource("RectangleShape2D_brg2i")
 
 [node name="Sprite2D" type="Sprite2D" parent="rocks"]
-position = Vector2(-57.25, -42.5)
+position = Vector2(89.25, -42.5)
 scale = Vector2(0.160156, 0.164063)
 texture = ExtResource("11_kf8je")
 
 [node name="Sprite2D2" type="Sprite2D" parent="rocks"]
-position = Vector2(62.25, -44.5)
+position = Vector2(46.25, -44.5)
 scale = Vector2(0.160156, 0.164063)
 texture = ExtResource("11_kf8je")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="rocks"]
-position = Vector2(62.25, -43.5)
+position = Vector2(46.25, -43.5)
 shape = SubResource("RectangleShape2D_d6mqy")
 
 [node name="DamageHurtbox" type="Area2D" parent="."]
@@ -658,18 +639,10 @@ libraries = {
 "": SubResource("AnimationLibrary_p3iw1")
 }
 
-[node name="ShootingWebs" type="Area2D" parent="." groups=["enemy_attack"]]
-collision_layer = 8
-collision_mask = 8
-script = ExtResource("13_dtn7s")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ShootingWebs"]
-position = Vector2(42, 3)
-shape = SubResource("RectangleShape2D_qp0lv")
-
 [connection signal="timeout" from="Timers/StompTimer" to="StateMachine/States/Stomp" method="_on_stomp_timer_timeout"]
 [connection signal="timeout" from="Timers/ShootTimer" to="StateMachine/States/Shoot" method="_on_shoot_timer_timeout"]
 [connection signal="timeout" from="Timers/CoolDownTimer" to="StateMachine/States/CoolDown" method="_on_cool_down_timer_timeout"]
+[connection signal="timeout" from="Timers/MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="damage_received" from="DamageHurtbox" to="." method="_on_damage_hurtbox_damage_received"]
 
 [editable path="DamageHitbox"]

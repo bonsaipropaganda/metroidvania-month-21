@@ -5,6 +5,7 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const ACCEL = 30
 const FLOOR_DRAG = .8
+const MOVE_VELOCITY = 75
 
 var wander = false
 var direction = 0
@@ -17,13 +18,31 @@ var direction = 0
 
 # node refs
 @onready var hit_box = $DamageHitbox
+var player
+@onready var sprite = $Sprite
+@onready var boss_col_shape = $CollisionShape2D
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
+	$Timers/MoveTimer.start()
 	$StateMachine.init_machine(self, $StateMachine/States/CoolDown)
+	player = Global.get_player()
+
 
 func _physics_process(delta):
+	# Calculate the direction from the boss to the player
+	var distance_to_player = player.global_position.x - self.global_position.x
+	if distance_to_player < 0:
+		# Player is to the left, and the boss is currently facing right
+		sprite.flip_h = true
+		boss_col_shape.rotation = -180
+	if distance_to_player > 0:
+		# Player is to the right, and the boss is currently facing left
+		sprite.flip_h = false
+		boss_col_shape.rotation = 0
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -55,3 +74,7 @@ func _on_damage_hurtbox_damage_received(amount, damage_source):
 		modulate.a = 0.5
 		await $DamageHurtbox.i_timer.timeout
 		modulate.a = 1
+
+
+func _on_move_timer_timeout():
+	velocity.x = MOVE_VELOCITY

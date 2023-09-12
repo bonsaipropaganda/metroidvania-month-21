@@ -6,6 +6,7 @@ extends State
 @onready var rocks = $"../../../rocks"
 @onready var shoot_webs = $"../../../ShootingWebs"
 @onready var gen_anims = $"../../../AnimationPlayer"
+@onready var sprite = $"../../../Sprite"
 
 func enter():
 	shoot_webs.enable()
