@@ -13,6 +13,10 @@ func _input(event):
 	elif !inventory.is_open and event.is_action_pressed("toggle_inventory"):
 			inventory.update()
 			inventory.open()
+	
+	if event.is_action_pressed("r"):
+		Global.respawn_player.emit()
 
 func _on_got_ranged():
 	ammo_ui.visible = true
+

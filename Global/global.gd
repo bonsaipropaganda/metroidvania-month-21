@@ -14,6 +14,7 @@ signal inventory_updated
 signal weapons_updated
 signal player_died
 signal got_ranged
+signal respawn_player
 
 
 func _input(event):

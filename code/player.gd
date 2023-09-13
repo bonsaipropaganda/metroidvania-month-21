@@ -50,6 +50,7 @@ var current_health = 4 : set = set_health
 func _ready():
 	Global.player_checkpoint = self.position
 	Global.update_player_health.connect(set_health)
+	Global.respawn_player.connect(die)
 	$StateMachine.init_machine(self, $StateMachine/States/Grounded)
 
 func _physics_process(delta: float) -> void:

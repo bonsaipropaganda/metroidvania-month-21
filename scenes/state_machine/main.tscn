@@ -56,5 +56,12 @@ scale = Vector2(1.86087, 1.56957)
 texture = ExtResource("7_l2ux4")
 centered = false
 
+[node name="RespawnButton" type="Label" parent="CanvasLayer"]
+offset_left = 16.0
+offset_top = 132.0
+offset_right = 94.0
+offset_bottom = 163.0
+text = "R - respawn"
+
 [connection signal="closed" from="CanvasLayer/Inventory" to="." method="_on_inventory_closed"]
 [connection signal="opened" from="CanvasLayer/Inventory" to="." method="_on_inventory_opened"]

@@ -1248,10 +1248,6 @@ centered = false
 region_rect = Rect2(0, 0, 640, 180)
 metadata/_edit_lock_ = true
 
-[node name="weapon_collectible" parent="." instance=ExtResource("6_b7s16")]
-position = Vector2(-1888, -608)
-selected_weapon_type = 1
-
 [connection signal="area_entered" from="Area1/1_Fall_Room" to="Area1/1_Fall_Room" method="_on_area_entered"]
 [connection signal="area_exited" from="Area1/1_Fall_Room" to="Area1/1_Fall_Room" method="_on_area_exited"]
 [connection signal="area_entered" from="Elevator" to="Elevator" method="_on_area_entered"]
