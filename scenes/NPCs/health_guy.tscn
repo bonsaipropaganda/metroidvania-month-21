@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://buyw7kppa2e5x"]
+
+[ext_resource type="PackedScene" uid="uid://cxfqd7vjr7gi0" path="res://scenes/NPCs/npc_template.tscn" id="1_4iufy"]
+[ext_resource type="Resource" uid="uid://bccal7ow0qiv4" path="res://dialog/health_guy.dialogue" id="2_xeip3"]
+[ext_resource type="Texture2D" uid="uid://dfi7lsm64yyw3" path="res://icon.svg" id="3_t5t5x"]
+
+[node name="HealthGuy" instance=ExtResource("1_4iufy")]
+
+[node name="Actionable" parent="." index="1"]
+dialog_resource = ExtResource("2_xeip3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="5"]
+position = Vector2(-0.249998, -1)
+scale = Vector2(0.0820312, 0.109375)
+texture = ExtResource("3_t5t5x")

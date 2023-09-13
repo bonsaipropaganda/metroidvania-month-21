@@ -5,6 +5,7 @@ extends Node
 var current_room
 var is_map_ready = false
 var player_checkpoint: Vector2
+var health_guy_gave_potion = false
 
 signal room_changed(room)
 # one is used for the ui and other is for player's actual health
@@ -15,7 +16,11 @@ signal weapons_updated
 signal player_died
 signal got_ranged
 signal respawn_player
+signal add_health_potion
 
+func emit_health_potion():
+	add_health_potion.emit()
+	health_guy_gave_potion = true
 
 func _input(event):
 	if Engine.is_editor_hint():
