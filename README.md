@@ -5,3 +5,4 @@ Credit:
 * Inventory UI art by Makertech
 * Exclamation Points by Parriah
 * font by kenney
+* Medieval NPCs by gummypopcat
