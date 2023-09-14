@@ -10,11 +10,6 @@ const MOVE_VELOCITY = 75
 var wander = false
 var direction = 0
 
-@export var current_health = 2:
-	set(value):
-		current_health = value
-		if current_health <= 0:
-			die()
 
 # node refs
 @onready var hit_box = $DamageHitbox
@@ -22,11 +17,21 @@ var player
 @onready var sprite = $Sprite
 @onready var boss_col_shape = $CollisionShape2D
 @onready var door = $"../Door"
+@onready var health_bar = $ProgressBar
+
+@export var current_health = 2:
+	set(value):
+		current_health = value
+		if health_bar:
+			health_bar.value = current_health
+		if current_health <= 0:
+			die()
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
+	health_bar.value = current_health
 	$StateMachine.init_machine(self, $StateMachine/States/CoolDown)
 	player = Global.get_player()
 

@@ -1074,24 +1074,24 @@ position = Vector2(-3456, 3680)
 [node name="CollisionShape2D" parent="Area1/Boss1Room" index="0"]
 shape = SubResource("RectangleShape2D_ne6sq")
 
+[node name="MummyBoss" parent="Area1/Boss1Room/Resetables" index="0" instance=ExtResource("18_o23y1")]
+position = Vector2(25, 180)
+scale = Vector2(3, 3)
+current_health = 30
+
+[node name="Door" parent="Area1/Boss1Room/Resetables" index="1" instance=ExtResource("20_27r82")]
+position = Vector2(632, 288)
+rotation = 1.57079
+scale = Vector2(1.96, 1)
+
 [node name="RichTextLabel" type="RichTextLabel" parent="Area1/Boss1Room"]
 offset_right = 184.0
 offset_bottom = 88.0
 text = "area 1 boss"
 metadata/_edit_use_anchors_ = true
 
-[node name="MummyBoss" parent="Area1/Boss1Room" instance=ExtResource("18_o23y1")]
-position = Vector2(25, 180)
-scale = Vector2(3, 3)
-current_health = 30
-
 [node name="HealthPotion" parent="Area1/Boss1Room" instance=ExtResource("15_ac5pb")]
 position = Vector2(242, 153)
-
-[node name="Door" parent="Area1/Boss1Room" instance=ExtResource("20_27r82")]
-position = Vector2(632, 288)
-rotation = 1.57079
-scale = Vector2(1.96, 1)
 
 [node name="RoomTemplate4" parent="Area1" instance=ExtResource("1_rue84")]
 position = Vector2(640, 1312)
