@@ -31,6 +31,8 @@ var player
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
+	if Global.boss_1_defeated:
+		die()
 	health_bar.value = current_health
 	$StateMachine.init_machine(self, $StateMachine/States/CoolDown)
 	player = Global.get_player()
@@ -59,6 +61,7 @@ func _physics_process(delta):
 
 func die():
 	door.current_state = door.state.opened
+	Global.boss_1_defeated = true
 	queue_free()
 
 func move(delta):

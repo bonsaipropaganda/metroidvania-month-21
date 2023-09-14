@@ -5,7 +5,7 @@ signal health_changed
 func _ready():
 	health_changed.connect(_on_health_changed)
 
-var current_health = 2:
+var current_health = 1:
 	set(value):
 		current_health = value
 		health_changed.emit()

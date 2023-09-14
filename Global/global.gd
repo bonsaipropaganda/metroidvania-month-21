@@ -6,6 +6,7 @@ var current_room
 var is_map_ready = false
 var player_checkpoint: Vector2
 var health_guy_gave_potion = false
+var boss_1_defeated = false
 
 signal room_changed(room)
 # one is used for the ui and other is for player's actual health
