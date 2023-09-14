@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://djy27j3eccokm"]
+
+[ext_resource type="PackedScene" uid="uid://cxfqd7vjr7gi0" path="res://scenes/NPCs/npc_template.tscn" id="1_q46s1"]
+[ext_resource type="Texture2D" uid="uid://0vyimoecfynl" path="res://art/Idle_SpriteSheet.png" id="2_a7a4q"]
+[ext_resource type="Resource" uid="uid://di8chpqdxqa3o" path="res://dialog/gun_guy.dialogue" id="2_isaox"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_40kke"]
+size = Vector2(12.25, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyb2r"]
+atlas = ExtResource("2_a7a4q")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vh7tn"]
+atlas = ExtResource("2_a7a4q")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8h43i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pyb2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vh7tn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="GunGuy" instance=ExtResource("1_q46s1")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(-0.875, -5.5)
+shape = SubResource("RectangleShape2D_40kke")
+
+[node name="Actionable" parent="." index="1"]
+dialog_resource = ExtResource("2_isaox")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="5"]
+position = Vector2(0, -7)
+scale = Vector2(1.5, 1.75)
+sprite_frames = SubResource("SpriteFrames_8h43i")

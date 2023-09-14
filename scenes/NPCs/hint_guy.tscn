@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtrs0rlinvqfd"]
+
+[ext_resource type="PackedScene" uid="uid://cxfqd7vjr7gi0" path="res://scenes/NPCs/npc_template.tscn" id="1_xrtiy"]
+[ext_resource type="Texture2D" uid="uid://0vyimoecfynl" path="res://art/Idle_SpriteSheet.png" id="2_3bj5w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5o2be"]
+atlas = ExtResource("2_3bj5w")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2864y"]
+atlas = ExtResource("2_3bj5w")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l8ccn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5o2be")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2864y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="HintGuy" instance=ExtResource("1_xrtiy")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="5"]
+sprite_frames = SubResource("SpriteFrames_l8ccn")
+frame_progress = 0.914369

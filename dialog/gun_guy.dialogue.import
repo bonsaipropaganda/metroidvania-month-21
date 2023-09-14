@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_8"
+type="Resource"
+uid="uid://di8chpqdxqa3o"
+path="res://.godot/imported/gun_guy.dialogue-dc9739fd370fc8fb1f059c89bc2a8a3a.tres"
+
+[deps]
+
+source_file="res://dialog/gun_guy.dialogue"
+dest_files=["res://.godot/imported/gun_guy.dialogue-dc9739fd370fc8fb1f059c89bc2a8a3a.tres"]
+
+[params]
+
+defaults=true

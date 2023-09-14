@@ -1,0 +1,28 @@
+~ start
+
+Goose: Quack quack. I don't mind if you use my gun.
+- Did you leave any bullets in it?
+	Goose: Honk.
+	Goose: I left two bullets in it already.
+	- How do I get more bullets?
+		Goose: You hit enemies with your sword and they drop bullets.
+	- Cool thanks I'll use it sparingly!
+		Goose: Wise of you, quack.
+- Dope! I'll blow stuff up with this gun!
+	Goose: You can't blow me up though!
+	- I'd like to try
+		Goose: Please don't. Just kidding, you can try all you want. Nothing will happen. 
+	- I would never do that. You seem nice. Heck, you even let me use your gun.
+		Goose: I appreciate that. Go in peace.
+- Wow! A real gun! How do I use it?
+	Goose: You just press "x" or "?"
+	Goose: Want me to tell you more about it?
+	- No, thanks.
+	- Yes, please!
+		=> more_about_gun
+=> END
+
+~ more_about_gun
+Goose: You can hold two bullets in this gun at a time.
+Goose: You get more bullets by using your sword on enemies!
+Goose: This gun has another secret use.

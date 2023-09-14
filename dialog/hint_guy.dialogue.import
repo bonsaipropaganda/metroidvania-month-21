@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_8"
+type="Resource"
+uid="uid://c37s706xjwinx"
+path="res://.godot/imported/hint_guy.dialogue-598a4c455c4dd997ef2a450e2c89e682.tres"
+
+[deps]
+
+source_file="res://dialog/hint_guy.dialogue"
+dest_files=["res://.godot/imported/hint_guy.dialogue-598a4c455c4dd997ef2a450e2c89e682.tres"]
+
+[params]
+
+defaults=true
