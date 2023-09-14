@@ -21,7 +21,6 @@ var direction = 0
 var player
 @onready var sprite = $Sprite
 @onready var boss_col_shape = $CollisionShape2D
-@onready var door = $"../Door"
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -53,7 +52,6 @@ func _physics_process(delta):
 	$StateMachine.update(delta)
 
 func die():
-	door.current_state = door.state.opened
 	queue_free()
 
 func move(delta):
@@ -83,4 +81,3 @@ func _on_move_timer_timeout():
 func _on_player_detector_body_entered(body):
 	if body.is_in_group("player"):
 		$Timers/MoveTimer.start()
-		door.current_state = door.state.closed

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cowv5ggujrlvr"]
+[gd_scene load_steps=47 format=3 uid="uid://cowv5ggujrlvr"]
 
 [ext_resource type="Script" path="res://code/map/map.gd" id="1_lwtri"]
 [ext_resource type="PackedScene" uid="uid://dgsm7vqcxipqs" path="res://scenes/player/player.tscn" id="1_n3fk4"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://cbtmbxl32arhh" path="res://scenes/enemies/mummy_boss.tscn" id="18_o23y1"]
 [ext_resource type="Script" path="res://code/room_template.gd" id="18_xldw1"]
 [ext_resource type="Script" path="res://scenes/rooms/Resetables.gd" id="19_vba3e"]
+[ext_resource type="PackedScene" uid="uid://cb2gg61nyd206" path="res://scenes/SpecialTiles/door.tscn" id="20_27r82"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ecgbi"]
 size = Vector2(640, 360)
@@ -782,8 +783,10 @@ sources/4 = SubResource("TileSetAtlasSource_gj83y")
 script = ExtResource("1_lwtri")
 
 [node name="Player" parent="." instance=ExtResource("1_n3fk4")]
-position = Vector2(-2032, -656)
+position = Vector2(-2636, 3936)
 inventory = null
+has_melee = true
+has_ranged = true
 
 [node name="SpikeRespawner" type="Node2D" parent="." groups=["spike_respawner"]]
 
@@ -1084,6 +1087,11 @@ current_health = 30
 
 [node name="HealthPotion" parent="Area1/Boss1Room" instance=ExtResource("15_ac5pb")]
 position = Vector2(242, 153)
+
+[node name="Door" parent="Area1/Boss1Room" instance=ExtResource("20_27r82")]
+position = Vector2(632, 288)
+rotation = 1.57079
+scale = Vector2(1.96, 1)
 
 [node name="RoomTemplate4" parent="Area1" instance=ExtResource("1_rue84")]
 position = Vector2(640, 1312)

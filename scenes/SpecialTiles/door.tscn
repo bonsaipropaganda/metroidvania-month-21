@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb2gg61nyd206"]
+
+[ext_resource type="Texture2D" uid="uid://dqiwsvlyq7xh2" path="res://art/fake_wall.png" id="1_3gixq"]
+[ext_resource type="Script" path="res://code/SpecialTiles/door.gd" id="1_fw1m8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nco0s"]
+size = Vector2(48, 16)
+
+[node name="Door" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_fw1m8")
+
+[node name="Wall" type="Sprite2D" parent="."]
+texture = ExtResource("1_3gixq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nco0s")
