@@ -229,6 +229,7 @@ layer_1/tile_data = PackedInt32Array()
 
 [node name="SquareTileMover3" parent="Area1/1_Room 3/Resetables" index="1" instance=ExtResource("4_s8ktl")]
 position = Vector2(-544, 272)
+layer_0/tile_data = PackedInt32Array(-65536, 65536, 1, 65534, 0, 3, 65535, 65536, 3, -2, 0, 1, -1, 65536, 1, 0, 65536, 3, 1, 131072, 3, -65535, 131072, 1, -65538, 327680, 3, -65537, 327680, 3, -131072, 327680, 3, -131071, 327680, 3)
 square_size = Vector2(190, 0)
 dir = -1
 max_speed = 200

@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://mbdcw7ilgyaf"]
 
-[ext_resource type="TileSet" uid="uid://brn1jrk8704x0" path="res://code/util/tileset.tres" id="1_u4e78"]
+[ext_resource type="TileSet" uid="uid://cnj1s0jhun6hi" path="res://scenes/rooms/tilemap_updated.tres" id="1_1ylnw"]
 [ext_resource type="Script" path="res://code/SpecialTiles/SquareTileMover.gd" id="2_j2kcq"]
 
 [node name="SquareTileMover" type="TileMap"]
-tile_set = ExtResource("1_u4e78")
+tile_set = ExtResource("1_1ylnw")
 collision_animatable = true
 format = 2
 layer_0/tile_data = PackedInt32Array(-65536, 65536, 1, 65534, 0, 3, 65535, 65536, 3, -2, 0, 1, -1, 65536, 1, 0, 65536, 3, 1, 131072, 3, -65535, 131072, 1)
