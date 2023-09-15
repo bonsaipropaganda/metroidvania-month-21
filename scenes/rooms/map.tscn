@@ -96,9 +96,8 @@ size = Vector2(640.691, 3112)
 script = ExtResource("1_lwtri")
 
 [node name="Player" parent="." instance=ExtResource("1_n3fk4")]
-position = Vector2(-2224, 656)
+position = Vector2(-2128, -613)
 inventory = null
-has_melee = true
 
 [node name="SpikeRespawner" type="Node2D" parent="." groups=["spike_respawner"]]
 
@@ -147,9 +146,6 @@ shape = SubResource("RectangleShape2D_ecgbi")
 
 [node name="IntroNPC" parent="Area1/IntroRoom" index="1"]
 position = Vector2(-128, 9)
-
-[node name="HealthPotion" parent="Area1/IntroRoom" index="2"]
-position = Vector2(160, 9)
 
 [node name="RoomTemplate2" parent="Area1" instance=ExtResource("1_rue84")]
 position = Vector2(0, 352)
@@ -630,7 +626,7 @@ scale = Vector2(2, 2)
 position = Vector2(2592, 1458)
 
 [node name="weapon_collectible" parent="Area3/Part1/RoomTemplate6" instance=ExtResource("6_b7s16")]
-position = Vector2(240, 46)
+position = Vector2(197, 112)
 selected_weapon_type = 2
 
 [node name="SquareTileMover" parent="Area3/Part1/RoomTemplate6" instance=ExtResource("4_s8ktl")]
@@ -753,6 +749,9 @@ to_offset = Vector2(0, -400)
 
 [node name="Checkpoint" parent="Area3/Part2/RoomTemplate/Resetables" index="3" instance=ExtResource("14_medcb")]
 position = Vector2(266, -1152)
+
+[node name="HealthPotion" parent="Area3/Part2/RoomTemplate" instance=ExtResource("15_ac5pb")]
+position = Vector2(-223, -888)
 
 [node name="RoomTemplate2" parent="Area3/Part2" instance=ExtResource("1_rue84")]
 position = Vector2(1324, 1520)
