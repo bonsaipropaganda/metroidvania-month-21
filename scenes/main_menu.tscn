@@ -1,0 +1,125 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgj726xt80d0x"]
+
+[ext_resource type="Texture2D" uid="uid://bdbyuoiryeh0d" path="res://art/mainmenu.png" id="1_xx02i"]
+[ext_resource type="Script" path="res://code/main_menu.gd" id="2_cxkhd"]
+[ext_resource type="FontFile" uid="uid://bwyklgjhkjb54" path="res://font/Kenney Pixel.ttf" id="3_upoka"]
+[ext_resource type="Texture2D" uid="uid://bkvxurmm8u7fn" path="res://art/mainbutton.png" id="4_6rhxj"]
+
+[node name="MainMenu" type="Sprite2D"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_xx02i")
+centered = false
+script = ExtResource("2_cxkhd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 171.5
+offset_top = 82.0
+offset_right = 275.5
+offset_bottom = 122.0
+scale = Vector2(3, 3)
+theme_override_fonts/normal_font = ExtResource("3_upoka")
+text = "Metroidvania Game"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 843.0
+offset_top = 42.5
+offset_right = 947.0
+offset_bottom = 82.5
+scale = Vector2(3, 3)
+theme_override_fonts/normal_font = ExtResource("3_upoka")
+text = "CREDITS"
+
+[node name="Play" type="TextureButton" parent="."]
+offset_left = 266.0
+offset_top = 147.5
+offset_right = 331.0
+offset_bottom = 179.5
+texture_normal = ExtResource("4_6rhxj")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Play"]
+offset_left = 9.0
+offset_top = 2.0
+offset_right = 46.0
+offset_bottom = 17.0
+scale = Vector2(2, 2)
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("3_upoka")
+text = "Play"
+
+[node name="Credits" type="TextureButton" parent="."]
+offset_left = 265.5
+offset_top = 178.5
+offset_right = 400.5
+offset_bottom = 210.5
+texture_normal = ExtResource("4_6rhxj")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits"]
+offset_left = 9.0
+offset_top = 2.0
+offset_right = 46.0
+offset_bottom = 17.0
+scale = Vector2(2, 2)
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("3_upoka")
+text = "Credits"
+
+[node name="GoBack" type="TextureButton" parent="Credits"]
+offset_left = 912.0
+offset_top = 151.5
+offset_right = 1047.0
+offset_bottom = 183.5
+texture_normal = ExtResource("4_6rhxj")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits/GoBack"]
+offset_left = 9.0
+offset_top = 2.0
+offset_right = 56.0
+offset_bottom = 17.0
+scale = Vector2(2, 2)
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("3_upoka")
+text = "Go back"
+
+[node name="Quit" type="TextureButton" parent="."]
+offset_left = 265.0
+offset_top = 229.5
+offset_right = 381.0
+offset_bottom = 261.5
+texture_normal = ExtResource("4_6rhxj")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Quit"]
+offset_left = 9.5
+offset_top = -19.0
+offset_right = 46.5
+offset_bottom = -4.0
+scale = Vector2(2, 2)
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("3_upoka")
+text = "Exit"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+position_smoothing_enabled = true
+
+[node name="Credits2" type="RichTextLabel" parent="."]
+offset_left = 754.0
+offset_top = 107.0
+offset_right = 1007.0
+offset_bottom = 235.0
+scale = Vector2(2, 2)
+mouse_filter = 2
+theme_override_constants/line_separation = 3
+theme_override_fonts/normal_font = ExtResource("3_upoka")
+text = "Adverrt - music
+bonsaipropaganda - organizer, code
+Blue Solace - art
+Coffe - code, art
+HitmanVC - art, dialogue/story
+Jagginator - game design
+
+"
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Credits/GoBack" to="." method="_on_go_back_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
