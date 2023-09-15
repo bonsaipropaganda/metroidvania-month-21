@@ -22,6 +22,7 @@ var player
 @export var current_health = 2:
 	set(value):
 		current_health = value
+		SfxManager.sword_hit.play()
 		if health_bar:
 			health_bar.value = current_health
 		if current_health <= 0:

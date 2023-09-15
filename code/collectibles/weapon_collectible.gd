@@ -30,5 +30,6 @@ func _on_body_entered(body):
 			player.has_grapple = true
 		if selected_weapon_type == weapon_types.TNT:
 			player.has_tnt = true
+		SfxManager.pickup.play()
 		# at the end no matter what type of weapon it is remove the collectible
 		queue_free()

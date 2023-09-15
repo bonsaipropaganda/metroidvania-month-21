@@ -9,6 +9,7 @@ var wander = false
 
 @export var current_health = 2:
 	set(value):
+		SfxManager.sword_hit.play()
 		current_health = value
 		if current_health <= 0:
 			die()

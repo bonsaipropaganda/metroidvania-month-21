@@ -14,6 +14,7 @@ var direction = -1
 @export var current_health = 1:
 	set(value):
 		current_health = value
+		SfxManager.sword_hit.play()
 		if current_health <= 0:
 			die()
 

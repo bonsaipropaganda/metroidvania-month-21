@@ -137,6 +137,7 @@ func set_health(new_amount):
 	if new_amount < current_health:
 		$DamageHurtbox.do_iframes()
 		modulate.a = 0.5
+		SfxManager.hit.play()
 		
 		velocity = Vector2(-facing * 300, -100)
 		Global.do_freeze_frames(0.1)
@@ -165,6 +166,7 @@ func _on_damage_hurtbox_body_entered(body):
 
 
 func die():
+	SfxManager.death.play()
 	global_position = Global.player_checkpoint
 	$StateMachine.transition_state($StateMachine/States/Grounded)
 	velocity = Vector2.ZERO

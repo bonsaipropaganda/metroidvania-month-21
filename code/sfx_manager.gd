@@ -5,3 +5,4 @@ extends Node2D
 @onready var sword = $Sword
 @onready var pickup = $Pickup
 @onready var death = $Death
+@onready var hit = $Hit

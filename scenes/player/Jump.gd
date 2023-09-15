@@ -4,6 +4,7 @@ extends State
 @onready var animation = $"../../../Sprite"
 
 func enter():
+	SfxManager.jump.play()
 	target.has_ended_jump = false
 	target.get_node("Sprite").play("default")
 	target.get_node("Timers/CoyoteTimer").stop()

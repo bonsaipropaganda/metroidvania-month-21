@@ -8,6 +8,7 @@ var point = preload("res://scenes/player/grapple_point.tscn")
 var point_instance
 
 func enter():
+	SfxManager.pickup.play()
 	target.get_node("Sprite").play("default")
 	point_instance = point.instantiate()
 	var g = target.get_node("GrappleVector")

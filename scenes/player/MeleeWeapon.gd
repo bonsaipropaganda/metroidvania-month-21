@@ -4,6 +4,7 @@ extends Sprite2D
 @onready var animation_player = $"../../../AnimationPlayer"
 
 func use():
+	SfxManager.sword.play()
 	var timer = get_node("../../../Timers/AttackDurationTimer")
 	animation_player.play("melee")
 	visible = true
