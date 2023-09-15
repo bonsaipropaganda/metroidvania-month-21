@@ -633,7 +633,7 @@ scale = Vector2(2, 2)
 position = Vector2(2592, 1458)
 
 [node name="weapon_collectible" parent="Area3/Part1/RoomTemplate6" instance=ExtResource("6_b7s16")]
-position = Vector2(-24, 84)
+position = Vector2(-31, 114)
 selected_weapon_type = 2
 
 [node name="SquareTileMover" parent="Area3/Part1/RoomTemplate6" instance=ExtResource("4_s8ktl")]

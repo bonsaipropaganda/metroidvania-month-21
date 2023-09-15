@@ -15,7 +15,7 @@ Goose: Quack quack. I don't mind if you use my gun.
 	- I would never do that. You seem nice. Heck, you even let me use your gun.
 		Goose: I appreciate that. Go in peace.
 - Wow! A real gun! How do I use it?
-	Goose: You just press "x" or "?"
+	Goose: You just press right click. Easy as that.
 	Goose: Want me to tell you more about it?
 	- No, thanks.
 	- Yes, please!
@@ -24,5 +24,5 @@ Goose: Quack quack. I don't mind if you use my gun.
 
 ~ more_about_gun
 Goose: You can hold two bullets in this gun at a time.
-Goose: You get more bullets by using your sword on enemies!
+Goose: You get your bullets back by using your sword on enemies!
 Goose: This gun has another secret use.
