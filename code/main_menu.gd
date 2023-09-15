@@ -1,7 +1,11 @@
 extends Sprite2D
 @onready var main = preload("res://scenes/state_machine/main.tscn")
 
+func _ready():
+	MusicManager.menu.play()
+
 func _on_play_pressed():
+	MusicManager.menu.stop()
 	get_tree().change_scene_to_packed(main)
 
 func _on_credits_pressed():
