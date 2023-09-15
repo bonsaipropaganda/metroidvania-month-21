@@ -30,3 +30,5 @@ volume_db = 5.0
 
 [node name="Hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_jibb4")
+
+[node name="Gun" type="AudioStreamPlayer" parent="."]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_8"
+type="Resource"
+uid="uid://b8obotomruub0"
+path="res://.godot/imported/end_guy.dialogue-b2fce379a3ce42b16ef03cdb33e1df45.tres"
+
+[deps]
+
+source_file="res://dialog/end_guy.dialogue"
+dest_files=["res://.godot/imported/end_guy.dialogue-b2fce379a3ce42b16ef03cdb33e1df45.tres"]
+
+[params]
+
+defaults=true

@@ -108,6 +108,7 @@ func try_use_weapon():
 			weapon_in_use = true
 		elif Input.is_action_just_pressed("ranged_weapon") and has_ranged and ammo_count:
 			$Sprite/Equipment/RangedWeapon.use()
+			SfxManager.gun.play()
 			ammo_count = clamp(ammo_count - 1, 0, 2)
 			var ac = get_tree().get_nodes_in_group("ammo_count").pop_back()
 			if ac: ac.frame = ammo_count
