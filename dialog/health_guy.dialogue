@@ -1,17 +1,19 @@
 ~ start
 
-Sad Old Man: I live down here. I used to be a part of a group.
-- Oh wait, happened?
-	Sad Old Man: Thanks for asking. It's been so long since I talked to someone.
-	Sad Old Man: Unfortunately, they didn't make it.. and I lost my way. Things aren't so bad though. I eat rats and slimes. 
-	- Man, rats and slimes.. That sounds like a tough diet.
-		Sad Old Man: Yes, it's not the tastiest, but it is nutritious! 
-	- I'm sorry to hear that. How are you holding up? 
-		Sad Old Man: Oh, it's not so bad. Especially after getting to talk to you. 
-		if !Global.health_guy_gave_potion:
-			Sad Old Man: Thank you for talking with me. Here is a health potion I found. Good luck.
-			do Global.emit_health_potion()
-- Did they all die?
-	Sad Old Man: Sadly, yes..
-- It was nice meeting you. 
-	Sad Old Man: It was nice meeting you too. I hope you find what you're looking for down here.
+Mummy guy: Woah easy there I’m friendly!
+- What’s up with your clothes?
+	Mummy guy: I am trying to blend in with the mummies.
+	- And why would you do that?
+		Mummy guy: Well, It’s a long story.
+		- I'll hear the story.
+			Mummy: I had a mummy friend that I made here. The enemies here are controlled by something, one of them, which was my friend, snapped out of it and died protecting me.
+			- That’s sad.
+				But you know what’s funny.He taught me how to swing and use my cloth’s bandages as a grappling hook.
+			- I’m sorry for your loss.
+		- Okay, nice talking to you
+			=> END
+	- Understandable.
+		Mummyguy:- You wanna know something funny? I can swing by using my bandages.
+
+do Global.emit_health_potion()
+Mummy guy: By the way I gave you a health potion. Thanks for talking to me.

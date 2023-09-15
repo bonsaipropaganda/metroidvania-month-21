@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cc1fi4try2gs4"]
 
 [ext_resource type="Script" path="res://scenes/player/GrapplePoint.gd" id="1_l6g51"]
-[ext_resource type="Texture2D" uid="uid://dfi7lsm64yyw3" path="res://icon.svg" id="2_lmkrj"]
+[ext_resource type="Texture2D" uid="uid://dyctdv8wnnamg" path="res://art/grapplehookhook.png" id="2_57n1x"]
 
 [node name="GrapplePoint" type="Line2D" groups=["grapple_point"]]
 z_index = -1
@@ -11,5 +11,5 @@ default_color = Color(0.705882, 0.870588, 0.870588, 1)
 script = ExtResource("1_l6g51")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_lmkrj")
+position = Vector2(0, 5)
+texture = ExtResource("2_57n1x")

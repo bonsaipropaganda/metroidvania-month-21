@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ny4cy4eb27ey"]
+[gd_scene load_steps=6 format=3 uid="uid://ny4cy4eb27ey"]
 
 [ext_resource type="Script" path="res://code/UI/weapon_ui.gd" id="1_d7bdb"]
 [ext_resource type="PackedScene" uid="uid://bd3ljuhp5qlxg" path="res://scenes/UI/weapon_panel.tscn" id="2_m6liw"]
 [ext_resource type="Texture2D" uid="uid://b54l47k6kwebj" path="res://art/ranged_weapon.png" id="3_nk68c"]
+[ext_resource type="Texture2D" uid="uid://dyctdv8wnnamg" path="res://art/grapplehookhook.png" id="4_5udea"]
 [ext_resource type="Texture2D" uid="uid://dfi7lsm64yyw3" path="res://icon.svg" id="4_jswg7"]
 
 [node name="WeaponUI" type="Control"]
@@ -16,6 +17,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="MeleePanel" parent="HBoxContainer" instance=ExtResource("2_m6liw")]
+custom_minimum_size = Vector2(40, 16)
 layout_mode = 2
 
 [node name="RangedPanel" parent="HBoxContainer" instance=ExtResource("2_m6liw")]
@@ -28,8 +30,9 @@ texture = ExtResource("3_nk68c")
 layout_mode = 2
 
 [node name="Sprite2D" parent="HBoxContainer/GrapplePanel" index="0"]
-scale = Vector2(0.25, 0.101563)
-texture = ExtResource("4_jswg7")
+position = Vector2(-29, -24)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_5udea")
 
 [node name="TNTPanel" parent="HBoxContainer" instance=ExtResource("2_m6liw")]
 layout_mode = 2

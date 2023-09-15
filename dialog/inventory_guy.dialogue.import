@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_8"
+type="Resource"
+uid="uid://2q56wvtl3js"
+path="res://.godot/imported/inventory_guy.dialogue-42205f37f1fdf76220c30f79ed5d21cc.tres"
+
+[deps]
+
+source_file="res://dialog/inventory_guy.dialogue"
+dest_files=["res://.godot/imported/inventory_guy.dialogue-42205f37f1fdf76220c30f79ed5d21cc.tres"]
+
+[params]
+
+defaults=true

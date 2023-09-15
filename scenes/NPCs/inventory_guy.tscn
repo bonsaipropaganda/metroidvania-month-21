@@ -1,19 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://djy27j3eccokm"]
+[gd_scene load_steps=9 format=3 uid="uid://b2stpytvf3ugg"]
 
-[ext_resource type="PackedScene" uid="uid://cxfqd7vjr7gi0" path="res://scenes/NPCs/npc_template.tscn" id="1_q46s1"]
-[ext_resource type="Script" path="res://scenes/NPCs/gun_guy.gd" id="2_6l2hh"]
-[ext_resource type="Resource" uid="uid://di8chpqdxqa3o" path="res://dialog/gun_guy.dialogue" id="2_isaox"]
-[ext_resource type="Texture2D" uid="uid://dbmdr3vnv2x3k" path="res://art/pirategunnpcupdated_2.png" id="3_0sm3x"]
+[ext_resource type="PackedScene" uid="uid://cxfqd7vjr7gi0" path="res://scenes/NPCs/npc_template.tscn" id="1_y01ic"]
+[ext_resource type="Script" path="res://scenes/NPCs/gun_guy.gd" id="2_a1xim"]
+[ext_resource type="Resource" uid="uid://2q56wvtl3js" path="res://dialog/inventory_guy.dialogue" id="3_k1uai"]
+[ext_resource type="Texture2D" uid="uid://dbmdr3vnv2x3k" path="res://art/pirategunnpcupdated_2.png" id="4_d4m28"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_40kke"]
 size = Vector2(12.25, 23)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jdjxa"]
-atlas = ExtResource("3_0sm3x")
+atlas = ExtResource("4_d4m28")
 region = Rect2(0, 0, 48, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h5to6"]
-atlas = ExtResource("3_0sm3x")
+atlas = ExtResource("4_d4m28")
 region = Rect2(0, 64, 48, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8h43i"]
@@ -30,15 +30,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="GunGuy" instance=ExtResource("1_q46s1")]
-script = ExtResource("2_6l2hh")
+[node name="InventoryGuy" instance=ExtResource("1_y01ic")]
+script = ExtResource("2_a1xim")
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(-0.875, -5.5)
 shape = SubResource("RectangleShape2D_40kke")
 
 [node name="Actionable" parent="." index="1"]
-dialog_resource = ExtResource("2_isaox")
+dialog_resource = ExtResource("3_k1uai")
 
 [node name="EIndicator" parent="." index="3"]
 visible = false

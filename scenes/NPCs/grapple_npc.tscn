@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://1y3enjbiu2aw"]
+[gd_scene load_steps=4 format=3 uid="uid://cgyg66sa7c717"]
 
 [ext_resource type="PackedScene" uid="uid://cxfqd7vjr7gi0" path="res://scenes/NPCs/npc_template.tscn" id="1_mq2vp"]
 [ext_resource type="Resource" uid="uid://calsyly3ur6rp" path="res://dialog/grapple.dialogue" id="2_qsf1w"]
@@ -9,7 +9,10 @@
 [node name="Actionable" parent="." index="1"]
 dialog_resource = ExtResource("2_qsf1w")
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="5"]
+[node name="EIndicator" parent="." index="3"]
+position = Vector2(0, -48)
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="4"]
 position = Vector2(-4, -22)
 texture = ExtResource("2_tsci1")
 flip_h = true

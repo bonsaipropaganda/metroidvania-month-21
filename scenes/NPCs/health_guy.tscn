@@ -2,24 +2,24 @@
 
 [ext_resource type="PackedScene" uid="uid://cxfqd7vjr7gi0" path="res://scenes/NPCs/npc_template.tscn" id="1_4iufy"]
 [ext_resource type="Resource" uid="uid://bccal7ow0qiv4" path="res://dialog/health_guy.dialogue" id="2_xeip3"]
-[ext_resource type="Texture2D" uid="uid://0vyimoecfynl" path="res://art/Idle_SpriteSheet.png" id="3_6ip1f"]
+[ext_resource type="Texture2D" uid="uid://de5ikk4hss5mj" path="res://art/mummynpc_1.png" id="3_3l5hu"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xlppm"]
-atlas = ExtResource("3_6ip1f")
-region = Rect2(48, 16, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpq4s"]
+atlas = ExtResource("3_3l5hu")
+region = Rect2(0, 0, 48, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kgc76"]
-atlas = ExtResource("3_6ip1f")
-region = Rect2(32, 16, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_slc87"]
+atlas = ExtResource("3_3l5hu")
+region = Rect2(0, 64, 48, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4t87e"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xlppm")
+"texture": SubResource("AtlasTexture_qpq4s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kgc76")
+"texture": SubResource("AtlasTexture_slc87")
 }],
 "loop": true,
 "name": &"default",
@@ -34,8 +34,9 @@ position = Vector2(0.125, -3)
 [node name="Actionable" parent="." index="1"]
 dialog_resource = ExtResource("2_xeip3")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="5"]
-position = Vector2(0, -6)
-scale = Vector2(1.625, 1.6875)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4"]
+position = Vector2(-2, -8)
+scale = Vector2(0.458333, 0.40625)
 sprite_frames = SubResource("SpriteFrames_4t87e")
 frame_progress = 0.890575
+flip_h = true

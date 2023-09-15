@@ -16,7 +16,7 @@ var direction = 0
 var player
 @onready var sprite = $Sprite
 @onready var boss_col_shape = $CollisionShape2D
-@onready var door = $"../../Door"
+#@onready var door = $"../../Door"
 @onready var health_bar = $ProgressBar
 
 @export var current_health = 2:
@@ -61,7 +61,7 @@ func _physics_process(delta):
 	$StateMachine.update(delta)
 
 func die():
-	door.current_state = door.state.opened
+#	door.current_state = door.state.opened
 	Global.boss_1_defeated = true
 	queue_free()
 
@@ -92,4 +92,4 @@ func _on_move_timer_timeout():
 func _on_player_detector_body_entered(body):
 	if body.is_in_group("player"):
 		$Timers/MoveTimer.start()
-		door.current_state = door.state.closed
+#		door.current_state = door.state.closed

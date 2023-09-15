@@ -9,10 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://1qs2kjqibo08" path="res://scenes/SpecialTiles/touch_tile_mover.tscn" id="5_4te1q"]
 [ext_resource type="PackedScene" uid="uid://buyw7kppa2e5x" path="res://scenes/NPCs/health_guy.tscn" id="5_lac0a"]
 [ext_resource type="PackedScene" uid="uid://gfbs0r3hpxmg" path="res://scenes/collectibles/weapon_collectible.tscn" id="6_b7s16"]
+[ext_resource type="PackedScene" uid="uid://eqojlyb8sk42" path="res://scenes/NPCs/sword_npc.tscn" id="6_y122n"]
 [ext_resource type="Texture2D" uid="uid://ckx8xfjlkgdej" path="res://art/bg_1_front.png" id="7_iur12"]
 [ext_resource type="Texture2D" uid="uid://c1oaxi13wb65" path="res://art/bg_1_back.png" id="7_lkooo"]
-[ext_resource type="PackedScene" uid="uid://bu53br6ncj0uy" path="res://scenes/NPCs/sword_npc.tscn" id="7_t0kq8"]
 [ext_resource type="PackedScene" uid="uid://bijfpusp6jqpe" path="res://scenes/SpecialTiles/breakable_wall.tscn" id="8_0ot6j"]
+[ext_resource type="PackedScene" uid="uid://b2stpytvf3ugg" path="res://scenes/NPCs/inventory_guy.tscn" id="8_sphew"]
 [ext_resource type="PackedScene" uid="uid://tctc2mpexra5" path="res://scenes/enemies/mummy_enemy.tscn" id="9_qocy4"]
 [ext_resource type="PackedScene" uid="uid://b8vt3p3d4rbl7" path="res://scenes/enemies/slime_enemy.tscn" id="13_psw5e"]
 [ext_resource type="PackedScene" uid="uid://ditnub3fdhylu" path="res://scenes/checkpoint.tscn" id="14_medcb"]
@@ -22,14 +23,13 @@
 [ext_resource type="PackedScene" uid="uid://dtrs0rlinvqfd" path="res://scenes/NPCs/hint_guy.tscn" id="18_vegfs"]
 [ext_resource type="Script" path="res://code/room_template.gd" id="18_xldw1"]
 [ext_resource type="Script" path="res://scenes/rooms/Resetables.gd" id="19_vba3e"]
-[ext_resource type="PackedScene" uid="uid://cb2gg61nyd206" path="res://scenes/SpecialTiles/door.tscn" id="20_27r82"]
 [ext_resource type="PackedScene" uid="uid://d4dwci6e2i0rq" path="res://scenes/SpecialTiles/one_way_platform.tscn" id="20_a2nyh"]
 [ext_resource type="PackedScene" uid="uid://qfkkvl5he35u" path="res://scenes/enemies/bat_enemy.tscn" id="21_ol00b"]
 [ext_resource type="PackedScene" uid="uid://m6omm7rhfupq" path="res://scenes/main_tile_map.tscn" id="22_dst4c"]
 [ext_resource type="PackedScene" uid="uid://djy27j3eccokm" path="res://scenes/NPCs/gun_guy.tscn" id="22_jeo7f"]
 [ext_resource type="PackedScene" uid="uid://bj2e5c8vu27js" path="res://scenes/NPCs/lonely_grapple_person.tscn" id="24_w4snq"]
 [ext_resource type="PackedScene" uid="uid://bjv5ej0ykfexf" path="res://scenes/boss2/boss_2.tscn" id="25_cnug7"]
-[ext_resource type="PackedScene" uid="uid://1y3enjbiu2aw" path="res://scenes/NPCs/grapple_npc.tscn" id="26_0w4li"]
+[ext_resource type="PackedScene" uid="uid://cgyg66sa7c717" path="res://scenes/NPCs/grapple_npc.tscn" id="25_iswxk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ecgbi"]
 size = Vector2(640, 360)
@@ -98,7 +98,7 @@ size = Vector2(640.691, 3112)
 script = ExtResource("1_lwtri")
 
 [node name="Player" parent="." instance=ExtResource("1_n3fk4")]
-position = Vector2(2370, 1383)
+position = Vector2(-2128, -613)
 inventory = null
 
 [node name="SpikeRespawner" type="Node2D" parent="." groups=["spike_respawner"]]
@@ -115,19 +115,21 @@ position = Vector2(-2016, -720)
 [node name="Tutorial 2" parent="TutorialArea" instance=ExtResource("1_rue84")]
 position = Vector2(-1376, -720)
 
-[node name="SwordNPC" parent="TutorialArea/Tutorial 2/Resetables" index="0" instance=ExtResource("7_t0kq8")]
-position = Vector2(93, 39)
-rotation = 3.14159
-scale = Vector2(1, -1)
-
 [node name="weapon_collectible" parent="TutorialArea/Tutorial 2" instance=ExtResource("6_b7s16")]
-position = Vector2(-113, 100)
+position = Vector2(48, 32)
+
+[node name="SwordNPC" parent="TutorialArea/Tutorial 2" instance=ExtResource("6_y122n")]
+position = Vector2(112, 38)
 
 [node name="Tutorial 3" parent="TutorialArea" instance=ExtResource("1_rue84")]
 position = Vector2(-736, -720)
 
 [node name="SlimeEnemy" parent="TutorialArea/Tutorial 3/Resetables" index="0" instance=ExtResource("13_psw5e")]
 position = Vector2(-23, 97)
+
+[node name="InventoryGuy" parent="TutorialArea/Tutorial 3/Resetables" index="1" instance=ExtResource("8_sphew")]
+position = Vector2(-16, 21)
+scale = Vector2(2, 2)
 
 [node name="Tutorial 4" parent="TutorialArea" instance=ExtResource("1_rue84")]
 position = Vector2(-640, -352)
@@ -323,7 +325,7 @@ position = Vector2(-32, 32)
 position = Vector2(-640, 1872)
 
 [node name="HealthGuy" parent="Area1/1_NPC" instance=ExtResource("5_lac0a")]
-position = Vector2(112, 65)
+position = Vector2(112, 68)
 scale = Vector2(2, 2)
 
 [node name="breakable_wall" parent="Area1/1_NPC" instance=ExtResource("8_0ot6j")]
@@ -419,11 +421,6 @@ scale = Vector2(2.32006, 1.11984)
 [node name="OneWayPlatform8" parent="Area1/Boss1Room" instance=ExtResource("20_a2nyh")]
 position = Vector2(-528, -105)
 scale = Vector2(2.32006, 1.11984)
-
-[node name="Door" parent="Area1/Boss1Room" instance=ExtResource("20_27r82")]
-position = Vector2(632, 288)
-rotation = 1.57079
-scale = Vector2(1.96, 1)
 
 [node name="Area2" type="Node" parent="."]
 
@@ -633,7 +630,7 @@ scale = Vector2(2, 2)
 position = Vector2(2592, 1458)
 
 [node name="weapon_collectible" parent="Area3/Part1/RoomTemplate6" instance=ExtResource("6_b7s16")]
-position = Vector2(-31, 114)
+position = Vector2(197, 112)
 selected_weapon_type = 2
 
 [node name="SquareTileMover" parent="Area3/Part1/RoomTemplate6" instance=ExtResource("4_s8ktl")]
@@ -641,8 +638,8 @@ position = Vector2(-160, -98)
 layer_0/tile_data = PackedInt32Array(-65536, 65536, 1, 65534, 0, 3, 65535, 65536, 3, -2, 0, 1, -1, 65536, 1, 0, 65536, 3, 1, 131072, 3, -65535, 131072, 1, -65538, 327680, 3, -65537, 327680, 3, -131072, 327680, 3, -131071, 327680, 3)
 square_size = Vector2(300, 100)
 
-[node name="GrappleNPC" parent="Area3/Part1/RoomTemplate6" instance=ExtResource("26_0w4li")]
-position = Vector2(143, 118)
+[node name="GrappleNPC" parent="Area3/Part1/RoomTemplate6" instance=ExtResource("25_iswxk")]
+position = Vector2(253, 115)
 
 [node name="RoomTemplate2" type="Area2D" parent="Area3/Part1" groups=["room"]]
 position = Vector2(1299, 931)
