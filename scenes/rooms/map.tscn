@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://cowv5ggujrlvr"]
+[gd_scene load_steps=52 format=3 uid="uid://cowv5ggujrlvr"]
 
 [ext_resource type="Script" path="res://code/map/map.gd" id="1_lwtri"]
 [ext_resource type="PackedScene" uid="uid://dgsm7vqcxipqs" path="res://scenes/player/player.tscn" id="1_n3fk4"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://gfbs0r3hpxmg" path="res://scenes/collectibles/weapon_collectible.tscn" id="6_b7s16"]
 [ext_resource type="Texture2D" uid="uid://ckx8xfjlkgdej" path="res://art/bg_1_front.png" id="7_iur12"]
 [ext_resource type="Texture2D" uid="uid://c1oaxi13wb65" path="res://art/bg_1_back.png" id="7_lkooo"]
+[ext_resource type="PackedScene" uid="uid://bu53br6ncj0uy" path="res://scenes/NPCs/sword_npc.tscn" id="7_t0kq8"]
 [ext_resource type="PackedScene" uid="uid://bijfpusp6jqpe" path="res://scenes/SpecialTiles/breakable_wall.tscn" id="8_0ot6j"]
 [ext_resource type="PackedScene" uid="uid://tctc2mpexra5" path="res://scenes/enemies/mummy_enemy.tscn" id="9_qocy4"]
 [ext_resource type="PackedScene" uid="uid://b8vt3p3d4rbl7" path="res://scenes/enemies/slime_enemy.tscn" id="13_psw5e"]
@@ -28,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://djy27j3eccokm" path="res://scenes/NPCs/gun_guy.tscn" id="22_jeo7f"]
 [ext_resource type="PackedScene" uid="uid://bj2e5c8vu27js" path="res://scenes/NPCs/lonely_grapple_person.tscn" id="24_w4snq"]
 [ext_resource type="PackedScene" uid="uid://bjv5ej0ykfexf" path="res://scenes/boss2/boss_2.tscn" id="25_cnug7"]
+[ext_resource type="PackedScene" uid="uid://1y3enjbiu2aw" path="res://scenes/NPCs/grapple_npc.tscn" id="26_0w4li"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ecgbi"]
 size = Vector2(640, 360)
@@ -96,7 +98,7 @@ size = Vector2(640.691, 3112)
 script = ExtResource("1_lwtri")
 
 [node name="Player" parent="." instance=ExtResource("1_n3fk4")]
-position = Vector2(-2128, -613)
+position = Vector2(2370, 1383)
 inventory = null
 
 [node name="SpikeRespawner" type="Node2D" parent="." groups=["spike_respawner"]]
@@ -113,8 +115,13 @@ position = Vector2(-2016, -720)
 [node name="Tutorial 2" parent="TutorialArea" instance=ExtResource("1_rue84")]
 position = Vector2(-1376, -720)
 
+[node name="SwordNPC" parent="TutorialArea/Tutorial 2/Resetables" index="0" instance=ExtResource("7_t0kq8")]
+position = Vector2(93, 39)
+rotation = 3.14159
+scale = Vector2(1, -1)
+
 [node name="weapon_collectible" parent="TutorialArea/Tutorial 2" instance=ExtResource("6_b7s16")]
-position = Vector2(128, 32)
+position = Vector2(-113, 100)
 
 [node name="Tutorial 3" parent="TutorialArea" instance=ExtResource("1_rue84")]
 position = Vector2(-736, -720)
@@ -626,13 +633,16 @@ scale = Vector2(2, 2)
 position = Vector2(2592, 1458)
 
 [node name="weapon_collectible" parent="Area3/Part1/RoomTemplate6" instance=ExtResource("6_b7s16")]
-position = Vector2(197, 112)
+position = Vector2(-24, 84)
 selected_weapon_type = 2
 
 [node name="SquareTileMover" parent="Area3/Part1/RoomTemplate6" instance=ExtResource("4_s8ktl")]
 position = Vector2(-160, -98)
 layer_0/tile_data = PackedInt32Array(-65536, 65536, 1, 65534, 0, 3, 65535, 65536, 3, -2, 0, 1, -1, 65536, 1, 0, 65536, 3, 1, 131072, 3, -65535, 131072, 1, -65538, 327680, 3, -65537, 327680, 3, -131072, 327680, 3, -131071, 327680, 3)
 square_size = Vector2(300, 100)
+
+[node name="GrappleNPC" parent="Area3/Part1/RoomTemplate6" instance=ExtResource("26_0w4li")]
+position = Vector2(143, 118)
 
 [node name="RoomTemplate2" type="Area2D" parent="Area3/Part1" groups=["room"]]
 position = Vector2(1299, 931)

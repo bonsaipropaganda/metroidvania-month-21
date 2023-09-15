@@ -37,6 +37,7 @@ offset_bottom = 179.5
 texture_normal = ExtResource("4_6rhxj")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Play"]
+layout_mode = 0
 offset_left = 9.0
 offset_top = 2.0
 offset_right = 46.0
@@ -54,6 +55,7 @@ offset_bottom = 210.5
 texture_normal = ExtResource("4_6rhxj")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Credits"]
+layout_mode = 0
 offset_left = 9.0
 offset_top = 2.0
 offset_right = 46.0
@@ -64,6 +66,7 @@ theme_override_fonts/normal_font = ExtResource("3_upoka")
 text = "Credits"
 
 [node name="GoBack" type="TextureButton" parent="Credits"]
+layout_mode = 0
 offset_left = 912.0
 offset_top = 151.5
 offset_right = 1047.0
@@ -71,6 +74,7 @@ offset_bottom = 183.5
 texture_normal = ExtResource("4_6rhxj")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Credits/GoBack"]
+layout_mode = 0
 offset_left = 9.0
 offset_top = 2.0
 offset_right = 56.0
@@ -88,6 +92,7 @@ offset_bottom = 244.0
 texture_normal = ExtResource("4_6rhxj")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Quit"]
+layout_mode = 0
 offset_left = 8.5
 offset_top = -1.5
 offset_right = 45.5
