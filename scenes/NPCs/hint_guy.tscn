@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtrs0rlinvqfd"]
+[gd_scene load_steps=7 format=3 uid="uid://dtrs0rlinvqfd"]
 
 [ext_resource type="PackedScene" uid="uid://cxfqd7vjr7gi0" path="res://scenes/NPCs/npc_template.tscn" id="1_xrtiy"]
 [ext_resource type="Texture2D" uid="uid://0vyimoecfynl" path="res://art/Idle_SpriteSheet.png" id="2_3bj5w"]
+[ext_resource type="Resource" uid="uid://c37s706xjwinx" path="res://dialog/hint_guy.dialogue" id="2_u5wu5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5o2be"]
 atlas = ExtResource("2_3bj5w")
@@ -26,6 +27,9 @@ animations = [{
 }]
 
 [node name="HintGuy" instance=ExtResource("1_xrtiy")]
+
+[node name="Actionable" parent="." index="1"]
+dialog_resource = ExtResource("2_u5wu5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="5"]
 sprite_frames = SubResource("SpriteFrames_l8ccn")

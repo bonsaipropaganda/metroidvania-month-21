@@ -16,7 +16,7 @@ var direction = 0
 var player
 @onready var sprite = $Sprite
 @onready var boss_col_shape = $CollisionShape2D
-@onready var door = $"../Door"
+@onready var door = $"../../Door"
 @onready var health_bar = $ProgressBar
 
 @export var current_health = 2:

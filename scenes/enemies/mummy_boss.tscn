@@ -342,10 +342,10 @@ size = Vector2(27, 32)
 size = Vector2(133, 61)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_brg2i"]
-size = Vector2(30, 31)
+size = Vector2(33, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6mqy"]
-size = Vector2(31, 30)
+size = Vector2(33, 33)
 
 [sub_resource type="Animation" id="Animation_kl2ob"]
 length = 0.001
@@ -504,7 +504,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-65, -0.25, 0, 0.25, 0, 66, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(-130, -0.25, 0, 0.25, 0, 66, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 2.4)
 }
 tracks/2/type = "bezier"
@@ -612,16 +612,16 @@ polygon = PackedVector2Array(1, 7, 4, 25, -1, 31, 5, 33, 32, 33, 32, 29, 16, 25,
 
 [node name="rocks" parent="." groups=["enemy_attack"] instance=ExtResource("10_oymc0")]
 visible = false
-position = Vector2(-1, -65)
+position = Vector2(-1, -130)
 collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" parent="rocks" index="0"]
-position = Vector2(146, -47.5)
+position = Vector2(147.5, -47.5)
 shape = SubResource("RectangleShape2D_brg2i")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="rocks"]
-position = Vector2(50.5, -50)
+position = Vector2(51.5, -48.5)
 shape = SubResource("RectangleShape2D_d6mqy")
 
 [node name="TileMap" type="TileMap" parent="rocks"]

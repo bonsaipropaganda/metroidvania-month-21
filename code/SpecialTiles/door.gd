@@ -20,6 +20,6 @@ func _on_state_changed():
 	if current_state == state.opened:
 		wall_sprite.visible = false
 		col_shape.set_deferred("disabled",true)
-	else: 
+	elif current_state == state.closed: 
 		wall_sprite.visible = true
 		col_shape.set_deferred("disabled",false)
