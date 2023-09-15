@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_8"
+type="Resource"
+uid="uid://b1qi2hwgh3vcf"
+path="res://.godot/imported/sword.dialogue-bfd6e1d95ffa92c0c251e3b6b490c1dd.tres"
+
+[deps]
+
+source_file="res://dialog/sword.dialogue"
+dest_files=["res://.godot/imported/sword.dialogue-bfd6e1d95ffa92c0c251e3b6b490c1dd.tres"]
+
+[params]
+
+defaults=true

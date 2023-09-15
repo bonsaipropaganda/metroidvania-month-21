@@ -1,0 +1,13 @@
+~ intro
+
+Sword guy: Oh what it this you have here...
+Sword guy: GAH, a weapon? Have you come here to slay me? 
+- Yes.
+	Sword guy: Ha! I bet you don't even know how to use it!
+	Sword guy: Obviously you press left click.. Haha, fool.
+	=> END
+- I don't even know how to use this thing.
+	Sword guy: Excellent.
+	Sword guy: Now as long as you don't figure out that you need to press left click, I shall have the upper hand
+	=> END
+=> END

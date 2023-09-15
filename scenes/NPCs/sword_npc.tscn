@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://bu53br6ncj0uy"]
+
+[ext_resource type="PackedScene" uid="uid://cxfqd7vjr7gi0" path="res://scenes/NPCs/npc_template.tscn" id="1_bqyj2"]
+[ext_resource type="Resource" uid="uid://b1qi2hwgh3vcf" path="res://dialog/sword.dialogue" id="2_dxv61"]
+[ext_resource type="Texture2D" uid="uid://dag8dexmdom3e" path="res://art/swordguynpc_2.png" id="3_p4ggn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2saq"]
+atlas = ExtResource("3_p4ggn")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_teeaq"]
+atlas = ExtResource("3_p4ggn")
+region = Rect2(0, 64, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1g5kh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2saq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_teeaq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="SwordNPC" instance=ExtResource("1_bqyj2")]
+
+[node name="Actionable" parent="." index="1"]
+dialog_resource = ExtResource("2_dxv61")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="." index="5"]
+position = Vector2(4, -22)
+sprite_frames = SubResource("SpriteFrames_1g5kh")
+autoplay = "default"

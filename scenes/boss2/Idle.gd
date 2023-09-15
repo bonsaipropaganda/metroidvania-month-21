@@ -3,7 +3,6 @@ extends State
 @onready var to_states = [
 	get_node("../Roam"),
 	get_node("../Jump"),
-	get_node("../Jump"),
 	get_node("../Shooting"),
 	]
 
