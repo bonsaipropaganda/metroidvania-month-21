@@ -1,0 +1,10 @@
+~ start
+
+Sal: This here is my home.
+Sal: I live down here.
+- You're weird. Bye.
+	=> END
+- Got any grapes?
+	Sal: No, but that would be nice. 
+	Sal: Speaking of things that start with the letter 'g' though. I did hear there is a grappling hook around here.
+=> END

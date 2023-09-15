@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://bj2e5c8vu27js"]
+
+[ext_resource type="PackedScene" uid="uid://cxfqd7vjr7gi0" path="res://scenes/NPCs/npc_template.tscn" id="1_ifkae"]
+[ext_resource type="Texture2D" uid="uid://0vyimoecfynl" path="res://art/Idle_SpriteSheet.png" id="2_c64ih"]
+[ext_resource type="Resource" uid="uid://543p20inqjgu" path="res://dialog/lonely_grapple.dialogue" id="2_kqtlb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpu6y"]
+atlas = ExtResource("2_c64ih")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0tvk"]
+atlas = ExtResource("2_c64ih")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s8sjf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpu6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0tvk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="NPCTemplate" instance=ExtResource("1_ifkae")]
+
+[node name="Actionable" parent="." index="1"]
+dialog_resource = ExtResource("2_kqtlb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="5"]
+sprite_frames = SubResource("SpriteFrames_s8sjf")
