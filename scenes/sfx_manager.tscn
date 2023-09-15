@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dixkoltwpuep1"]
+[gd_scene load_steps=9 format=3 uid="uid://dixkoltwpuep1"]
 
 [ext_resource type="AudioStream" uid="uid://c5jnxfm0p46jy" path="res://sound/sfx/17_orc_atk_sword_1.wav" id="1_53pp0"]
 [ext_resource type="Script" path="res://code/sfx_manager.gd" id="1_qhm4y"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://babfa45opo41j" path="res://sound/sfx/07_human_atk_sword_1.wav" id="4_nvuuw"]
 [ext_resource type="AudioStream" uid="uid://bfmt3d7wq7yqu" path="res://sound/sfx/14_human_death_spin.wav" id="6_5adbx"]
 [ext_resource type="AudioStream" uid="uid://dncgrdfy101yk" path="res://sound/sfx/hit.wav" id="7_jibb4"]
+[ext_resource type="AudioStream" uid="uid://cscue2dbx3f64" path="res://sound/sfx/shotgun-firing-4-6746.mp3" id="8_jw0yx"]
 
 [node name="SFXManager" type="Node2D"]
 script = ExtResource("1_qhm4y")
@@ -32,3 +33,4 @@ volume_db = 5.0
 stream = ExtResource("7_jibb4")
 
 [node name="Gun" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_jw0yx")
