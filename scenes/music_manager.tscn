@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://tqtbkjgnbq4y"]
+
+[ext_resource type="Script" path="res://code/music_manager.gd" id="1_6subw"]
+[ext_resource type="AudioStream" uid="uid://djwlijvt2nrl0" path="res://sound/music/metroidvania.ogg" id="1_sisct"]
+[ext_resource type="AudioStream" uid="uid://dxrgwq5ltqpfl" path="res://sound/music/phantomx27s-embrace-164479.mp3" id="2_wew6x"]
+
+[node name="MusicManager" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_6subw")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_sisct")
+
+[node name="Menu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_wew6x")
+volume_db = 5.0

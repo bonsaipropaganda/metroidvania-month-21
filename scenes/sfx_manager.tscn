@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://dixkoltwpuep1"]
+
+[ext_resource type="AudioStream" uid="uid://c5jnxfm0p46jy" path="res://sound/sfx/17_orc_atk_sword_1.wav" id="1_53pp0"]
+[ext_resource type="Script" path="res://code/sfx_manager.gd" id="1_qhm4y"]
+[ext_resource type="AudioStream" uid="uid://d4nljonqr551o" path="res://sound/sfx/12_human_jump_1.wav" id="2_md3gt"]
+[ext_resource type="AudioStream" uid="uid://bo20yo3abjp3p" path="res://sound/sfx/weapon_pickup.wav" id="3_hgsii"]
+[ext_resource type="AudioStream" uid="uid://babfa45opo41j" path="res://sound/sfx/07_human_atk_sword_1.wav" id="4_nvuuw"]
+[ext_resource type="AudioStream" uid="uid://bfmt3d7wq7yqu" path="res://sound/sfx/14_human_death_spin.wav" id="6_5adbx"]
+
+[node name="SFXManager" type="Node2D"]
+script = ExtResource("1_qhm4y")
+
+[node name="SwordHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_53pp0")
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_md3gt")
+
+[node name="Pickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hgsii")
+
+[node name="Sword" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_nvuuw")
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_5adbx")
