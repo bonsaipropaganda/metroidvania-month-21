@@ -96,11 +96,9 @@ size = Vector2(640.691, 3112)
 script = ExtResource("1_lwtri")
 
 [node name="Player" parent="." instance=ExtResource("1_n3fk4")]
-position = Vector2(2336, 1906)
+position = Vector2(-2224, 656)
 inventory = null
 has_melee = true
-has_ranged = true
-has_grapple = true
 
 [node name="SpikeRespawner" type="Node2D" parent="." groups=["spike_respawner"]]
 
@@ -234,6 +232,9 @@ position = Vector2(-2560, 736)
 
 [node name="MummyEnemy" parent="Area1/1_Room 2/Resetables" index="0" instance=ExtResource("9_qocy4")]
 position = Vector2(89, -48)
+
+[node name="Checkpoint" parent="Area1/1_Room 2/Resetables" index="1" instance=ExtResource("14_medcb")]
+position = Vector2(88, 48)
 
 [node name="HealthPotion" parent="Area1/1_Room 2" instance=ExtResource("15_ac5pb")]
 position = Vector2(-256, -57)
@@ -683,6 +684,9 @@ to_offset = Vector2(400, 0)
 max_speed = 300
 accel = 50
 
+[node name="Checkpoint" parent="Area3/Part1/RoomTemplate2/Resetables" instance=ExtResource("14_medcb")]
+position = Vector2(197, 237)
+
 [node name="RoomTemplate3" type="Area2D" parent="Area3/Part1" groups=["room"]]
 position = Vector2(1945, 554)
 script = ExtResource("18_xldw1")
@@ -696,6 +700,10 @@ script = ExtResource("19_vba3e")
 
 [node name="SquareTileMover" parent="Area3/Part1/RoomTemplate3/Resetables" instance=ExtResource("4_s8ktl")]
 position = Vector2(-25, 134)
+square_size = Vector2(100, 150)
+
+[node name="SquareTileMover2" parent="Area3/Part1/RoomTemplate3/Resetables" instance=ExtResource("4_s8ktl")]
+position = Vector2(263, -58)
 square_size = Vector2(100, 150)
 
 [node name="RoomTemplate5" type="Area2D" parent="Area3/Part1" groups=["room"]]
@@ -743,6 +751,9 @@ position = Vector2(-175, -857)
 layer_0/tile_data = PackedInt32Array(65535, 65536, 3, 0, 65536, 3, -65536, 65536, 1, -1, 65536, 1, 3, 131072, 3, -65533, 131072, 1, 2, 65536, 3, -65534, 65536, 1, 1, 65536, 3, -65535, 65536, 1, 65534, 65536, 3, -2, 65536, 1, 65533, 65536, 3, -3, 65536, 1, 65532, 65536, 3, -4, 65536, 1, 65531, 0, 3, -5, 0, 1)
 to_offset = Vector2(0, -400)
 
+[node name="Checkpoint" parent="Area3/Part2/RoomTemplate/Resetables" index="3" instance=ExtResource("14_medcb")]
+position = Vector2(266, -1152)
+
 [node name="RoomTemplate2" parent="Area3/Part2" instance=ExtResource("1_rue84")]
 position = Vector2(1324, 1520)
 
@@ -779,6 +790,12 @@ position = Vector2(-528, -64)
 
 [node name="SlimeEnemy4" parent="Area3/Part2/RoomTemplate8/Resetables" index="3" instance=ExtResource("13_psw5e")]
 position = Vector2(544, -62)
+
+[node name="Checkpoint" parent="Area3/Part2/RoomTemplate8/Resetables" index="4" instance=ExtResource("14_medcb")]
+position = Vector2(-80, 96)
+
+[node name="Checkpoint2" parent="Area3/Part2/RoomTemplate8/Resetables" index="5" instance=ExtResource("14_medcb")]
+position = Vector2(160, 97)
 
 [node name="RoomTemplate3" type="Area2D" parent="Area3/Part2" groups=["room"]]
 position = Vector2(1324, 1894)
@@ -850,6 +867,9 @@ position = Vector2(-73, -74)
 
 [node name="SlimeEnemy2" parent="Area3/Part2/RoomTemplate10/Resetables" index="1" instance=ExtResource("13_psw5e")]
 position = Vector2(70, -74)
+
+[node name="Checkpoint" parent="Area3/Part2/RoomTemplate10/Resetables" index="2" instance=ExtResource("14_medcb")]
+position = Vector2(215, 73)
 
 [node name="RoomTemplate5" parent="Area3/Part2" instance=ExtResource("1_rue84")]
 position = Vector2(2624, 2247)
