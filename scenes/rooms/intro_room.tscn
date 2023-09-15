@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1vr1xgd37s7x"]
+[gd_scene load_steps=4 format=3 uid="uid://c1vr1xgd37s7x"]
 
 [ext_resource type="PackedScene" uid="uid://ds6gnw2rodjno" path="res://scenes/rooms/room_template.tscn" id="1_ay2kb"]
 [ext_resource type="PackedScene" uid="uid://c0ybhq0dtye5s" path="res://scenes/NPCs/nathan.tscn" id="2_cho0y"]
-[ext_resource type="PackedScene" uid="uid://cemuf3w188sj0" path="res://scenes/collectibles/health_potion.tscn" id="3_mpc1k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smay3"]
 size = Vector2(640, 360)
@@ -14,6 +13,3 @@ shape = SubResource("RectangleShape2D_smay3")
 
 [node name="IntroNPC" parent="." index="1" instance=ExtResource("2_cho0y")]
 position = Vector2(-16, -152)
-
-[node name="HealthPotion" parent="." index="2" instance=ExtResource("3_mpc1k")]
-position = Vector2(138, -152)
