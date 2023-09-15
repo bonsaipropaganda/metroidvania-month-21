@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_8"
+type="Resource"
+uid="uid://calsyly3ur6rp"
+path="res://.godot/imported/grapple.dialogue-a3918e8a661d584b92243c0a907a0320.tres"
+
+[deps]
+
+source_file="res://dialog/grapple.dialogue"
+dest_files=["res://.godot/imported/grapple.dialogue-a3918e8a661d584b92243c0a907a0320.tres"]
+
+[params]
+
+defaults=true

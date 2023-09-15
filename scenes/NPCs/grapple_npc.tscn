@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://1y3enjbiu2aw"]
+
+[ext_resource type="PackedScene" uid="uid://cxfqd7vjr7gi0" path="res://scenes/NPCs/npc_template.tscn" id="1_mq2vp"]
+
+[node name="GrappleNPC" instance=ExtResource("1_mq2vp")]
