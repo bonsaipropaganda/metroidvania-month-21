@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://brit4l57f7om5"]
+
+[ext_resource type="Texture2D" uid="uid://dl0ymv503o1xb" path="res://art/cactus.png" id="1_hkyof"]
+[ext_resource type="Script" path="res://code/util/DamageHitbox.gd" id="2_ab5om"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wi8br"]
+size = Vector2(11.625, 61.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7sh8"]
+size = Vector2(7, 12)
+
+[node name="CactusEnemy" type="CharacterBody2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_hkyof")
+
+[node name="DamageHitbox" type="Area2D" parent="." groups=["enemy_attack"]]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("2_ab5om")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHitbox"]
+position = Vector2(-3, 1.75)
+shape = SubResource("RectangleShape2D_wi8br")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageHitbox"]
+position = Vector2(6.5, -9)
+shape = SubResource("RectangleShape2D_b7sh8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-8, 32, -8, -28, 2, -28, 2, -14, 9, -14, 9, -5, 2, -5, 2, 32)
+disabled = true
