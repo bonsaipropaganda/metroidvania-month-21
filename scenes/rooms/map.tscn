@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cowv5ggujrlvr"]
+[gd_scene load_steps=54 format=3 uid="uid://cowv5ggujrlvr"]
 
 [ext_resource type="Script" path="res://code/map/map.gd" id="1_lwtri"]
 [ext_resource type="PackedScene" uid="uid://dgsm7vqcxipqs" path="res://scenes/player/player.tscn" id="1_n3fk4"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://mbdcw7ilgyaf" path="res://scenes/SpecialTiles/square_tile_mover.tscn" id="4_s8ktl"]
 [ext_resource type="PackedScene" uid="uid://1qs2kjqibo08" path="res://scenes/SpecialTiles/touch_tile_mover.tscn" id="5_4te1q"]
 [ext_resource type="PackedScene" uid="uid://buyw7kppa2e5x" path="res://scenes/NPCs/health_guy.tscn" id="5_lac0a"]
+[ext_resource type="PackedScene" uid="uid://brit4l57f7om5" path="res://scenes/enemies/cactus_enemy.tscn" id="5_ti4w7"]
 [ext_resource type="PackedScene" uid="uid://gfbs0r3hpxmg" path="res://scenes/collectibles/weapon_collectible.tscn" id="6_b7s16"]
 [ext_resource type="PackedScene" uid="uid://eqojlyb8sk42" path="res://scenes/NPCs/sword_npc.tscn" id="6_y122n"]
 [ext_resource type="Texture2D" uid="uid://ckx8xfjlkgdej" path="res://art/bg_1_front.png" id="7_iur12"]
@@ -131,6 +132,9 @@ position = Vector2(-23, 97)
 [node name="InventoryGuy" parent="TutorialArea/Tutorial 3/Resetables" index="1" instance=ExtResource("8_sphew")]
 position = Vector2(-16, 21)
 scale = Vector2(2, 2)
+
+[node name="CactusEnemy" parent="TutorialArea/Tutorial 3" instance=ExtResource("5_ti4w7")]
+position = Vector2(124, 96)
 
 [node name="Tutorial 4" parent="TutorialArea" instance=ExtResource("1_rue84")]
 position = Vector2(-640, -352)
